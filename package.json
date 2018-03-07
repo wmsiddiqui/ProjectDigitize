@@ -1,0 +1,25 @@
+{
+	"name": "projectdigitize",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/wmsiddiqui/ProjectDigitize.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/wmsiddiqui/ProjectDigitize/issues"
+	},
+	"homepage": "https://github.com/wmsiddiqui/ProjectDigitize#readme",
+	"devDependencies": {
+		"chai": "^4.1.2",
+		"mocha": "^5.0.2",
+		"proxyquire": "^2.0.0",
+		"sinon": "^4.4.2"
+	}
+}
