@@ -8,6 +8,7 @@ module.exports = class Block {
 		this.getName = function() {
 			return name;
 		};
+		this._save();
 	}
 
 	generateResources(ether, plasma, matter) {
@@ -21,7 +22,7 @@ module.exports = class Block {
 			//TODO: somehow distribute amounts?
 		}
 
-		_save();
+		this._save();
 	}
 
 	consumeResources(ether, plasma, matter) {
@@ -29,17 +30,10 @@ module.exports = class Block {
 			this._ether -= ether;
 			this._plasma -= plasma;
 			this._matter -= matter;
-			_save();
+			this._save();
 			return true;
 		}
 		return false;
-	}
-
-	print() {
-		console.log('Altitude: \t' + this.altitude);
-		console.log('Ether: \t\t' + this.ether);
-		console.log('Plasma: \t' + this.plasma);
-		console.log('Matter: \t' + this.matter);
 	}
 
 	_save() {
