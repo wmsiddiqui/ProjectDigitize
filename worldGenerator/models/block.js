@@ -1,12 +1,12 @@
 module.exports = class Block {
-	constructor(name, altitude, ether, plasma, matter, cap) {
+	constructor(id, altitude, ether, plasma, matter, cap) {
 		this._altitude = altitude;
 		this._ether = ether;
 		this._plasma = plasma;
 		this._matter = matter;
 		this._cap = cap;
-		this.getName = function() {
-			return name;
+		this.getId = function() {
+			return id;
 		};
 		this._save();
 	}
