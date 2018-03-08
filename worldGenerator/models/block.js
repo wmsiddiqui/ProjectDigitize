@@ -1,5 +1,11 @@
 module.exports = class Block {
-	constructor(id, altitude, ether, plasma, matter, cap) {
+	constructor(id, blockInitProperties, blockSaver) {
+		var altitude = blockInitProperties.altitude;
+		var ether = blockInitProperties.ether;
+		var plasma = blockInitProperties.plasma;
+		var matter = blockInitProperties.matter;
+		var cap = blockInitProperties.cap;
+
 		this._altitude = altitude;
 		this._ether = ether;
 		this._plasma = plasma;
@@ -8,6 +14,8 @@ module.exports = class Block {
 		this.getId = function() {
 			return id;
 		};
+
+		this._blockSaver = blockSaver;
 		this._save();
 	}
 
@@ -37,6 +45,9 @@ module.exports = class Block {
 	}
 
 	_save() {
-		//TODO: Persist
+		var saveResult = this._blockSaver.saveBlock(this);
+		if (!saveResult) {
+			console.log('Warning: Data not persisted to database!');
+		}
 	}
 };
