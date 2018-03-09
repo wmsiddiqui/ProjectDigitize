@@ -76,7 +76,7 @@ describe('block tests', function() {
 			assert.equal(testBlock._matter, blockInitProperties.matter);
 		});
 
-		it('should generate new resources in proportion if total added exceeds cap', function() {
+		it('should generate new resources in proportion if total added exceeds cap - clean', function() {
 			var blockInitProperties = {
 				altitude: 10,
 				ether: 0,
@@ -95,6 +95,32 @@ describe('block tests', function() {
 
 			var expectedEther = 50;
 			var expectedPlasma = 20;
+			var expectedMatter = 30;
+
+			assert.equal(testBlock._ether, expectedEther);
+			assert.equal(testBlock._plasma, expectedPlasma);
+			assert.equal(testBlock._matter, expectedMatter);
+		});
+
+		it('should generate new resources in proportion if total added exceeds cap dirty', function() {
+			var blockInitProperties = {
+				altitude: 10,
+				ether: 0,
+				plasma: 0,
+				matter: 0,
+				cap: 100
+			};
+
+			var etherIncrement = 100;
+			var plasmaIncrement = 40;
+			var matterIncrement = 61;
+
+			var testBlock = new Block(1, blockInitProperties, blockSaver);
+
+			testBlock.generateResources(etherIncrement, plasmaIncrement, matterIncrement);
+
+			var expectedEther = 49;
+			var expectedPlasma = 19;
 			var expectedMatter = 30;
 
 			assert.equal(testBlock._ether, expectedEther);
