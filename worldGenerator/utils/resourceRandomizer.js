@@ -34,4 +34,6 @@ exports.getResources = function(numberOfResources, bias) {
 			}
 		}
 	}
+
+	return generated;
 };
