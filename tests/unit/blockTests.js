@@ -31,7 +31,7 @@ describe('block tests', function() {
 			assert.equal(testBlock.getId(), id);
 		});
 	});
-	describe('generate resources tests', function() {
+	describe('generate exact resources tests', function() {
 		it('should generate new resources correctly', function() {
 			var blockInitProperties = {
 				altitude: 10,
@@ -47,7 +47,7 @@ describe('block tests', function() {
 
 			var testBlock = new Block(1, blockInitProperties, blockSaver);
 
-			testBlock.generateResources(etherIncrement, plasmaIncrement, matterIncrement);
+			testBlock.generateExactResources(etherIncrement, plasmaIncrement, matterIncrement);
 
 			assert.equal(testBlock._ether, blockInitProperties.ether + etherIncrement);
 			assert.equal(testBlock._plasma, blockInitProperties.plasma + plasmaIncrement);
@@ -69,7 +69,7 @@ describe('block tests', function() {
 
 			var testBlock = new Block(1, blockInitProperties, blockSaver);
 
-			testBlock.generateResources(etherIncrement, plasmaIncrement, matterIncrement);
+			testBlock.generateExactResources(etherIncrement, plasmaIncrement, matterIncrement);
 
 			assert.equal(testBlock._ether, blockInitProperties.ether);
 			assert.equal(testBlock._plasma, blockInitProperties.plasma);
@@ -91,7 +91,7 @@ describe('block tests', function() {
 
 			var testBlock = new Block(1, blockInitProperties, blockSaver);
 
-			testBlock.generateResources(etherIncrement, plasmaIncrement, matterIncrement);
+			testBlock.generateExactResources(etherIncrement, plasmaIncrement, matterIncrement);
 
 			var expectedEther = 50;
 			var expectedPlasma = 20;
@@ -117,7 +117,7 @@ describe('block tests', function() {
 
 			var testBlock = new Block(1, blockInitProperties, blockSaver);
 
-			testBlock.generateResources(etherIncrement, plasmaIncrement, matterIncrement);
+			testBlock.generateExactResources(etherIncrement, plasmaIncrement, matterIncrement);
 
 			var expectedEther = 49;
 			var expectedPlasma = 19;

@@ -1,3 +1,5 @@
+var resourceRandomizer = require('../utils/resourceRandomizer');
+
 module.exports = class Block {
 	constructor(id, blockInitProperties, blockSaver) {
 		var altitude = blockInitProperties.altitude;
@@ -15,11 +17,28 @@ module.exports = class Block {
 			return id;
 		};
 
+		if (blockInitProperties.bias) {
+			setBias(bias.etherBias, bias.plasmaBias, bias.matterBias);
+		}
+
 		this._blockSaver = blockSaver;
 		this._save();
 	}
 
-	generateResources(etherAdded, plasmaAdded, matterAdded) {
+	setBias(etherBias, plasmaBias, matterBias) {
+		var total = etherBias + plasmaBias + matterBias;
+		if (etherBias + plasmaBias + matterBias == 1) {
+			this._bias = {
+				_etherBias: etherBias,
+				_plasmaBias: plasmaBias,
+				_matterBias: matterBias
+			};
+		}
+	}
+
+	generateResources(numberOfResources) {}
+
+	generateExactResources(etherAdded, plasmaAdded, matterAdded) {
 		var generateTotal = etherAdded + plasmaAdded + matterAdded;
 		var existingTotal = this._ether + this._plasma + this._matter;
 		if (generateTotal + existingTotal < this._cap) {
