@@ -22,7 +22,6 @@ exports.getResources = function(numberOfResources, bias) {
 			}
 		} else {
 			var randomNumber = Math.floor(Math.random() * 3);
-
 			if (randomNumber == 0) {
 				generated.etherGenerated++;
 			} else if (randomNumber == 1) {
