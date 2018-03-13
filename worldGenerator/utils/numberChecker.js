@@ -1,4 +1,4 @@
-exports.numberChecker = {
+module.exports = {
 	isNumber: function(number) {
 		if (Number(number) === number) {
 			return true;

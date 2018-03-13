@@ -6,6 +6,7 @@ module.exports = class Block {
 		var numberOfResourcesToGenerate = blockInitProperties.resourceInitCount;
 
 		//Check here
+
 		this._bias = blockInitProperties.bias;
 		this._altitude = altitude;
 
