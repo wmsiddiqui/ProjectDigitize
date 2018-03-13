@@ -8,7 +8,7 @@ var blockSaver = {
 	}
 };
 
-describe('block tests', function() {
+xdescribe('block tests', function() {
 	describe('create tests', function() {
 		it('should create the block correctly', function() {
 			var id = 1;

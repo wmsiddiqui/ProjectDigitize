@@ -3,15 +3,12 @@ var resourceRandomizer = require('../utils/resourceRandomizer');
 module.exports = class Block {
 	constructor(id, blockInitProperties, blockSaver) {
 		var altitude = blockInitProperties.altitude;
-		var ether = blockInitProperties.ether;
-		var plasma = blockInitProperties.plasma;
-		var matter = blockInitProperties.matter;
-		var cap = blockInitProperties.cap;
+		var numberOfResourcesToGenerate = blockInitProperties.resourceInitCount;
 
+		//Check here
+		this._bias = blockInitProperties.bias;
 		this._altitude = altitude;
-		this._ether = ether;
-		this._plasma = plasma;
-		this._matter = matter;
+
 		this._cap = cap;
 		this.getId = function() {
 			return id;
@@ -36,28 +33,8 @@ module.exports = class Block {
 		}
 	}
 
-	generateResources(numberOfResources) {}
-
-	generateExactResources(etherAdded, plasmaAdded, matterAdded) {
-		var generateTotal = etherAdded + plasmaAdded + matterAdded;
-		var existingTotal = this._ether + this._plasma + this._matter;
-		if (generateTotal + existingTotal < this._cap) {
-			this._ether += etherAdded;
-			this._plasma += plasmaAdded;
-			this._matter += matterAdded;
-		} else if (existingTotal < this._cap) {
-			var remainingCapacity = this._cap - existingTotal;
-			var ratio = remainingCapacity / generateTotal;
-			var scaledEther = etherAdded * ratio;
-			var scaledPlasma = plasmaAdded * ratio;
-			var scaledMatter = matterAdded * ratio;
-
-			this._ether += Math.trunc(scaledEther);
-			this._plasma += Math.trunc(scaledPlasma);
-			this._matter += Math.trunc(scaledMatter);
-		}
-
-		this._save();
+	generateResources(numberOfResources) {
+		//TODO: pass in bias
 	}
 
 	consumeResources(etherUsed, plasmaUsed, matterUsed) {
