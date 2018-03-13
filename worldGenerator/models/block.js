@@ -1,4 +1,5 @@
 var resourceRandomizer = require('../utils/resourceRandomizer');
+var numberChcker = require('../utils/numberChecker');
 
 module.exports = class Block {
 	constructor(id, blockInitProperties, blockSaver) {

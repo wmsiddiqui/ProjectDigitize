@@ -16,5 +16,11 @@ module.exports = {
 			return true;
 		}
 		return false;
+	},
+	isPositiveNumber: function(number) {
+		if (this.isNumber(number) && number > 0) {
+			return true;
+		}
+		return false;
 	}
 };

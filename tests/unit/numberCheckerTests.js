@@ -43,4 +43,19 @@ describe('number checker', function() {
 			assert.isFalse(result, 'Argument is 0, should be false');
 		});
 	});
+
+	describe('isPositiveNumber test', function() {
+		it('should return true if argument is a positive number', function() {
+			var result = numberChecker.isPositiveNumber(0.1);
+			assert.isTrue(result, 'Argument is a positive number, should be true');
+		});
+		it('should return false if argument is not a positive number', function() {
+			var result = numberChecker.isPositiveNumber(-0.1);
+			assert.isFalse(result, 'Argument is not a positive number, should be false');
+		});
+		it('should return false if argument is 0', function() {
+			var result = numberChecker.isPositiveNumber(0);
+			assert.isFalse(result, 'Argument is 0, should be false');
+		});
+	});
 });
