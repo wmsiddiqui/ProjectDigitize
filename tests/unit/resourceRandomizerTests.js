@@ -21,25 +21,30 @@ describe('resource randomizer tests', function() {
 
 		var generatedResults = resourceRandomizer.getResources(resourcesToGenerate);
 
+		Math.random.restore();
+
 		var totalGenerated =
 			generatedResults.etherGenerated + generatedResults.plasmaGenerated + generatedResults.matterGenerated;
 		assert.equal(totalGenerated, resourcesToGenerate, 'Total resource generated was incorrect');
 
-		assert.isTrue(
-			generatedResults.etherGenerated == resourcesToGenerate / 3,
+		assert.equal(
+			generatedResults.etherGenerated,
+			resourcesToGenerate / 3,
 			'generated ' + generatedResults.etherGenerated + ' ether'
 		);
-		assert.isTrue(
-			generatedResults.plasmaGenerated == resourcesToGenerate / 3,
+		assert.equal(
+			generatedResults.plasmaGenerated,
+			resourcesToGenerate / 3,
 			'generated ' + generatedResults.plasmaGenerated + ' plasma'
 		);
-		assert.isTrue(
-			generatedResults.matterGenerated == resourcesToGenerate / 3,
+		assert.equal(
+			generatedResults.matterGenerated,
+			resourcesToGenerate / 3,
 			'generated ' + generatedResults.matterGenerated + ' matter'
 		);
 	});
 
-	xit('should create resources almost equally with correct bias - MANUAL TESTING ONLY!', function() {
+	it('should create resources almost equally with correct bias - MANUAL TESTING ONLY!', function() {
 		var resourcesToGenerate = 1000;
 		var bias = {
 			_etherBias: 0.5,
@@ -47,20 +52,35 @@ describe('resource randomizer tests', function() {
 			_matterBias: 0.2
 		};
 
+		var randomCounter = 0;
+		var random = sinon.stub(Math, 'random').callsFake(function() {
+			randomCounter++;
+			if (randomCounter <= 500) {
+				return 0.3;
+			} else if (randomCounter <= 800) {
+				return 0.6;
+			} else {
+				return 0.9;
+			}
+		});
+
 		var generatedResults = resourceRandomizer.getResources(resourcesToGenerate, bias);
-		assert.isTrue(
-			generatedResults.etherGenerated >= resourcesToGenerate * bias._etherBias - 50 &&
-				generatedResults.etherGenerated <= resourcesToGenerate * bias._etherBias + 50,
+
+		Math.random.restore();
+
+		assert.equal(
+			generatedResults.etherGenerated,
+			resourcesToGenerate * bias._etherBias,
 			'generated ' + generatedResults.etherGenerated + ' ether'
 		);
-		assert.isTrue(
-			generatedResults.plasmaGenerated >= resourcesToGenerate * bias._plasmaBias - 50 &&
-				generatedResults.plasmaGenerated <= resourcesToGenerate * bias._plasmaBias + 50,
+		assert.equal(
+			generatedResults.plasmaGenerated,
+			resourcesToGenerate * bias._plasmaBias,
 			'generated ' + generatedResults.plasmaGenerated + ' plasma'
 		);
-		assert.isTrue(
-			generatedResults.matterGenerated >= resourcesToGenerate * bias._matterBias - 50 &&
-				generatedResults.matterGenerated <= resourcesToGenerate * bias._matterBias + 50,
+		assert.equal(
+			generatedResults.matterGenerated,
+			resourcesToGenerate * bias._matterBias,
 			'generated ' + generatedResults.matterGenerated + ' matter'
 		);
 		var totalGenerated =
