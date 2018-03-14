@@ -10,26 +10,25 @@ var blockSaver = {
 };
 
 describe('block tests', function() {
-	before(function() {
-		var randomCounter = 0;
-		var random = sinon.stub(Math, 'random').callsFake(function() {
-			randomCounter++;
-			if (randomCounter <= 10) {
-				return 0.3;
-			} else if (randomCounter <= 20) {
-				return 0.6;
-			} else {
-				return 0.9;
-			}
-		});
-	});
-
-	after(function() {
-		Math.random.restore();
-	});
-
 	describe('create', function() {
-		xit('should create the block correctly with no resources', function() {
+		beforeEach(function() {
+			var randomCounter = 0;
+			var random = sinon.stub(Math, 'random').callsFake(function() {
+				randomCounter++;
+				if (randomCounter <= 10) {
+					return 0.3;
+				} else if (randomCounter <= 20) {
+					return 0.6;
+				} else {
+					return 0.9;
+				}
+			});
+		});
+
+		afterEach(function() {
+			Math.random.restore();
+		});
+		it('should create the block correctly with no resources', function() {
 			var id = 1;
 
 			var blockInitProperties = {
@@ -46,7 +45,7 @@ describe('block tests', function() {
 			assert.equal(testBlock._cap, blockInitProperties.cap);
 			assert.equal(testBlock.getId(), id);
 		});
-		xit('should create the block correctly with equal resources without bias', function() {
+		it('should create the block correctly with equal resources without bias', function() {
 			var id = 1;
 
 			var blockInitProperties = {
@@ -80,6 +79,7 @@ describe('block tests', function() {
 
 			var testBlock = new Block(id, blockInitProperties, blockSaver);
 
+			console.log(testBlock);
 			assert.equal(testBlock._ether, 20);
 			assert.equal(testBlock._plasma, 0);
 			assert.equal(testBlock._matter, 10);
@@ -88,13 +88,10 @@ describe('block tests', function() {
 			assert.equal(testBlock.getId(), id);
 		});
 	});
-	xdescribe('generate exact resources tests', function() {
+	xdescribe('generate resources tests', function() {
 		it('should generate new resources correctly', function() {
 			var blockInitProperties = {
 				altitude: 10,
-				ether: 20,
-				plasma: 30,
-				matter: 40,
 				cap: 100
 			};
 
