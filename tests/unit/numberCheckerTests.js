@@ -38,10 +38,6 @@ describe('number checker', function() {
 			var result = numberChecker.isPositiveWholeNumber(-10);
 			assert.isFalse(result, 'Argument is not a positive number, should be false');
 		});
-		it('should return false if argument is 0', function() {
-			var result = numberChecker.isPositiveWholeNumber(0);
-			assert.isFalse(result, 'Argument is 0, should be false');
-		});
 	});
 
 	describe('isPositiveNumber test', function() {
@@ -52,10 +48,6 @@ describe('number checker', function() {
 		it('should return false if argument is not a positive number', function() {
 			var result = numberChecker.isPositiveNumber(-0.1);
 			assert.isFalse(result, 'Argument is not a positive number, should be false');
-		});
-		it('should return false if argument is 0', function() {
-			var result = numberChecker.isPositiveNumber(0);
-			assert.isFalse(result, 'Argument is 0, should be false');
 		});
 	});
 });

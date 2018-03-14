@@ -1,27 +1,25 @@
 var resourceRandomizer = require('../utils/resourceRandomizer');
-var numberChcker = require('../utils/numberChecker');
+var numberChecker = require('../utils/numberChecker');
 
 module.exports = class Block {
 	constructor(id, blockInitProperties, blockSaver) {
-		var altitude = blockInitProperties.altitude;
-		var numberOfResourcesToGenerate = blockInitProperties.resourceInitCount;
+		this._validateBlockInitProperties(blockInitProperties);
 
-		//Check here
+		this._altitude = blockInitProperties.altitude;
+		this._blockSaver = blockSaver;
+		this._cap = blockInitProperties.cap;
 
-		this._bias = blockInitProperties.bias;
-		this._altitude = altitude;
-
-		this._cap = cap;
 		this.getId = function() {
 			return id;
 		};
 
-		if (blockInitProperties.bias) {
-			setBias(bias.etherBias, bias.plasmaBias, bias.matterBias);
-		}
+		this._bias = blockInitProperties._bias;
 
-		this._blockSaver = blockSaver;
 		this._save();
+
+		if (blockInitProperties.resourceInitCount) {
+			this.generateResources(blockInitProperties.resourceInitCount);
+		}
 	}
 
 	setBias(etherBias, plasmaBias, matterBias) {
@@ -36,7 +34,22 @@ module.exports = class Block {
 	}
 
 	generateResources(numberOfResources) {
-		//TODO: pass in bias
+		var totalNumberOfResources = this._ether + this._plasma + this._matter;
+		var totalNumberOfResourcesToGenerate = numberOfResources;
+
+		if (totalNumberOfResources >= this._cap) {
+			return;
+		} else if (totalNumberOfResources + numberOfResources > this._cap) {
+			numberOfResources = this._cap - totalNumberOfResources;
+		}
+
+		var resourcesToGenerate = resourceRandomizer.getResources(numberOfResources, this._bias);
+		_this.ether += resourcesToGenerate.etherGenerated;
+		_this.plasma += resourcesToGenerate.plasmaGenerated;
+		_this.matter += resourcesToGenerate.matterGenerated;
+
+		this_.save();
+		return resourcesToGenerate;
 	}
 
 	consumeResources(etherUsed, plasmaUsed, matterUsed) {
@@ -48,6 +61,42 @@ module.exports = class Block {
 			return true;
 		}
 		return false;
+	}
+
+	_validateBlockInitProperties(blockInitProperties) {
+		if (!numberChecker.isPositiveNumber(blockInitProperties.altitude)) {
+			throw new Error('Altitude must be a positive number.');
+		}
+
+		if (!numberChecker.isPositiveWholeNumber(blockInitProperties.cap)) {
+			throw new Error('Cap must be a positive whole number');
+		}
+
+		if (
+			blockInitProperties.resourceInitCount &&
+			!numberChecker.isPositiveWholeNumber(blockInitProperties.resourceInitCount)
+		) {
+			throw new Error('resourceInitCount must be a positive whole number.');
+		}
+
+		if (
+			blockInitProperties.bias &&
+			(!numberChecker.isPositiveNumber(blockInitProperties.bias.etherBias) ||
+				!numberChecker.isPositiveNumber(blockInitProperties.bias.plasmaBias) ||
+				!numberChecker.isPositiveNumber(blockInitProperties.bias.matterBias))
+		) {
+			throw new Error('All bias must be greater than zero');
+		}
+
+		if (
+			blockInitProperties.bias &&
+			blockInitProperties.bias.etherBias +
+				blockInitProperties.bias.plasmaBias +
+				blockInitProperties.bias.matterBias !=
+				1
+		) {
+			throw new Error('Bias not configured correctly');
+		}
 	}
 
 	_save() {

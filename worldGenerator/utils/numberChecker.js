@@ -12,13 +12,13 @@ module.exports = {
 		return false;
 	},
 	isPositiveWholeNumber: function(number) {
-		if (this.isNumber(number) && this.isWholeNumber(number) && number > 0) {
+		if (this.isNumber(number) && this.isWholeNumber(number) && number >= 0) {
 			return true;
 		}
 		return false;
 	},
 	isPositiveNumber: function(number) {
-		if (this.isNumber(number) && number > 0) {
+		if (this.isNumber(number) && number >= 0) {
 			return true;
 		}
 		return false;
