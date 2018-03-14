@@ -13,7 +13,11 @@ module.exports = class Block {
 			return id;
 		};
 
-		this._bias = blockInitProperties._bias;
+		this._bias = blockInitProperties.bias;
+
+		this._ether = 0;
+		this._plasma = 0;
+		this._matter = 0;
 
 		this._save();
 
@@ -26,9 +30,9 @@ module.exports = class Block {
 		var total = etherBias + plasmaBias + matterBias;
 		if (etherBias + plasmaBias + matterBias == 1) {
 			this._bias = {
-				_etherBias: etherBias,
-				_plasmaBias: plasmaBias,
-				_matterBias: matterBias
+				etherBias: etherBias,
+				plasmaBias: plasmaBias,
+				matterBias: matterBias
 			};
 		}
 	}
@@ -44,11 +48,11 @@ module.exports = class Block {
 		}
 
 		var resourcesToGenerate = resourceRandomizer.getResources(numberOfResources, this._bias);
-		_this.ether += resourcesToGenerate.etherGenerated;
-		_this.plasma += resourcesToGenerate.plasmaGenerated;
-		_this.matter += resourcesToGenerate.matterGenerated;
+		this._ether += resourcesToGenerate.etherGenerated;
+		this._plasma += resourcesToGenerate.plasmaGenerated;
+		this._matter += resourcesToGenerate.matterGenerated;
 
-		this_.save();
+		this._save();
 		return resourcesToGenerate;
 	}
 
@@ -90,9 +94,10 @@ module.exports = class Block {
 
 		if (
 			blockInitProperties.bias &&
-			blockInitProperties.bias.etherBias +
-				blockInitProperties.bias.plasmaBias +
-				blockInitProperties.bias.matterBias !=
+			(blockInitProperties.bias.etherBias * 10 +
+				blockInitProperties.bias.plasmaBias * 10 +
+				blockInitProperties.bias.matterBias * 10) /
+				10 !=
 				1
 		) {
 			throw new Error('Bias not configured correctly');

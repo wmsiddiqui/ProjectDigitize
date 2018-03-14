@@ -1,6 +1,7 @@
 var chai = require('chai');
 var assert = chai.assert;
 var Block = require('../../worldGenerator/models/block');
+var sinon = require('sinon');
 
 var blockSaver = {
 	saveBlock: function(block) {
@@ -9,8 +10,26 @@ var blockSaver = {
 };
 
 describe('block tests', function() {
-	describe('create tests', function() {
-		it('should create the block correctly', function() {
+	before(function() {
+		var randomCounter = 0;
+		var random = sinon.stub(Math, 'random').callsFake(function() {
+			randomCounter++;
+			if (randomCounter <= 10) {
+				return 0.3;
+			} else if (randomCounter <= 20) {
+				return 0.6;
+			} else {
+				return 0.9;
+			}
+		});
+	});
+
+	after(function() {
+		Math.random.restore();
+	});
+
+	describe('create', function() {
+		xit('should create the block correctly with no resources', function() {
 			var id = 1;
 
 			var blockInitProperties = {
@@ -20,9 +39,50 @@ describe('block tests', function() {
 
 			var testBlock = new Block(id, blockInitProperties, blockSaver);
 
-			// assert.equal(testBlock._ether, blockInitProperties.ether);
-			// assert.equal(testBlock._plasma, blockInitProperties.plasma);
-			// assert.equal(testBlock._matter, blockInitProperties.matter);
+			assert.equal(testBlock._ether, 0);
+			assert.equal(testBlock._plasma, 0);
+			assert.equal(testBlock._matter, 0);
+			assert.equal(testBlock._altitude, blockInitProperties.altitude);
+			assert.equal(testBlock._cap, blockInitProperties.cap);
+			assert.equal(testBlock.getId(), id);
+		});
+		xit('should create the block correctly with equal resources without bias', function() {
+			var id = 1;
+
+			var blockInitProperties = {
+				cap: 50,
+				altitude: 10,
+				resourceInitCount: 30
+			};
+
+			var testBlock = new Block(id, blockInitProperties, blockSaver);
+
+			assert.equal(testBlock._ether, 10);
+			assert.equal(testBlock._plasma, 10);
+			assert.equal(testBlock._matter, 10);
+			assert.equal(testBlock._altitude, blockInitProperties.altitude);
+			assert.equal(testBlock._cap, blockInitProperties.cap);
+			assert.equal(testBlock.getId(), id);
+		});
+		it('should create the block correctly with bias', function() {
+			var id = 1;
+
+			var blockInitProperties = {
+				cap: 50,
+				altitude: 10,
+				resourceInitCount: 30,
+				bias: {
+					etherBias: 0.7,
+					plasmaBias: 0.2,
+					matterBias: 0.1
+				}
+			};
+
+			var testBlock = new Block(id, blockInitProperties, blockSaver);
+
+			assert.equal(testBlock._ether, 20);
+			assert.equal(testBlock._plasma, 0);
+			assert.equal(testBlock._matter, 10);
 			assert.equal(testBlock._altitude, blockInitProperties.altitude);
 			assert.equal(testBlock._cap, blockInitProperties.cap);
 			assert.equal(testBlock.getId(), id);

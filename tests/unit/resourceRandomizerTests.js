@@ -3,7 +3,7 @@ var assert = chai.assert;
 var resourceRandomizer = require('../../worldGenerator/utils/resourceRandomizer');
 var sinon = require('sinon');
 
-describe('resource randomizer tests', function() {
+describe('resource randomizer', function() {
 	describe('create correct number of resources when Math.random is mocked', function() {
 		it('should create resources almost equally with no bias', function() {
 			var resourcesToGenerate = 999;
@@ -48,9 +48,9 @@ describe('resource randomizer tests', function() {
 		it('should create resources according to the bias', function() {
 			var resourcesToGenerate = 1000;
 			var bias = {
-				_etherBias: 0.5,
-				_plasmaBias: 0.3,
-				_matterBias: 0.2
+				etherBias: 0.5,
+				plasmaBias: 0.3,
+				matterBias: 0.2
 			};
 
 			var randomCounter = 0;
@@ -71,17 +71,17 @@ describe('resource randomizer tests', function() {
 
 			assert.equal(
 				generatedResults.etherGenerated,
-				resourcesToGenerate * bias._etherBias,
+				resourcesToGenerate * bias.etherBias,
 				'generated ' + generatedResults.etherGenerated + ' ether'
 			);
 			assert.equal(
 				generatedResults.plasmaGenerated,
-				resourcesToGenerate * bias._plasmaBias,
+				resourcesToGenerate * bias.plasmaBias,
 				'generated ' + generatedResults.plasmaGenerated + ' plasma'
 			);
 			assert.equal(
 				generatedResults.matterGenerated,
-				resourcesToGenerate * bias._matterBias,
+				resourcesToGenerate * bias.matterBias,
 				'generated ' + generatedResults.matterGenerated + ' matter'
 			);
 			var totalGenerated =
@@ -94,9 +94,9 @@ describe('resource randomizer tests', function() {
 		it('should create only ether when other biases are 0', function() {
 			var resourcesToGenerate = 1000;
 			var bias = {
-				_etherBias: 1,
-				_plasmaBias: 0,
-				_matterBias: 0
+				etherBias: 1,
+				plasmaBias: 0,
+				matterBias: 0
 			};
 
 			var generatedResults = resourceRandomizer.getResources(resourcesToGenerate, bias);
@@ -124,9 +124,9 @@ describe('resource randomizer tests', function() {
 		it('should create only plasma when other biases are 0', function() {
 			var resourcesToGenerate = 1000;
 			var bias = {
-				_etherBias: 0,
-				_plasmaBias: 1,
-				_matterBias: 0
+				etherBias: 0,
+				plasmaBias: 1,
+				matterBias: 0
 			};
 
 			var generatedResults = resourceRandomizer.getResources(resourcesToGenerate, bias);
@@ -150,9 +150,9 @@ describe('resource randomizer tests', function() {
 		it('should create only matter when other biases are 0', function() {
 			var resourcesToGenerate = 1000;
 			var bias = {
-				_etherBias: 0,
-				_plasmaBias: 0,
-				_matterBias: 1
+				etherBias: 0,
+				plasmaBias: 0,
+				matterBias: 1
 			};
 
 			var generatedResults = resourceRandomizer.getResources(resourcesToGenerate, bias);
@@ -187,9 +187,9 @@ describe('resource randomizer tests', function() {
 			var resourcesToGenerate = 1000;
 
 			var bias = {
-				_etherBias: 0.5,
-				_plasmaBias: 0.3,
-				_matterBias: 0.2
+				etherBias: 0.5,
+				plasmaBias: 0.3,
+				matterBias: 0.2
 			};
 
 			var generatedResults = resourceRandomizer.getResources(resourcesToGenerate, bias);
@@ -203,9 +203,9 @@ describe('resource randomizer tests', function() {
 			var resourcesToGenerate = 1000;
 
 			var bias = {
-				_etherBias: 0.1,
-				_plasmaBias: 0.3,
-				_matterBias: 0.2
+				etherBias: 0.1,
+				plasmaBias: 0.3,
+				matterBias: 0.2
 			};
 
 			assert.throws(function() {
