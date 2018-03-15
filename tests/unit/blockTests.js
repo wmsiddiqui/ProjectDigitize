@@ -99,7 +99,9 @@ describe('block tests', function() {
 				}
 			};
 
-			assert.throws(new Block(id, blockInitProperties, blockSaver));
+			assert.throws(function() {
+				new Block(id, blockInitProperties, blockSaver);
+			});
 		});
 	});
 	describe('generate resources tests', function() {
@@ -180,14 +182,12 @@ describe('block tests', function() {
 			assert.equal(generatedResources.matterGenerated, expectedMatter);
 		});
 	});
-	xdescribe('consume tests', function() {
+	describe('consume tests', function() {
 		it('should consume resources and return true if there are enough resources', function() {
 			var blockInitProperties = {
 				altitude: 10,
-				ether: 20,
-				plasma: 30,
-				matter: 40,
-				cap: 50
+				cap: 50,
+				resourceInitCount: 30
 			};
 
 			var etherDecrement = 10;
@@ -204,13 +204,11 @@ describe('block tests', function() {
 		it('should not consume resources and return false if there are enough resources', function() {
 			var blockInitProperties = {
 				altitude: 10,
-				ether: 2,
-				plasma: 30,
-				matter: 40,
-				cap: 50
+				cap: 30,
+				resourceInitCount: 30
 			};
 
-			var etherDecrement = 10;
+			var etherDecrement = 11;
 			var plasmaDecrement = 2;
 			var matterDecrement = 3;
 
