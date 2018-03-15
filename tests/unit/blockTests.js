@@ -86,6 +86,21 @@ describe('block tests', function() {
 			assert.equal(testBlock._cap, blockInitProperties.cap);
 			assert.equal(testBlock.getId(), id);
 		});
+		it('should not create the block correctly with long decimals', function() {
+			var id = 1;
+
+			var blockInitProperties = {
+				cap: 50,
+				altitude: 10,
+				bias: {
+					etherBias: 0.33333,
+					plasmaBias: 0.33333,
+					matterBias: 0.33334
+				}
+			};
+
+			assert.throws(new Block(id, blockInitProperties, blockSaver));
+		});
 	});
 	describe('generate resources tests', function() {
 		it('should generate new resources correctly', function() {

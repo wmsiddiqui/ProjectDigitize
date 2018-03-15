@@ -81,24 +81,33 @@ module.exports = class Block {
 			throw new Error('resourceInitCount must be a positive whole number.');
 		}
 
-		if (
-			blockInitProperties.bias &&
-			(!numberChecker.isPositiveNumber(blockInitProperties.bias.etherBias) ||
+		if (blockInitProperties.bias) {
+			if (
+				!numberChecker.isPositiveNumber(blockInitProperties.bias.etherBias) ||
 				!numberChecker.isPositiveNumber(blockInitProperties.bias.plasmaBias) ||
-				!numberChecker.isPositiveNumber(blockInitProperties.bias.matterBias))
-		) {
-			throw new Error('All bias must be greater than zero');
-		}
+				!numberChecker.isPositiveNumber(blockInitProperties.bias.matterBias)
+			) {
+				throw new Error('All bias must be greater than zero');
+			}
 
-		if (
-			blockInitProperties.bias &&
-			(blockInitProperties.bias.etherBias * 10 +
-				blockInitProperties.bias.plasmaBias * 10 +
-				blockInitProperties.bias.matterBias * 10) /
-				10 !=
+			if (
+				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.bias.etherBias) ||
+				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.bias.plasmaBias) ||
+				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.bias.matterBias)
+			) {
+				throw new Error('Invalid Bias. Only precision of 3 decimal places is supported.');
+			}
+
+			//Multiply and then divide by 1000 to maintain precision
+			if (
+				(blockInitProperties.bias.etherBias * 1000 +
+					blockInitProperties.bias.plasmaBias * 1000 +
+					blockInitProperties.bias.matterBias * 1000) /
+					1000 !=
 				1
-		) {
-			throw new Error('Bias not configured correctly');
+			) {
+				throw new Error('Bias not configured correctly');
+			}
 		}
 	}
 

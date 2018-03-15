@@ -50,4 +50,21 @@ describe('number checker', function() {
 			assert.isFalse(result, 'Argument is not a positive number, should be false');
 		});
 	});
+
+	describe('isNumberWithOnly3DecimalDigits test', function() {
+		it('should return true if argument is a number with 3 decimal places', function() {
+			var result = numberChecker.isNumberWithOnly3DecimalDigits(3.333);
+			assert.isTrue(result, 'Argument has only 3 decimal places, should be true');
+		});
+
+		it('should return true if argument is a number with 2 decimal places', function() {
+			var result = numberChecker.isNumberWithOnly3DecimalDigits(3.33);
+			assert.isTrue(result, 'Argument has only 2 decimal places, should be true');
+		});
+
+		it('should return false if argument is a number with 4 decimal places', function() {
+			var result = numberChecker.isNumberWithOnly3DecimalDigits(3.3333);
+			assert.isFalse(result, 'Argument has 4 decimal places, should be false');
+		});
+	});
 });

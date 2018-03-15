@@ -22,5 +22,12 @@ module.exports = {
 			return true;
 		}
 		return false;
+	},
+	isNumberWithOnly3DecimalDigits(number) {
+		var truncatedNumber = Math.trunc(number * 1000);
+		if (number * 1000 > truncatedNumber) {
+			return false;
+		}
+		return true;
 	}
 };
