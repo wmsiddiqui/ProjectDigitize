@@ -41,13 +41,11 @@ module.exports = class Block {
 		var totalNumberOfResources = this._ether + this._plasma + this._matter;
 		var totalNumberOfResourcesToGenerate = numberOfResources;
 
-		if (totalNumberOfResources >= this._cap) {
-			return;
-		} else if (totalNumberOfResources + numberOfResources > this._cap) {
-			numberOfResources = this._cap - totalNumberOfResources;
+		if (totalNumberOfResources + totalNumberOfResourcesToGenerate >= this._cap) {
+			totalNumberOfResourcesToGenerate = this._cap - totalNumberOfResources;
 		}
 
-		var resourcesToGenerate = resourceRandomizer.getResources(numberOfResources, this._bias);
+		var resourcesToGenerate = resourceRandomizer.getResources(totalNumberOfResourcesToGenerate, this._bias);
 		this._ether += resourcesToGenerate.etherGenerated;
 		this._plasma += resourcesToGenerate.plasmaGenerated;
 		this._matter += resourcesToGenerate.matterGenerated;

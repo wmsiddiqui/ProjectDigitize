@@ -8,6 +8,7 @@ exports.getResources = function(numberOfResources, bias) {
 		plasmaGenerated: 0,
 		matterGenerated: 0
 	};
+
 	for (i = 0; i < numberOfResources; i++) {
 		if (bias) {
 			var randomNumber = Math.random();
@@ -33,6 +34,5 @@ exports.getResources = function(numberOfResources, bias) {
 			}
 		}
 	}
-
 	return generated;
 };
