@@ -135,27 +135,34 @@ describe('block tests', function() {
 			assert.equal(generatedResources.matterGenerated, generatedSingleSource);
 		});
 
-		xit('should generate new resources in proportion if total added exceeds cap dirty', function() {
+		it('should generate new resources in proportion if total added exceeds cap withBias', function() {
 			var blockInitProperties = {
 				altitude: 10,
-				cap: 100
+				cap: 30,
+				bias: {
+					etherBias: 0.7,
+					plasmaBias: 0.1,
+					matterBias: 0.2
+				}
 			};
-
-			var etherIncrement = 100;
-			var plasmaIncrement = 40;
-			var matterIncrement = 61;
 
 			var testBlock = new Block(1, blockInitProperties, blockSaver);
 
-			testBlock.generateExactResources(etherIncrement, plasmaIncrement, matterIncrement);
+			var numberOfResourcesToGenerate = 1000;
+			var generatedResources = testBlock.generateResources(numberOfResourcesToGenerate);
 
-			var expectedEther = 49;
-			var expectedPlasma = 19;
-			var expectedMatter = 30;
+			var expectedEther = 20;
+			var expectedPlasma = 0;
+			var expectedMatter = 10;
+			var totalGenerated =
+				generatedResources.etherGenerated +
+				generatedResources.plasmaGenerated +
+				generatedResources.matterGenerated;
 
-			assert.equal(testBlock._ether, expectedEther);
-			assert.equal(testBlock._plasma, expectedPlasma);
-			assert.equal(testBlock._matter, expectedMatter);
+			assert.equal(totalGenerated, blockInitProperties.cap);
+			assert.equal(generatedResources.etherGenerated, expectedEther);
+			assert.equal(generatedResources.plasmaGenerated, expectedPlasma);
+			assert.equal(generatedResources.matterGenerated, expectedMatter);
 		});
 	});
 	xdescribe('consume tests', function() {

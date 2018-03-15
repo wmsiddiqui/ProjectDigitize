@@ -12,11 +12,11 @@ exports.getResources = function(numberOfResources, bias) {
 	for (i = 0; i < numberOfResources; i++) {
 		if (bias) {
 			var randomNumber = Math.random();
-			if (randomNumber <= bias.etherBias) {
+			if (randomNumber < bias.etherBias) {
 				generated.etherGenerated++;
-			} else if (randomNumber <= bias.etherBias + bias.plasmaBias) {
+			} else if (randomNumber < bias.etherBias + bias.plasmaBias) {
 				generated.plasmaGenerated++;
-			} else if (randomNumber <= bias.etherBias + bias.plasmaBias + bias.matterBias) {
+			} else if (randomNumber < bias.etherBias + bias.plasmaBias + bias.matterBias) {
 				generated.matterGenerated++;
 			} else {
 				throw new Error('ResourceRandomizer failed to produce correct spread');
