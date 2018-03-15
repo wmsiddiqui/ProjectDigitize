@@ -88,6 +88,46 @@ describe('resource randomizer', function() {
 				generatedResults.etherGenerated + generatedResults.plasmaGenerated + generatedResults.matterGenerated;
 			assert.equal(totalGenerated, resourcesToGenerate);
 		});
+
+		it('should create resources according to the bias edge case', function() {
+			var resourcesToGenerate = 1000;
+			var bias = {
+				etherBias: 0.5,
+				plasmaBias: 0.3,
+				matterBias: 0.2
+			};
+
+			var randomCounter = 0;
+			var random = sinon.stub(Math, 'random').callsFake(function() {
+				randomCounter++;
+				if (randomCounter <= 500) {
+					return 0.5;
+				} else if (randomCounter <= 800) {
+					return 0.8;
+				} else {
+					return 0.9;
+				}
+			});
+
+			var generatedResults = resourceRandomizer.getResources(resourcesToGenerate, bias);
+
+			Math.random.restore();
+
+			assert.equal(generatedResults.etherGenerated, 0, 'generated ' + generatedResults.etherGenerated + ' ether');
+			assert.equal(
+				generatedResults.plasmaGenerated,
+				500,
+				'generated ' + generatedResults.plasmaGenerated + ' plasma'
+			);
+			assert.equal(
+				generatedResults.matterGenerated,
+				500,
+				'generated ' + generatedResults.matterGenerated + ' matter'
+			);
+			var totalGenerated =
+				generatedResults.etherGenerated + generatedResults.plasmaGenerated + generatedResults.matterGenerated;
+			assert.equal(totalGenerated, resourcesToGenerate);
+		});
 	});
 
 	describe('create only specific resource when other biases are 0', function() {
