@@ -26,9 +26,15 @@ describe('region', function() {
 		});
 	});
 	describe('create first block', function() {
-		xit('should correctly create the first block', function() {
-			var generator = worldGenerator.getWorldGenerator();
-			generator.createBlock;
+		it('should correctly create the first block', function() {
+			var saveClient = {
+				saveBlock: function() {
+					return true;
+				}
+			};
+			var region = new Region(1, 101, saveClient);
+			var block = region.createBlock();
+			console.log(block);
 		});
 	});
 });

@@ -2,8 +2,6 @@ var Block = require('./block');
 var blockTypes = require('./blockTypes');
 var numberChecker = require('../utils/numberChecker');
 
-var worldSize = 11;
-
 module.exports = class Region {
 	constructor(id, regionSize, saveClient) {
 		this._id = id;
@@ -16,13 +14,21 @@ module.exports = class Region {
 		this._regionSize = regionSize;
 		this._regionMap = [ [] ];
 		this._availableAreas = [];
-		this._remainingCapacity = worldSize * worldSize;
+		this._remainingCapacity = regionSize * regionSize;
 	}
 
 	createBlock() {
-		if (remainingCapacity == worldSize * worldSize && availableAreas.length == 0) {
+		if (this._remainingCapacity == this._regionSize * this._regionSize && this._availableAreas.length == 0) {
 			//First Block
-			var blockType = getRandomBlockType();
+			var generatedBlockType = getRandomBlockType();
+			var coordinate = Math.ceil(this._regionSize / 2);
+			var blockInitProperties = {
+				cap: 1,
+				altitude: 10,
+				blockType: generatedBlockType
+			};
+			var block = new Block(1, blockInitProperties, this._saveClient);
+			return block;
 		}
 	}
 	getBlock(x, y) {
