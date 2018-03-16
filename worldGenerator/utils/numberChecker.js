@@ -1,23 +1,23 @@
 module.exports = {
-	isNumber: function(number) {
+	isNumber(number) {
 		if (Number(number) === number) {
 			return true;
 		}
 		return false;
 	},
-	isWholeNumber: function(number) {
+	isWholeNumber(number) {
 		if (this.isNumber(number) && number % 1 === 0) {
 			return true;
 		}
 		return false;
 	},
-	isPositiveWholeNumber: function(number) {
+	isPositiveWholeNumber(number) {
 		if (this.isNumber(number) && this.isWholeNumber(number) && number >= 0) {
 			return true;
 		}
 		return false;
 	},
-	isPositiveNumber: function(number) {
+	isPositiveNumber(number) {
 		if (this.isNumber(number) && number >= 0) {
 			return true;
 		}
