@@ -13,8 +13,10 @@ module.exports = class Block {
 			return id;
 		};
 
-		this._bias = blockInitProperties.bias;
-
+		if (blockInitProperties.blockType) {
+			this._bias = blockInitProperties.blockType.bias;
+			this._blockType = blockInitProperties.blockType.name;
+		}
 		this._ether = 0;
 		this._plasma = 0;
 		this._matter = 0;
@@ -81,28 +83,28 @@ module.exports = class Block {
 			throw new Error('resourceInitCount must be a positive whole number.');
 		}
 
-		if (blockInitProperties.bias) {
+		if (blockInitProperties.blockType && blockInitProperties.blockType.bias) {
 			if (
-				!numberChecker.isPositiveNumber(blockInitProperties.bias.etherBias) ||
-				!numberChecker.isPositiveNumber(blockInitProperties.bias.plasmaBias) ||
-				!numberChecker.isPositiveNumber(blockInitProperties.bias.matterBias)
+				!numberChecker.isPositiveNumber(blockInitProperties.blockType.bias.etherBias) ||
+				!numberChecker.isPositiveNumber(blockInitProperties.blockType.bias.plasmaBias) ||
+				!numberChecker.isPositiveNumber(blockInitProperties.blockType.bias.matterBias)
 			) {
 				throw new Error('All bias must be greater than zero');
 			}
 
 			if (
-				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.bias.etherBias) ||
-				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.bias.plasmaBias) ||
-				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.bias.matterBias)
+				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.blockType.bias.etherBias) ||
+				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.blockType.bias.plasmaBias) ||
+				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.blockType.bias.matterBias)
 			) {
 				throw new Error('Invalid Bias. Only precision of 3 decimal places is supported.');
 			}
 
 			//Multiply and then divide by 1000 to maintain precision
 			if (
-				(blockInitProperties.bias.etherBias * 1000 +
-					blockInitProperties.bias.plasmaBias * 1000 +
-					blockInitProperties.bias.matterBias * 1000) /
+				(blockInitProperties.blockType.bias.etherBias * 1000 +
+					blockInitProperties.blockType.bias.plasmaBias * 1000 +
+					blockInitProperties.blockType.bias.matterBias * 1000) /
 					1000 !=
 				1
 			) {

@@ -70,10 +70,12 @@ describe('block tests', function() {
 				cap: 50,
 				altitude: 10,
 				resourceInitCount: 30,
-				bias: {
-					etherBias: 0.7,
-					plasmaBias: 0.2,
-					matterBias: 0.1
+				blockType: {
+					bias: {
+						etherBias: 0.7,
+						plasmaBias: 0.2,
+						matterBias: 0.1
+					}
 				}
 			};
 
@@ -92,10 +94,12 @@ describe('block tests', function() {
 			var blockInitProperties = {
 				cap: 50,
 				altitude: 10,
-				bias: {
-					etherBias: 0.33333,
-					plasmaBias: 0.33333,
-					matterBias: 0.33334
+				blockType: {
+					bias: {
+						etherBias: 0.33333,
+						plasmaBias: 0.33333,
+						matterBias: 0.33334
+					}
 				}
 			};
 
@@ -156,10 +160,12 @@ describe('block tests', function() {
 			var blockInitProperties = {
 				altitude: 10,
 				cap: 30,
-				bias: {
-					etherBias: 0.7,
-					plasmaBias: 0.1,
-					matterBias: 0.2
+				blockType: {
+					bias: {
+						etherBias: 0.7,
+						plasmaBias: 0.1,
+						matterBias: 0.2
+					}
 				}
 			};
 
