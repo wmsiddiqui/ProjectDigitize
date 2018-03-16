@@ -88,6 +88,28 @@ describe('block tests', function() {
 			assert.equal(testBlock._cap, blockInitProperties.cap);
 			assert.equal(testBlock.getId(), id);
 		});
+		it('should create the block correctly with blockType', function() {
+			var id = 1;
+
+			var blockInitProperties = {
+				cap: 50,
+				altitude: 10,
+				resourceInitCount: 30,
+				blockType: {
+					id: 1,
+					name: 'TestType',
+					bias: {
+						etherBias: 0.7,
+						plasmaBias: 0.2,
+						matterBias: 0.1
+					}
+				}
+			};
+
+			var testBlock = new Block(id, blockInitProperties, blockSaver);
+
+			assert.equal(testBlock._blockTypeId, blockInitProperties.blockType.id);
+		});
 		it('should not create the block correctly with long decimals', function() {
 			var id = 1;
 
