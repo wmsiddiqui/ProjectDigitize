@@ -35,8 +35,18 @@ describe('region', function() {
 			var region = new Region(1, 101, saveClient);
 			var block = region.createBlock();
 			var blockFromMap = region._regionMap[50][50];
-
+			var blockFromGet = region.getBlock(50, 50);
 			assert.equal(block, blockFromMap);
+			assert.equal(block, blockFromGet);
+		});
+		it('should correctly add neighbors to available areas', function() {
+			var saveClient = {
+				saveBlock: function() {
+					return true;
+				}
+			};
+			var region = new Region(1, 101, saveClient);
+			var blockFromMap = region._regionMap[50 - 1][50];
 		});
 	});
 });

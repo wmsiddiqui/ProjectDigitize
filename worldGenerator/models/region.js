@@ -25,7 +25,10 @@ module.exports = class Region {
 	createBlock() {
 		var block;
 		var coordinates;
-		if (this._remainingCapacity == this._regionSize * this._regionSize && this._availableAreas.length == 0) {
+		if (
+			this._remainingCapacity == this._regionSize * this._regionSize &&
+			Object.keys(this._availableAreas).length == 0
+		) {
 			//First Block
 			var generatedBlockType = getRandomBlockType();
 			var coordinateNumber = Math.ceil(this._regionSize / 2);
@@ -43,12 +46,13 @@ module.exports = class Region {
 		//if left block is empty
 		if (
 			coordinates[0] > 0 &&
-			!getBlock(coorinates[0] - 1, coordinates[1]) &&
-			this._availableAreas[coordinates[0] + ',' + coordinates[1]]
+			!this.getBlock(coordinates[0] - 1, coordinates[1]) &&
+			!this._availableAreas[coordinates[0] - 1 + ',' + coordinates[1]]
 		) {
+			this._availableAreas[coordinates[0] - 1 + ',' + coordinates[1]] = [ coordinates[0] - 1, coordinates[0] ];
 		}
-
 		this._regionMap[coordinates[0]][coordinates[1]] = block;
+
 		this._remainingCapacity--;
 		return block;
 	}
