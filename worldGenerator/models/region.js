@@ -41,6 +41,19 @@ module.exports = class Region {
 			coordinates = [ coordinateNumber, coordinateNumber ];
 		} else {
 			//Add a block
+			var numberOfAvailableAreas = Object.keys(this._availableAreas).length;
+			var randomArea = Math.floor(Math.random() * numberOfAvailableAreas);
+			var areaToGenerateBlock = Object.keys(this._availableAreas)[randomArea];
+			//First Block
+			var generatedBlockType = getRandomBlockType();
+			console.log(generatedBlockType);
+			var blockInitProperties = {
+				cap: 1,
+				altitude: 10,
+				blockType: generatedBlockType
+			};
+			block = new Block(this._id + '-' + 1, blockInitProperties, this._saveClient);
+			coordinates = areaToGenerateBlock;
 		}
 
 		this.updateAvailableAreas(coordinates);
@@ -74,17 +87,17 @@ module.exports = class Region {
 		if (
 			coordinates[1] > 0 &&
 			!this.getBlock(coordinates[0], coordinates[1] - 1) &&
-			!this._availableAreas[coordinates[0] + ',' + coordinates[1] - 1]
+			!this._availableAreas[coordinates[0] + ',' + (coordinates[1] - 1)]
 		) {
-			this._availableAreas[coordinates[0] + ',' + coordinates[1] - 1] = [ coordinates[0], coordinates[0] - 1 ];
+			this._availableAreas[coordinates[0] + ',' + (coordinates[1] - 1)] = [ coordinates[0], coordinates[0] - 1 ];
 		}
 		//up
 		if (
 			coordinates[1] < this._regionSize &&
 			!this.getBlock(coordinates[0], coordinates[1] - 1) &&
-			!this._availableAreas[coordinates[0] + ',' + coordinates[1] + 1]
+			!this._availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)]
 		) {
-			this._availableAreas[coordinates[0] + ',' + coordinates[1] + 1] = [ coordinates[0], coordinates[0] + 1 ];
+			this._availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)] = [ coordinates[0], coordinates[0] + 1 ];
 		}
 
 		//remove the block from available areas
@@ -95,7 +108,7 @@ module.exports = class Region {
 };
 
 var getRandomBlockType = function() {
-	var numberOfBlockTypes = blockTypes.length;
+	var numberOfBlockTypes = Object.keys(blockTypes).length;
 	var randomBlockTypeId = Math.floor(Math.random() * numberOfBlockTypes) + 1;
 	var randomBlockType = blockTypes[randomBlockTypeId];
 	return randomBlockType;

@@ -36,6 +36,8 @@ describe('region', function() {
 			var block = region.createBlock();
 			var blockFromMap = region._regionMap[50][50];
 			var blockFromGet = region.getBlock(50, 50);
+			assert.isTrue(block._blockTypeId != undefined);
+			assert.isTrue(block._bias != undefined);
 			assert.equal(block, blockFromMap);
 			assert.equal(block, blockFromGet);
 		});
@@ -54,27 +56,42 @@ describe('region', function() {
 
 			var leftNeighbor = region._availableAreas[blockLocation - 1 + ',' + blockLocation];
 			var rightNeighbor = region._availableAreas[blockLocation + 1 + ',' + blockLocation];
-			var downNeighbor = region._availableAreas[blockLocation + ',' + blockLocation - 1];
-			var upNeighbor = region._availableAreas[blockLocation + ',' + blockLocation + 1];
+			var downNeighbor = region._availableAreas[blockLocation + ',' + (blockLocation - 1)];
+			var upNeighbor = region._availableAreas[blockLocation + ',' + (blockLocation + 1)];
 
 			var blockAvailibility = region._availableAreas[blockLocation + ',' + blockLocation];
-			assert.isTrue(blockAvailibility == undefined);
+			assert.isTrue(blockAvailibility == undefined, 'Block should no longer be available');
 
-			assert.isTrue(leftNeighbor != undefined);
+			assert.isTrue(leftNeighbor != undefined, 'Block to left should be available');
 			assert.equal(blockLocation - 1, leftNeighbor[0]);
 			assert.equal(blockLocation, leftNeighbor[1]);
 
-			assert.isTrue(rightNeighbor != undefined);
+			assert.isTrue(rightNeighbor != undefined, 'Block to right should be available');
 			assert.equal(blockLocation + 1, rightNeighbor[0]);
 			assert.equal(blockLocation, rightNeighbor[1]);
 
-			assert.isTrue(downNeighbor != undefined);
+			assert.isTrue(downNeighbor != undefined, 'Block below should be available');
 			assert.equal(blockLocation, downNeighbor[0]);
 			assert.equal(blockLocation - 1, downNeighbor[1]);
 
-			assert.isTrue(upNeighbor != undefined);
+			assert.isTrue(upNeighbor != undefined, 'Block above should be available');
 			assert.equal(blockLocation, upNeighbor[0]);
 			assert.equal(blockLocation + 1, upNeighbor[1]);
+		});
+	});
+
+	describe('create additional blocks', function() {
+		it('should correctly create the second block', function() {
+			var saveClient = {
+				saveBlock: function() {
+					return true;
+				}
+			};
+			var region = new Region(1, 101, saveClient);
+			var block1 = region.createBlock();
+			var block2 = region.createBlock();
+			assert.isTrue(block2._blockTypeId != undefined);
+			assert.isTrue(block2._bias != undefined);
 		});
 	});
 });
