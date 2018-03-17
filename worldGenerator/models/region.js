@@ -12,7 +12,7 @@ module.exports = class Region {
 		}
 
 		this._regionSize = regionSize;
-		this._availableAreas = [];
+		this._availableAreas = {};
 		this._remainingCapacity = regionSize * regionSize;
 
 		//Initialize 2d Array
@@ -39,6 +39,15 @@ module.exports = class Region {
 		}
 
 		//check to see if neighbors are inside region
+
+		//if left block is empty
+		if (
+			coordinates[0] > 0 &&
+			!getBlock(coorinates[0] - 1, coordinates[1]) &&
+			this._availableAreas[coordinates[0] + ',' + coordinates[1]]
+		) {
+		}
+
 		this._regionMap[coordinates[0]][coordinates[1]] = block;
 		this._remainingCapacity--;
 		return block;
