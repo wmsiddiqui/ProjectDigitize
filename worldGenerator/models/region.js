@@ -62,12 +62,21 @@ module.exports = class Region {
 		) {
 			this._availableAreas[coordinates[0] - 1 + ',' + coordinates[1]] = [ coordinates[0] - 1, coordinates[0] ];
 		}
+		//right
 		if (
 			coordinates[0] < this._regionSize &&
 			!this.getBlock(coordinates[0] + 1, coordinates[1]) &&
 			!this._availableAreas[coordinates[0] + 1 + ',' + coordinates[1]]
 		) {
-			this._availableAreas[coordinates[0] + 1 + ',' + coordinates[1]] = [ coordinates[0] - 1, coordinates[0] ];
+			this._availableAreas[coordinates[0] + 1 + ',' + coordinates[1]] = [ coordinates[0] + 1, coordinates[0] ];
+		}
+		//down
+		if (
+			coordinates[1] > 0 &&
+			!this.getBlock(coordinates[0], coordinates[1] - 1) &&
+			!this._availableAreas[coordinates[0] + ',' + coordinates[1] - 1]
+		) {
+			this._availableAreas[coordinates[0] + ',' + coordinates[1] - 1] = [ coordinates[0], coordinates[0] - 1 ];
 		}
 
 		//remove the block from available areas

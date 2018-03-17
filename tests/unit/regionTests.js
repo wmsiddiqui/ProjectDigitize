@@ -54,11 +54,23 @@ describe('region', function() {
 
 			var leftNeighbor = region._availableAreas[blockLocation - 1 + ',' + blockLocation];
 			var rightNeighbor = region._availableAreas[blockLocation + 1 + ',' + blockLocation];
+			var downNeighbor = region._availableAreas[blockLocation + ',' + blockLocation - 1];
+			var upNeighbor = region._availableAreas[blockLocation + ',' + blockLocation + 1];
 
 			var blockAvailibility = region._availableAreas[blockLocation + ',' + blockLocation];
 			assert.isTrue(blockAvailibility == undefined);
+
 			assert.isTrue(leftNeighbor != undefined);
+			assert.equal(blockLocation - 1, leftNeighbor[0]);
+			assert.equal(blockLocation, leftNeighbor[1]);
+
 			assert.isTrue(rightNeighbor != undefined);
+			assert.equal(blockLocation + 1, rightNeighbor[0]);
+			assert.equal(blockLocation, rightNeighbor[1]);
+
+			assert.isTrue(downNeighbor != undefined);
+			assert.equal(blockLocation, downNeighbor[0]);
+			assert.equal(blockLocation - 1, downNeighbor[1]);
 		});
 	});
 });
