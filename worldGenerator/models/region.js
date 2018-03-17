@@ -13,6 +13,7 @@ module.exports = class Region {
 
 		this._regionSize = regionSize;
 		this._availableAreas = {};
+		this._occupiedAreas = {};
 		this._remainingCapacity = regionSize * regionSize;
 
 		//Initialize 2d Array
@@ -66,6 +67,20 @@ module.exports = class Region {
 	getBlock(x, y) {
 		return this._regionMap[x][y];
 	}
+
+	getNeighborBlocks(coordinates, regionMap) {
+		var regionSize = regionMap.length;
+		var neighborBlocks = [];
+		//left
+		if (coordinates[0] > 0 && regionMap[coordinates[0] - 1][coordinates[0]]) {
+			neighborBlocks.push(regionMap[coordinates[0] - 1][coordinates[0]]);
+		}
+		//right
+		if (coordinates[0] < regionSize - 1 && regionMap[coordinates[0] + 1][coordinates[0]]) {
+			neighborBlocks.push(regionMap[coordinates[0] + 1][coordinates[0]]);
+		}
+	}
+
 	updateAvailableAreas(coordinates) {
 		//if left block is empty
 		if (
@@ -77,7 +92,7 @@ module.exports = class Region {
 		}
 		//right
 		if (
-			coordinates[0] < this._regionSize &&
+			coordinates[0] < this._regionSize - 1 &&
 			!this.getBlock(coordinates[0] + 1, coordinates[1]) &&
 			!this._availableAreas[coordinates[0] + 1 + ',' + coordinates[1]]
 		) {
@@ -93,7 +108,7 @@ module.exports = class Region {
 		}
 		//up
 		if (
-			coordinates[1] < this._regionSize &&
+			coordinates[1] < this._regionSize - 1 &&
 			!this.getBlock(coordinates[0], coordinates[1] - 1) &&
 			!this._availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)]
 		) {
