@@ -34,7 +34,9 @@ describe('region', function() {
 			};
 			var region = new Region(1, 101, saveClient);
 			var block = region.createBlock();
-			console.log(block);
+			var blockFromMap = region._regionMap[50][50];
+
+			assert.equal(block, blockFromMap);
 		});
 	});
 });

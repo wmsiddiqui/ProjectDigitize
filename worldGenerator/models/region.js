@@ -12,12 +12,18 @@ module.exports = class Region {
 		}
 
 		this._regionSize = regionSize;
-		this._regionMap = [ [] ];
 		this._availableAreas = [];
 		this._remainingCapacity = regionSize * regionSize;
+
+		//Initialize 2d Array
+		this._regionMap = [];
+		for (var i = 0; i < regionSize; i++) {
+			this._regionMap[i] = [];
+		}
 	}
 
 	createBlock() {
+		var block;
 		if (this._remainingCapacity == this._regionSize * this._regionSize && this._availableAreas.length == 0) {
 			//First Block
 			var generatedBlockType = getRandomBlockType();
@@ -27,15 +33,19 @@ module.exports = class Region {
 				altitude: 10,
 				blockType: generatedBlockType
 			};
-			var block = new Block(1, blockInitProperties, this._saveClient);
-			return block;
+			block = new Block(this._id + '-' + 1, blockInitProperties, this._saveClient);
+			this._regionMap[coordinate - 1][coordinate - 1] = block;
 		}
+
+		//check to see if neighbors are inside region
+		//if()
+		this._remainingCapacity--;
+		return block;
 	}
 	getBlock(x, y) {
-		return this._worldMap[x][y];
+		return this._regionMap[x][y];
 	}
 };
-//var test = new Block('TestName', 10, 20, 30, 15);
 
 var getRandomBlockType = function() {
 	var numberOfBlockTypes = blockTypes.length;
