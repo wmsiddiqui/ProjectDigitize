@@ -53,9 +53,12 @@ describe('region', function() {
 			var blockLocation = Math.floor(regionSize / 2);
 
 			var leftNeighbor = region._availableAreas[blockLocation - 1 + ',' + blockLocation];
+			var rightNeighbor = region._availableAreas[blockLocation + 1 + ',' + blockLocation];
+
 			var blockAvailibility = region._availableAreas[blockLocation + ',' + blockLocation];
 			assert.isTrue(blockAvailibility == undefined);
 			assert.isTrue(leftNeighbor != undefined);
+			assert.isTrue(rightNeighbor != undefined);
 		});
 	});
 });

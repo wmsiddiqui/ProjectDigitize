@@ -31,18 +31,29 @@ module.exports = class Region {
 		) {
 			//First Block
 			var generatedBlockType = getRandomBlockType();
-			var coordinateNumber = Math.ceil(this._regionSize / 2);
+			var coordinateNumber = Math.floor(this._regionSize / 2);
 			var blockInitProperties = {
 				cap: 1,
 				altitude: 10,
 				blockType: generatedBlockType
 			};
 			block = new Block(this._id + '-' + 1, blockInitProperties, this._saveClient);
-			coordinates = [ coordinateNumber - 1, coordinateNumber - 1 ];
+			coordinates = [ coordinateNumber, coordinateNumber ];
+		} else {
+			//Add a block
 		}
 
-		//check to see if neighbors are inside region
+		this.updateAvailableAreas(coordinates);
 
+		this._regionMap[coordinates[0]][coordinates[1]] = block;
+
+		this._remainingCapacity--;
+		return block;
+	}
+	getBlock(x, y) {
+		return this._regionMap[x][y];
+	}
+	updateAvailableAreas(coordinates) {
 		//if left block is empty
 		if (
 			coordinates[0] > 0 &&
@@ -51,13 +62,18 @@ module.exports = class Region {
 		) {
 			this._availableAreas[coordinates[0] - 1 + ',' + coordinates[1]] = [ coordinates[0] - 1, coordinates[0] ];
 		}
-		this._regionMap[coordinates[0]][coordinates[1]] = block;
+		if (
+			coordinates[0] < this._regionSize &&
+			!this.getBlock(coordinates[0] + 1, coordinates[1]) &&
+			!this._availableAreas[coordinates[0] + 1 + ',' + coordinates[1]]
+		) {
+			this._availableAreas[coordinates[0] + 1 + ',' + coordinates[1]] = [ coordinates[0] - 1, coordinates[0] ];
+		}
 
-		this._remainingCapacity--;
-		return block;
-	}
-	getBlock(x, y) {
-		return this._regionMap[x][y];
+		//remove the block from available areas
+		if (this._availableAreas[coordinates[0] + ',' + coordinates[1]]) {
+			delete this._availableAreas[coordinates[0] + ',' + coordinates[1]];
+		}
 	}
 };
 
