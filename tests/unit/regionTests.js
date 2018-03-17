@@ -45,8 +45,17 @@ describe('region', function() {
 					return true;
 				}
 			};
-			var region = new Region(1, 101, saveClient);
-			var blockFromMap = region._regionMap[50 - 1][50];
+
+			var regionSize = 101;
+			var region = new Region(1, regionSize, saveClient);
+			region.createBlock();
+
+			var blockLocation = Math.floor(regionSize / 2);
+
+			var leftNeighbor = region._availableAreas[blockLocation - 1 + ',' + blockLocation];
+			var blockAvailibility = region._availableAreas[blockLocation + ',' + blockLocation];
+			assert.isTrue(blockAvailibility == undefined);
+			assert.isTrue(leftNeighbor != undefined);
 		});
 	});
 });
