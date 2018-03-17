@@ -71,6 +71,10 @@ describe('region', function() {
 			assert.isTrue(downNeighbor != undefined);
 			assert.equal(blockLocation, downNeighbor[0]);
 			assert.equal(blockLocation - 1, downNeighbor[1]);
+
+			assert.isTrue(upNeighbor != undefined);
+			assert.equal(blockLocation, upNeighbor[0]);
+			assert.equal(blockLocation + 1, upNeighbor[1]);
 		});
 	});
 });

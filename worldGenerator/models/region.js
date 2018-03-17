@@ -78,6 +78,14 @@ module.exports = class Region {
 		) {
 			this._availableAreas[coordinates[0] + ',' + coordinates[1] - 1] = [ coordinates[0], coordinates[0] - 1 ];
 		}
+		//up
+		if (
+			coordinates[1] < this._regionSize &&
+			!this.getBlock(coordinates[0], coordinates[1] - 1) &&
+			!this._availableAreas[coordinates[0] + ',' + coordinates[1] + 1]
+		) {
+			this._availableAreas[coordinates[0] + ',' + coordinates[1] + 1] = [ coordinates[0], coordinates[0] + 1 ];
+		}
 
 		//remove the block from available areas
 		if (this._availableAreas[coordinates[0] + ',' + coordinates[1]]) {
