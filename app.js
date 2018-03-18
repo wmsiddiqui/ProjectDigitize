@@ -1,3 +1,3 @@
-var worldGenerator = require('./worldGenerator');
+// var worldGenerator = require('./worldGenerator');
 
-worldGenerator.generateWorld();
+// worldGenerator.generateWorld();

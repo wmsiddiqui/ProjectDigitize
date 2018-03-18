@@ -47,7 +47,6 @@ module.exports = class Region {
 			var areaToGenerateBlock = Object.keys(this._availableAreas)[randomArea];
 			//First Block
 			var generatedBlockType = getRandomBlockType();
-			console.log(generatedBlockType);
 			var blockInitProperties = {
 				cap: 1,
 				altitude: 10,
@@ -87,6 +86,7 @@ module.exports = class Region {
 		if (coordinates[1] < regionSize - 1 && regionMap[coordinates[0]][coordinates[1] + 1]) {
 			neighborBlocks.push(regionMap[coordinates[0]][coordinates[1] + 1]);
 		}
+		return neighborBlocks;
 	}
 
 	updateAvailableAreas(coordinates) {
