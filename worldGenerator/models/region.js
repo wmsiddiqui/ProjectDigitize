@@ -47,7 +47,7 @@ module.exports = class Region {
 			var areaToGenerateBlock = Object.keys(this._availableAreas)[randomArea];
 
 			var neighboringBlocks = this.getNeighborBlocks(this._availableAreas[areaToGenerateBlock], this._regionMap);
-			var generatedBlockType = this.getCalculatedBlockType(neighboringBlocks);
+			var generatedBlockType = getRandomBlockType(neighboringBlocks);
 			var blockInitProperties = {
 				cap: 1,
 				altitude: 10,
@@ -88,26 +88,6 @@ module.exports = class Region {
 			neighborBlocks.push(regionMap[coordinates[0]][coordinates[1] + 1]);
 		}
 		return neighborBlocks;
-	}
-
-	getCalculatedBlockType(neighboringBlocks) {
-		var numberOfNeighbors = neighboringBlocks.length;
-		var neighborCorrelations = {};
-		neighboringBlocks.forEach(function(neighborBlock) {
-			if (neighborBlock._blockTypeId) {
-				var blockType = blockTypes[neighborBlock._blockTypeId];
-				if (blockType.correlations) {
-					var correlationIds = Object.keys(blockType.correlations);
-					correlationIds.forEach(function(correlation) {
-						if (!neighborCorrelations[correlation]) {
-							neighborCorrelations[correlation] = blockType.correlations[correlation];
-						} else {
-							neighborCorrelations[correlation] += blockType.correlations[correlation];
-						}
-					});
-				}
-			}
-		});
 	}
 
 	updateAvailableAreas(coordinates) {
