@@ -3,27 +3,27 @@ var assert = chai.assert;
 var neighborHelper = require('../../worldGenerator/utils/neighborHelper');
 
 describe('neighborHelper', function() {
-	describe('getSumOfCorrelations', function() {
-		it('should return the correct sum if negative numbers', function() {
+	describe('getSumOfPositiveCorrelations', function() {
+		it('should return 0 if all correlations are negative', function() {
 			var correlations = {
 				'1': -0.2,
 				'2': -0.6,
 				'3': -0.2
 			};
 
-			var result = neighborHelper.getSumOfCorrelations(correlations);
-			assert.equal(result, -1);
+			var result = neighborHelper.getSumOfPositiveCorrelations(correlations);
+			assert.equal(result, 0);
 		});
 
-		it('should return the correct sum and be precise to 3 decimal places', function() {
+		it('should return the correct sum of positive numbers and be precise to 3 decimal places', function() {
 			var correlations = {
 				'1': -0.201,
 				'2': 0.733,
 				'3': 0.2
 			};
 
-			var result = neighborHelper.getSumOfCorrelations(correlations);
-			assert.equal(result, 0.732);
+			var result = neighborHelper.getSumOfPositiveCorrelations(correlations);
+			assert.equal(result, 0.933);
 		});
 
 		it('should throw an error if the correlation is not a number', function() {
@@ -34,7 +34,7 @@ describe('neighborHelper', function() {
 			};
 
 			assert.throw(function() {
-				neighborHelper.getSumOfCorrelations(correlations);
+				neighborHelper.getSumOfPositiveCorrelations(correlations);
 			});
 		});
 
@@ -46,12 +46,12 @@ describe('neighborHelper', function() {
 			};
 
 			assert.throw(function() {
-				neighborHelper.getSumOfCorrelations(correlations);
+				neighborHelper.getSumOfPositiveCorrelations(correlations);
 			});
 		});
 
 		it('should return 0 if there are no correlations passed in', function() {
-			var result = neighborHelper.getSumOfCorrelations();
+			var result = neighborHelper.getSumOfPositiveCorrelations();
 			assert.equal(result, 0);
 		});
 	});

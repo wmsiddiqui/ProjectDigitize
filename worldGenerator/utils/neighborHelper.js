@@ -34,7 +34,7 @@ module.exports = {
 		return uniqueNeighborCorrelations;
 	},
 
-	getSumOfCorrelations(uniqueNeighborCorrelations) {
+	getSumOfPositiveCorrelations(uniqueNeighborCorrelations) {
 		var sumCorrelations = 0;
 		if (!uniqueNeighborCorrelations) {
 			return 0;
@@ -46,7 +46,9 @@ module.exports = {
 			) {
 				throw new Error('Correlations must be numbers with up to 3 decimal places');
 			}
-			sumCorrelations += uniqueNeighborCorrelations[correlationKey] * 1000;
+			if (uniqueNeighborCorrelations[correlationKey] > 0) {
+				sumCorrelations += uniqueNeighborCorrelations[correlationKey] * 1000;
+			}
 		}
 		return sumCorrelations / 1000;
 	}
