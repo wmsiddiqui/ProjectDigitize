@@ -72,12 +72,20 @@ module.exports = class Region {
 		var regionSize = regionMap.length;
 		var neighborBlocks = [];
 		//left
-		if (coordinates[0] > 0 && regionMap[coordinates[0] - 1][coordinates[0]]) {
-			neighborBlocks.push(regionMap[coordinates[0] - 1][coordinates[0]]);
+		if (coordinates[0] > 0 && regionMap[coordinates[0] - 1][coordinates[1]]) {
+			neighborBlocks.push(regionMap[coordinates[0] - 1][coordinates[1]]);
 		}
 		//right
-		if (coordinates[0] < regionSize - 1 && regionMap[coordinates[0] + 1][coordinates[0]]) {
-			neighborBlocks.push(regionMap[coordinates[0] + 1][coordinates[0]]);
+		if (coordinates[0] < regionSize - 1 && regionMap[coordinates[0] + 1][coordinates[1]]) {
+			neighborBlocks.push(regionMap[coordinates[0] + 1][coordinates[1]]);
+		}
+		//down
+		if (coordinates[1] > 0 && regionMap[coordinates[0]][coordinates[1] - 1]) {
+			neighborBlocks.push(regionMap[coordinates[0]][coordinates[1] - 1]);
+		}
+		//up
+		if (coordinates[1] < regionSize - 1 && regionMap[coordinates[0]][coordinates[1] + 1]) {
+			neighborBlocks.push(regionMap[coordinates[0]][coordinates[1] + 1]);
 		}
 	}
 

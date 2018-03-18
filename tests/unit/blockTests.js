@@ -12,7 +12,7 @@ var blockSaver = {
 describe('block tests', function() {
 	beforeEach(function() {
 		var randomCounter = 0;
-		var random = sinon.stub(Math, 'random').callsFake(function() {
+		sinon.stub(Math, 'random').callsFake(function() {
 			randomCounter++;
 			if (randomCounter <= 10) {
 				return 0.3;

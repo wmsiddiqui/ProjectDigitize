@@ -1,8 +1,14 @@
 var chai = require('chai');
 var assert = chai.assert;
 var Region = require('../../worldGenerator/models/region');
+var sinon = require('sinon');
 
 describe('region', function() {
+	var saveClient = {
+		saveBlock: function() {
+			return true;
+		}
+	};
 	describe('create region', function() {
 		it('should create region', function() {
 			var region = new Region(1, 11);
@@ -27,27 +33,20 @@ describe('region', function() {
 	});
 	describe('create first block', function() {
 		it('should correctly create the first block', function() {
-			var saveClient = {
-				saveBlock: function() {
-					return true;
-				}
-			};
+			sinon.stub(Math, 'random').callsFake(function() {
+				return 0.1;
+			});
 			var region = new Region(1, 101, saveClient);
 			var block = region.createBlock();
+			Math.random.restore();
 			var blockFromMap = region._regionMap[50][50];
 			var blockFromGet = region.getBlock(50, 50);
-			assert.isTrue(block._blockTypeId != undefined);
-			assert.isTrue(block._bias != undefined);
+			assert.isTrue(block._blockTypeId != undefined, 'Block should not be undefined');
+			assert.isTrue(block._bias != undefined, 'Bias should not be undefined');
 			assert.equal(block, blockFromMap);
 			assert.equal(block, blockFromGet);
 		});
 		it('should correctly add neighbors to available areas', function() {
-			var saveClient = {
-				saveBlock: function() {
-					return true;
-				}
-			};
-
 			var regionSize = 101;
 			var region = new Region(1, regionSize, saveClient);
 			region.createBlock();
@@ -82,16 +81,22 @@ describe('region', function() {
 
 	describe('create additional blocks', function() {
 		it('should correctly create the second block', function() {
-			var saveClient = {
-				saveBlock: function() {
-					return true;
-				}
-			};
+			sinon.stub(Math, 'random').callsFake(function() {
+				return 0.1;
+			});
 			var region = new Region(1, 101, saveClient);
 			var block1 = region.createBlock();
 			var block2 = region.createBlock();
-			assert.isTrue(block2._blockTypeId != undefined);
-			assert.isTrue(block2._bias != undefined);
+			Math.random.restore();
+			assert.isTrue(block2._blockTypeId != undefined, 'Block should not be undefined');
+			assert.isTrue(block2._bias != undefined, 'Bias should not be undefined');
+		});
+	});
+
+	describe('get neighbor', function() {
+		it('should return empty list if there are no neighbors', function() {
+			var region = new Region(1, 101, saveClient);
+			var block1 = region.createBlock();
 		});
 	});
 });
