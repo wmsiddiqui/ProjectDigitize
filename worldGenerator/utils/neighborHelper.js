@@ -1,4 +1,5 @@
 var blockTypes = require('../models/blockTypes');
+var numberChecker = require('./numberChecker');
 
 module.exports = {
 	getCalculatedBlockType(neighboringBlocks) {
@@ -35,9 +36,18 @@ module.exports = {
 
 	getSumOfCorrelations(uniqueNeighborCorrelations) {
 		var sumCorrelations = 0;
-		for (var correlationKey in uniqueNeighborCorrelations) {
-			sumCorrelations += uniqueNeighborCorrelations[correlationKey] * 100;
+		if (!uniqueNeighborCorrelations) {
+			return 0;
 		}
-		return sumCorrelations / 100;
+		for (var correlationKey in uniqueNeighborCorrelations) {
+			if (
+				!numberChecker.isNumber(uniqueNeighborCorrelations[correlationKey]) ||
+				!numberChecker.isNumberWithOnly3DecimalDigits(uniqueNeighborCorrelations[correlationKey])
+			) {
+				throw new Error('Correlations must be numbers with up to 3 decimal places');
+			}
+			sumCorrelations += uniqueNeighborCorrelations[correlationKey] * 1000;
+		}
+		return sumCorrelations / 1000;
 	}
 };
