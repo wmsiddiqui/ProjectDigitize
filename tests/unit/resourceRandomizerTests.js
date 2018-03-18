@@ -9,7 +9,7 @@ describe('resource randomizer', function() {
 			var resourcesToGenerate = 999;
 
 			var randomCounter = 0;
-			var random = sinon.stub(Math, 'random').callsFake(function() {
+			sinon.stub(Math, 'random').callsFake(function() {
 				randomCounter++;
 				if (randomCounter <= 333) {
 					return 0.3;
@@ -54,7 +54,7 @@ describe('resource randomizer', function() {
 			};
 
 			var randomCounter = 0;
-			var random = sinon.stub(Math, 'random').callsFake(function() {
+			sinon.stub(Math, 'random').callsFake(function() {
 				randomCounter++;
 				if (randomCounter <= 500) {
 					return 0.3;
@@ -98,7 +98,7 @@ describe('resource randomizer', function() {
 			};
 
 			var randomCounter = 0;
-			var random = sinon.stub(Math, 'random').callsFake(function() {
+			sinon.stub(Math, 'random').callsFake(function() {
 				randomCounter++;
 				if (randomCounter <= 500) {
 					return 0.5;
