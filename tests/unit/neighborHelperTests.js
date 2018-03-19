@@ -1,6 +1,8 @@
 var chai = require('chai');
 var assert = chai.assert;
-var neighborHelper = require('../../worldGenerator/utils/neighborHelper');
+var modulePath = '../../worldGenerator/utils/neighborHelper';
+var neighborHelper = require(modulePath);
+var proxyquire = require('proxyquire');
 
 describe('neighborHelper', function() {
 	describe('getSumOfPositiveCorrelations', function() {
@@ -53,6 +55,41 @@ describe('neighborHelper', function() {
 		it('should return 0 if there are no correlations passed in', function() {
 			var result = neighborHelper.getSumOfPositiveCorrelations();
 			assert.equal(result, 0);
+		});
+	});
+	describe('getUniqueNeighborCorrelations', function() {
+		it('should return correct correlations', function() {
+			var neighborBlocks = [
+				{
+					_blockTypeId: '1'
+				},
+				{
+					_blockTypeId: '2'
+				}
+			];
+
+			var blockTypesMock = {
+				'1': {
+					id: 1,
+					correlations: {
+						3: 0.5,
+						6: 0.5
+					}
+				},
+				'2': {
+					id: 2,
+					correlations: {
+						3: -0.3,
+						6: 0.2
+					}
+				}
+			};
+
+			var sut = proxyquire(modulePath, { '../models/blockTypes': blockTypesMock });
+
+			var result = sut.getUniqueNeighborCorrelations(neighborBlocks);
+			assert.equal(result['3'], 0.2);
+			assert.equal(result['6'], 0.7);
 		});
 	});
 });
