@@ -21,5 +21,8 @@
 		"mocha": "^5.0.2",
 		"proxyquire": "^2.0.0",
 		"sinon": "^4.4.2"
+	},
+	"dependencies": {
+		"nconf": "^0.10.0"
 	}
 }
