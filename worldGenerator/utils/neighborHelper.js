@@ -6,13 +6,16 @@ module.exports = {
 		var numberOfNeighbors = neighboringBlocks.length;
 
 		var uniqueNeighborCorrelations = this.getUniqueNeighborCorrelations(neighboringBlocks);
-		var sumCorrelations = this.getSumOfCorrelations(uniqueNeighborCorrelations);
+		var sumPositiveCorrelations = this.getSumOfPositiveCorrelations(uniqueNeighborCorrelations);
 
-		var fullCorrelations = {};
-		if (sumCorrelations == 1) {
-			var uniqueCorrelation;
+		if (sumPositiveCorrelations < 1) {
+			//then get all others
+		} else {
+			//This is it. Roll a number and pick a type
+			//How? There are n number of different block types.
+			//Iterate through each one and sum. If rolled number is less than sum, continue
+			//if greater, then it is the current item.
 		}
-		var allCorrelationTypes = Object.keys(blockTypes);
 	},
 
 	getUniqueNeighborCorrelations(neighboringBlocks) {
