@@ -1,5 +1,6 @@
 var chai = require('chai');
 var assert = chai.assert;
+var sinon = require('sinon');
 var modulePath = '../../worldGenerator/utils/neighborHelper';
 var neighborHelper = require(modulePath);
 var proxyquire = require('proxyquire');
@@ -92,19 +93,35 @@ describe('neighborHelper', function() {
 			assert.equal(result['6'], 0.7);
 		});
 	});
-
 	describe('getPositiveCorrelations', function() {
-		var uniqueCorrelations = {
-			'3': 0.7,
-			'5': 0.2,
-			'7': -0.3,
-			'6': 0
-		};
+		it('should return only positive correlations', function() {
+			var uniqueCorrelations = {
+				'3': 0.7,
+				'5': 0.2,
+				'7': -0.3,
+				'6': 0
+			};
 
-		var result = neighborHelper.getPositiveCorrelations(uniqueCorrelations);
-		assert.equal(result['3'], 0.7);
-		assert.equal(result['5'], 0.2);
-		assert.isUndefined(result['7']);
-		assert.isUndefined(result['6']);
+			var result = neighborHelper.getPositiveCorrelations(uniqueCorrelations);
+			assert.equal(result['3'], 0.7);
+			assert.equal(result['5'], 0.2);
+			assert.isUndefined(result['7']);
+			assert.isUndefined(result['6']);
+		});
+	});
+	describe('getRandomBlockTypeId', function() {
+		it('should return the correct block type id', function() {
+			var uniqueCorrelations = {
+				'3': 0.7,
+				'5': 0.2,
+				'7': 0.1
+			};
+			sinon.stub(Math, 'random').callsFake(function() {
+				return 0.85;
+			});
+			var result = neighborHelper.getRandomBlockTypeId(uniqueCorrelations);
+			Math.random.restore();
+			assert.equal(result, 5);
+		});
 	});
 });

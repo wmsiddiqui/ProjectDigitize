@@ -7,6 +7,7 @@ module.exports = {
 
 		var uniqueNeighborCorrelations = this.getUniqueNeighborCorrelations(neighboringBlocks);
 		var sumPositiveCorrelations = this.getSumOfPositiveCorrelations(uniqueNeighborCorrelations);
+		var uniquePositiveCorrelations = this.getPositiveCorrelations(uniqueNeighborCorrelations);
 
 		if (sumPositiveCorrelations < 1) {
 			//then get all others
@@ -16,6 +17,20 @@ module.exports = {
 			//Iterate through each one and sum. If rolled number is less than sum, continue
 			//if greater, then it is the current item.
 		}
+	},
+
+	getRandomBlockTypeId(uniquePositiveCorrelations) {
+		var generatedType;
+		var total = 0;
+		var randomNumber = Math.random();
+		var uniqueTypes = Object.keys(uniquePositiveCorrelations);
+		for (var correlation in uniquePositiveCorrelations) {
+			total = (total * 1000 + uniquePositiveCorrelations[correlation] * 1000) / 1000;
+			if (randomNumber < total) {
+				return correlation;
+			}
+		}
+		throw new Error('Error calculating Block Type');
 	},
 
 	getPositiveCorrelations(uniqueNeighborCorrelations) {
