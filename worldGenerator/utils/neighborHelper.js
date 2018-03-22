@@ -18,6 +18,16 @@ module.exports = {
 		}
 	},
 
+	getPositiveCorrelations(uniqueNeighborCorrelations) {
+		var positiveCorrelations = {};
+		for (var correlation in uniqueNeighborCorrelations) {
+			if (uniqueNeighborCorrelations[correlation] > 0) {
+				positiveCorrelations[correlation] = uniqueNeighborCorrelations[correlation];
+			}
+		}
+		return positiveCorrelations;
+	},
+
 	getUniqueNeighborCorrelations(neighboringBlocks) {
 		var uniqueNeighborCorrelations = {};
 		neighboringBlocks.forEach(function(neighborBlock) {

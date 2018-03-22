@@ -92,4 +92,19 @@ describe('neighborHelper', function() {
 			assert.equal(result['6'], 0.7);
 		});
 	});
+
+	describe('getPositiveCorrelations', function() {
+		var uniqueCorrelations = {
+			'3': 0.7,
+			'5': 0.2,
+			'7': -0.3,
+			'6': 0
+		};
+
+		var result = neighborHelper.getPositiveCorrelations(uniqueCorrelations);
+		assert.equal(result['3'], 0.7);
+		assert.equal(result['5'], 0.2);
+		assert.isUndefined(result['7']);
+		assert.isUndefined(result['6']);
+	});
 });
