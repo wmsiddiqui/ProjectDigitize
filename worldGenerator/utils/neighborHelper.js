@@ -6,7 +6,7 @@ module.exports = {
 		var numberOfNeighbors = neighboringBlocks.length;
 
 		var uniqueNeighborCorrelations = this.getUniqueNeighborCorrelations(neighboringBlocks);
-		var sumPositiveCorrelations = this.getSumOfPositiveCorrelations(uniqueNeighborCorrelations);
+		var sumPositiveCorrelations = this.getSumOfCorrelations(uniqueNeighborCorrelations);
 		var uniquePositiveCorrelations = this.getPositiveCorrelations(uniqueNeighborCorrelations);
 
 		if (sumPositiveCorrelations < 1) {
@@ -19,7 +19,7 @@ module.exports = {
 		}
 	},
 
-	getRandomBlockTypeId(uniquePositiveCorrelations) {
+	getRandomBlockTypeId(uniquePositiveCorrelations, includeOther) {
 		var generatedType;
 		var total = 0;
 		var randomNumber = Math.random();
@@ -29,6 +29,9 @@ module.exports = {
 			if (randomNumber < total) {
 				return correlation;
 			}
+		}
+		if (includeOther) {
+			return 0;
 		}
 		throw new Error('Error calculating Block Type');
 	},
@@ -62,7 +65,7 @@ module.exports = {
 		return uniqueNeighborCorrelations;
 	},
 
-	getSumOfPositiveCorrelations(uniqueNeighborCorrelations) {
+	getSumOfCorrelations(uniqueNeighborCorrelations) {
 		var sumCorrelations = 0;
 		if (!uniqueNeighborCorrelations) {
 			return 0;
@@ -74,9 +77,7 @@ module.exports = {
 			) {
 				throw new Error('Correlations must be numbers with up to 3 decimal places');
 			}
-			if (uniqueNeighborCorrelations[correlationKey] > 0) {
-				sumCorrelations += uniqueNeighborCorrelations[correlationKey] * 1000;
-			}
+			sumCorrelations += uniqueNeighborCorrelations[correlationKey] * 1000;
 		}
 		return sumCorrelations / 1000;
 	}
