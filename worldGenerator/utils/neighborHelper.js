@@ -6,8 +6,8 @@ module.exports = {
 		var numberOfNeighbors = neighboringBlocks.length;
 
 		var uniqueNeighborCorrelations = this.getUniqueNeighborCorrelations(neighboringBlocks);
-		var sumPositiveCorrelations = this.getSumOfCorrelations(uniqueNeighborCorrelations);
 		var uniquePositiveCorrelations = this.getPositiveCorrelations(uniqueNeighborCorrelations);
+		var sumPositiveCorrelations = this.getSumOfCorrelations(uniquePositiveCorrelations);
 
 		if (sumPositiveCorrelations < 1) {
 			//then get all others
@@ -19,7 +19,30 @@ module.exports = {
 		}
 	},
 
-	getRandomBlockTypeId(uniquePositiveCorrelations, includeOther) {
+	pickRandomType(blockTypeIds) {
+		var numberOfTypes = blockTypeIds.length;
+		var result = Math.floor(Math.random() * numberOfTypes);
+		return result;
+	},
+
+	getOtherTypeIds(uniqueCorrelations) {
+		if (!uniqueCorrelations) {
+			throw new Error('Invalid Correlations');
+		}
+		var otherTypes = [];
+		for (var blockType in blockTypes) {
+			if (!uniqueCorrelations[blockType]) {
+				otherTypes.push(blockType);
+			}
+		}
+
+		if (otherTypes.length == 0) {
+			throw new Error('No other block types remain');
+		}
+		return otherTypes;
+	},
+
+	getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations, includeOther) {
 		var generatedType;
 		var total = 0;
 		var randomNumber = Math.random();

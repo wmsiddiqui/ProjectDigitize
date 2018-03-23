@@ -109,7 +109,7 @@ describe('neighborHelper', function() {
 			assert.isUndefined(result['6']);
 		});
 	});
-	describe('getRandomBlockTypeId', function() {
+	describe('getRandomBlockTypeIdFromCorrelation', function() {
 		it('should return the correct block type id', function() {
 			var uniqueCorrelations = {
 				'3': 0.7,
@@ -119,9 +119,28 @@ describe('neighborHelper', function() {
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.85;
 			});
-			var result = neighborHelper.getRandomBlockTypeId(uniqueCorrelations);
+			var result = neighborHelper.getRandomBlockTypeIdFromCorrelation(uniqueCorrelations);
 			Math.random.restore();
 			assert.equal(result, 5);
+		});
+	});
+	describe('getOtherTypeIds', function() {
+		it('should return the correct ids of other blocks', function() {
+			var blockTypesMock = {
+				// '1': {},
+				// '2': {},
+				// '3': {},
+				// '4': {}
+			};
+
+			var uniqueCorrelations = {
+				'1': {},
+				'4': {}
+			};
+
+			var sut = proxyquire(modulePath, { '../models/blockTypes': blockTypesMock });
+			var result = sut.getOtherTypeIds(uniqueCorrelations);
+			assert.equal(result.length, 2);
 		});
 	});
 });
