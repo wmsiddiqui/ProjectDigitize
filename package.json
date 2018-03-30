@@ -23,6 +23,7 @@
 		"sinon": "^4.4.2"
 	},
 	"dependencies": {
-		"nconf": "^0.10.0"
+		"nconf": "^0.10.0",
+		"redis": "^2.8.0"
 	}
 }

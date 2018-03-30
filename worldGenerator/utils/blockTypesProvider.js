@@ -2,6 +2,11 @@ var nconf = require('nconf');
 var path = 'configs/blockTypes.json';
 nconf.overrides({ always: 'be this value' });
 nconf.argv().env().file({ file: path });
-var results = nconf.get('blockTypes');
+var results;
 
-module.exports = results;
+exports.getBlockTypes = function() {
+	if (!results) {
+		results = nconf.get('blockTypes');
+	}
+	return results;
+};

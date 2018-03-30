@@ -1,4 +1,4 @@
-var blockTypes = require('../models/blockTypes');
+var blockTypesProvider = require('../utils/blockTypesProvider');
 var numberChecker = require('./numberChecker');
 
 module.exports = {
@@ -30,6 +30,7 @@ module.exports = {
 			throw new Error('Invalid Correlations');
 		}
 		var otherTypes = [];
+		var blockTypes = blockTypesProvider.getBlockTypes();
 		for (var blockType in blockTypes) {
 			if (!uniqueCorrelations[blockType]) {
 				otherTypes.push(blockType);
@@ -71,6 +72,7 @@ module.exports = {
 
 	getUniqueNeighborCorrelations(neighboringBlocks) {
 		var uniqueNeighborCorrelations = {};
+		var blockTypes = blockTypesProvider.getBlockTypes();
 		neighboringBlocks.forEach(function(neighborBlock) {
 			if (neighborBlock._blockTypeId) {
 				var blockType = blockTypes[neighborBlock._blockTypeId];

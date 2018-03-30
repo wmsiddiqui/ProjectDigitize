@@ -1,5 +1,5 @@
 var Block = require('./block');
-var blockTypes = require('./blockTypes');
+var blockTypesProvider = require('../utils/blockTypesProvider');
 var numberChecker = require('../utils/numberChecker');
 
 module.exports = class Region {
@@ -132,6 +132,7 @@ module.exports = class Region {
 };
 
 var getRandomBlockType = function() {
+	var blockTypes = blockTypesProvider.getBlockTypes();
 	var numberOfBlockTypes = Object.keys(blockTypes).length;
 	var randomBlockTypeId = Math.floor(Math.random() * numberOfBlockTypes) + 1;
 	var randomBlockType = blockTypes[randomBlockTypeId];

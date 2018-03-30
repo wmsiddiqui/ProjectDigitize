@@ -69,24 +69,28 @@ describe('neighborHelper', function() {
 				}
 			];
 
-			var blockTypesMock = {
-				'1': {
-					id: 1,
-					correlations: {
-						3: 0.5,
-						6: 0.5
-					}
-				},
-				'2': {
-					id: 2,
-					correlations: {
-						3: -0.3,
-						6: 0.2
-					}
+			var blockTypesProviderMock = {
+				getBlockTypes: function() {
+					return {
+						'1': {
+							id: 1,
+							correlations: {
+								3: 0.5,
+								6: 0.5
+							}
+						},
+						'2': {
+							id: 2,
+							correlations: {
+								3: -0.3,
+								6: 0.2
+							}
+						}
+					};
 				}
 			};
 
-			var sut = proxyquire(modulePath, { '../models/blockTypes': blockTypesMock });
+			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
 
 			var result = sut.getUniqueNeighborCorrelations(neighborBlocks);
 			assert.equal(result['3'], 0.2);
@@ -126,11 +130,15 @@ describe('neighborHelper', function() {
 	});
 	describe('getOtherTypeIds', function() {
 		it('should return the correct ids of other blocks', function() {
-			var blockTypesMock = {
-				// '1': {},
-				// '2': {},
-				// '3': {},
-				// '4': {}
+			var blockTypesProviderMock = {
+				getBlockTypes: function() {
+					return {
+						'1': {},
+						'2': {},
+						'3': {},
+						'4': {}
+					};
+				}
 			};
 
 			var uniqueCorrelations = {
@@ -138,7 +146,7 @@ describe('neighborHelper', function() {
 				'4': {}
 			};
 
-			var sut = proxyquire(modulePath, { '../models/blockTypes': blockTypesMock });
+			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
 			var result = sut.getOtherTypeIds(uniqueCorrelations);
 			assert.equal(result.length, 2);
 		});
