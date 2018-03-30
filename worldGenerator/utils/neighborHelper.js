@@ -8,21 +8,30 @@ module.exports = {
 		var uniqueNeighborCorrelations = this.getUniqueNeighborCorrelations(neighboringBlocks);
 		var uniquePositiveCorrelations = this.getPositiveCorrelations(uniqueNeighborCorrelations);
 		var sumPositiveCorrelations = this.getSumOfCorrelations(uniquePositiveCorrelations);
+		var blockTypeToGenerate;
 
+		//This logic will not work. How will sum be 1 if there are multiple neighbors. Need to divide
+		//by the number of neighbors
 		if (sumPositiveCorrelations < 1) {
-			//then get all others
-		} else {
-			//This is it. Roll a number and pick a type
-			//How? There are n number of different block types.
-			//Iterate through each one and sum. If rolled number is less than sum, continue
-			//if greater, then it is the current item.
-		}
-	},
+			//If the sum of positive correlations is less than 1, there is a chance that the block
+			//generated is an "other" type. An "other" type is a block type that is not part of the
+			//uniqueNeighborCorrelations collection of correlations. This ensures that if a neighbor
+			//block has a negative correlation with a block type, it makes it so the type generated
+			//is less likely to be generated. This allows for negative correlations, and if negative
+			//enough, can make it impossible for two specific blocks to be generated next to each other
 
-	pickRandomType(blockTypeIds) {
-		var numberOfTypes = blockTypeIds.length;
-		var result = Math.floor(Math.random() * numberOfTypes);
-		return result;
+			var randomBlockTypeId = this.getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations);
+			if (randomBlockTypeId == 0) {
+				var others = this.getOtherTypeIds(uniqueNeighborCorrelations);
+				var otherTypePicked = this.getRandomBlockTypeId(others);
+				blockTypeToGenerate = otherTypePicked;
+			} else {
+				blockTypeToGenerate = randomBlockTypeId;
+			}
+		} else {
+			//If the correlations total 1, then the
+			blockTypeToGenerate = this.getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations);
+		}
 	},
 
 	getOtherTypeIds(uniqueCorrelations) {
@@ -43,7 +52,7 @@ module.exports = {
 		return otherTypes;
 	},
 
-	getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations, includeOther) {
+	getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations, includeOther = false) {
 		var generatedType;
 		var total = 0;
 		var randomNumber = Math.random();
@@ -58,6 +67,12 @@ module.exports = {
 			return 0;
 		}
 		throw new Error('Error calculating Block Type');
+	},
+
+	getRandomBlockTypeId(blockTypeIds) {
+		var numberOfTypes = blockTypeIds.length;
+		var result = Math.floor(Math.random() * numberOfTypes);
+		return result;
 	},
 
 	getPositiveCorrelations(uniqueNeighborCorrelations) {
