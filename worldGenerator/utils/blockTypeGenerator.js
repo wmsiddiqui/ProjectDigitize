@@ -8,10 +8,8 @@ module.exports = {
 		var uniqueNeighborCorrelations = this.getUniqueNeighborCorrelations(neighboringBlocks);
 		var uniquePositiveCorrelations = this.getPositiveCorrelations(uniqueNeighborCorrelations);
 		var sumPositiveCorrelations = this.getSumOfCorrelations(uniquePositiveCorrelations);
-		var blockTypeToGenerate;
+		var blockTypeIdToGenerate;
 
-		//This logic will not work. How will sum be 1 if there are multiple neighbors. Need to divide
-		//by the number of neighbors
 		if (sumPositiveCorrelations < numberOfNeighbors) {
 			//If the sum of positive correlations is less than 1, there is a chance that the block
 			//generated is an "other" type. An "other" type is a block type that is not part of the
@@ -28,18 +26,23 @@ module.exports = {
 			if (randomBlockTypeId == 0) {
 				var others = this.getOtherTypeIds(uniqueNeighborCorrelations);
 				var otherTypePicked = this.getRandomBlockTypeId(others);
-				blockTypeToGenerate = otherTypePicked;
+				blockTypeIdToGenerate = otherTypePicked;
 			} else {
-				blockTypeToGenerate = randomBlockTypeId;
+				blockTypeIdToGenerate = randomBlockTypeId;
 			}
 		} else {
 			//If the correlations total 1, then the
-			blockTypeToGenerate = this.getRandomBlockTypeIdFromCorrelation(
+			blockTypeIdToGenerate = this.getRandomBlockTypeIdFromCorrelation(
 				uniquePositiveCorrelations,
 				numberOfNeighbors,
 				false
 			);
 		}
+
+		var blockTypes = blockTypesProvider.getBlockTypes();
+
+		var blockTypeToGenerate = blockTypes[blockTypeIdToGenerate];
+
 		return blockTypeToGenerate;
 	},
 
@@ -78,8 +81,8 @@ module.exports = {
 
 	getRandomBlockTypeId(blockTypeIds) {
 		var numberOfTypes = blockTypeIds.length;
-		var result = Math.floor(Math.random() * numberOfTypes);
-		return result;
+		var indexOfType = Math.floor(Math.random() * numberOfTypes);
+		return blockTypeIds[indexOfType];
 	},
 
 	getPositiveCorrelations(uniqueNeighborCorrelations) {

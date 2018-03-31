@@ -1,7 +1,7 @@
 var chai = require('chai');
 var assert = chai.assert;
 var sinon = require('sinon');
-var modulePath = '../../worldGenerator/utils/neighborHelper';
+var modulePath = '../../worldGenerator/utils/blockTypeGenerator';
 var neighborHelper = require(modulePath);
 var proxyquire = require('proxyquire');
 
@@ -152,7 +152,7 @@ describe('neighborHelper', function() {
 		});
 	});
 	describe('getCalculatedBlockType', function() {
-		it('should return the correct blockType', function() {
+		it('should return the correct blockType when type other', function() {
 			var neighborBlocks = [
 				{
 					blockTypeId: '1'
@@ -185,10 +185,63 @@ describe('neighborHelper', function() {
 			};
 
 			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
-
+			sinon.stub(Math, 'random').callsFake(function() {
+				return 0.99;
+			});
 			var result = sut.getCalculatedBlockType(neighborBlocks);
-			assert.equal(result['3'], 0.2);
-			assert.equal(result['6'], 0.7);
+			Math.random.restore();
+
+			assert.equal(result.id, '2');
+		});
+
+		it('should return the correct blockType with fixed correlation', function() {
+			var neighborBlocks = [
+				{
+					blockTypeId: '1'
+				},
+				{
+					blockTypeId: '2'
+				}
+			];
+
+			var blockTypesProviderMock = {
+				getBlockTypes: function() {
+					return {
+						'1': {
+							id: 1,
+							correlations: {
+								3: 0.5,
+								5: 0.5
+							}
+						},
+						'2': {
+							id: 2,
+							correlations: {
+								3: -0.3,
+								4: 0.5,
+								5: 0.8
+							}
+						},
+						'5': {
+							id: 5,
+							correlations: {
+								3: -0.3,
+								4: 0.5,
+								5: 0.8
+							}
+						}
+					};
+				}
+			};
+
+			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			sinon.stub(Math, 'random').callsFake(function() {
+				return 0.99;
+			});
+			var result = sut.getCalculatedBlockType(neighborBlocks);
+			Math.random.restore();
+
+			assert.equal(result.id, '5');
 		});
 	});
 });
