@@ -108,7 +108,7 @@ describe('block tests', function() {
 
 			var testBlock = new Block(id, blockInitProperties, blockSaver);
 
-			assert.equal(testBlock._blockTypeId, blockInitProperties.blockType.id);
+			assert.equal(testBlock.blockTypeId, blockInitProperties.blockType.id);
 		});
 		it('should not create the block correctly with long decimals', function() {
 			var id = 1;

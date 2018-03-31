@@ -41,7 +41,7 @@ describe('region', function() {
 			Math.random.restore();
 			var blockFromMap = region._regionMap[50][50];
 			var blockFromGet = region.getBlock(50, 50);
-			assert.isTrue(block._blockTypeId != undefined, 'Block should not be undefined');
+			assert.isTrue(block.blockTypeId != undefined, 'Block should not be undefined');
 			assert.isTrue(block._bias != undefined, 'Bias should not be undefined');
 			assert.equal(block, blockFromMap);
 			assert.equal(block, blockFromGet);
@@ -88,7 +88,7 @@ describe('region', function() {
 			var block1 = region.createBlock();
 			var block2 = region.createBlock();
 			Math.random.restore();
-			assert.isTrue(block2._blockTypeId != undefined, 'Block should not be undefined');
+			assert.isTrue(block2.blockTypeId != undefined, 'Block should not be undefined');
 			assert.isTrue(block2._bias != undefined, 'Bias should not be undefined');
 		});
 	});

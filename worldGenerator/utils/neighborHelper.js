@@ -12,7 +12,7 @@ module.exports = {
 
 		//This logic will not work. How will sum be 1 if there are multiple neighbors. Need to divide
 		//by the number of neighbors
-		if (sumPositiveCorrelations < 1) {
+		if (sumPositiveCorrelations < numberOfNeighbors) {
 			//If the sum of positive correlations is less than 1, there is a chance that the block
 			//generated is an "other" type. An "other" type is a block type that is not part of the
 			//uniqueNeighborCorrelations collection of correlations. This ensures that if a neighbor
@@ -20,7 +20,11 @@ module.exports = {
 			//is less likely to be generated. This allows for negative correlations, and if negative
 			//enough, can make it impossible for two specific blocks to be generated next to each other
 
-			var randomBlockTypeId = this.getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations);
+			var randomBlockTypeId = this.getRandomBlockTypeIdFromCorrelation(
+				uniquePositiveCorrelations,
+				numberOfNeighbors,
+				true
+			);
 			if (randomBlockTypeId == 0) {
 				var others = this.getOtherTypeIds(uniqueNeighborCorrelations);
 				var otherTypePicked = this.getRandomBlockTypeId(others);
@@ -30,8 +34,13 @@ module.exports = {
 			}
 		} else {
 			//If the correlations total 1, then the
-			blockTypeToGenerate = this.getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations);
+			blockTypeToGenerate = this.getRandomBlockTypeIdFromCorrelation(
+				uniquePositiveCorrelations,
+				numberOfNeighbors,
+				false
+			);
 		}
+		return blockTypeToGenerate;
 	},
 
 	getOtherTypeIds(uniqueCorrelations) {
@@ -52,11 +61,9 @@ module.exports = {
 		return otherTypes;
 	},
 
-	getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations, includeOther = false) {
-		var generatedType;
+	getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations, numberOfNeighbors, includeOther = false) {
 		var total = 0;
-		var randomNumber = Math.random();
-		var uniqueTypes = Object.keys(uniquePositiveCorrelations);
+		var randomNumber = Math.random() * numberOfNeighbors;
 		for (var correlation in uniquePositiveCorrelations) {
 			total = (total * 1000 + uniquePositiveCorrelations[correlation] * 1000) / 1000;
 			if (randomNumber < total) {
@@ -89,8 +96,8 @@ module.exports = {
 		var uniqueNeighborCorrelations = {};
 		var blockTypes = blockTypesProvider.getBlockTypes();
 		neighboringBlocks.forEach(function(neighborBlock) {
-			if (neighborBlock._blockTypeId) {
-				var blockType = blockTypes[neighborBlock._blockTypeId];
+			if (neighborBlock.blockTypeId) {
+				var blockType = blockTypes[neighborBlock.blockTypeId];
 				if (blockType.correlations) {
 					for (var correlation in blockType.correlations) {
 						if (!uniqueNeighborCorrelations[correlation]) {

@@ -15,7 +15,7 @@ module.exports = class Block {
 
 		if (blockInitProperties.blockType) {
 			this._bias = blockInitProperties.blockType.bias;
-			this._blockTypeId = blockInitProperties.blockType.id;
+			this.blockTypeId = blockInitProperties.blockType.id;
 		}
 		this._ether = 0;
 		this._plasma = 0;

@@ -62,10 +62,10 @@ describe('neighborHelper', function() {
 		it('should return correct correlations', function() {
 			var neighborBlocks = [
 				{
-					_blockTypeId: '1'
+					blockTypeId: '1'
 				},
 				{
-					_blockTypeId: '2'
+					blockTypeId: '2'
 				}
 			];
 
@@ -123,7 +123,7 @@ describe('neighborHelper', function() {
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.85;
 			});
-			var result = neighborHelper.getRandomBlockTypeIdFromCorrelation(uniqueCorrelations);
+			var result = neighborHelper.getRandomBlockTypeIdFromCorrelation(uniqueCorrelations, 1);
 			Math.random.restore();
 			assert.equal(result, 5);
 		});
@@ -149,6 +149,46 @@ describe('neighborHelper', function() {
 			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
 			var result = sut.getOtherTypeIds(uniqueCorrelations);
 			assert.equal(result.length, 2);
+		});
+	});
+	describe('getCalculatedBlockType', function() {
+		it('should return the correct blockType', function() {
+			var neighborBlocks = [
+				{
+					blockTypeId: '1'
+				},
+				{
+					blockTypeId: '2'
+				}
+			];
+
+			var blockTypesProviderMock = {
+				getBlockTypes: function() {
+					return {
+						'1': {
+							id: 1,
+							correlations: {
+								3: 0.5,
+								6: 0.5
+							}
+						},
+						'2': {
+							id: 2,
+							correlations: {
+								3: -0.3,
+								6: 0.2,
+								4: 0.5
+							}
+						}
+					};
+				}
+			};
+
+			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+
+			var result = sut.getCalculatedBlockType(neighborBlocks);
+			assert.equal(result['3'], 0.2);
+			assert.equal(result['6'], 0.7);
 		});
 	});
 });
