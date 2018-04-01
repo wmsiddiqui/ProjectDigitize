@@ -1,5 +1,6 @@
 var resourceRandomizer = require('../utils/resourceRandomizer');
 var numberChecker = require('../utils/numberChecker');
+var biasValidator = require('../utils/biasValidator');
 
 module.exports = class Block {
 	constructor(id, blockInitProperties, blockSaver) {
@@ -84,32 +85,7 @@ module.exports = class Block {
 		}
 
 		if (blockInitProperties.blockType && blockInitProperties.blockType.bias) {
-			if (
-				!numberChecker.isPositiveNumber(blockInitProperties.blockType.bias.etherBias) ||
-				!numberChecker.isPositiveNumber(blockInitProperties.blockType.bias.plasmaBias) ||
-				!numberChecker.isPositiveNumber(blockInitProperties.blockType.bias.matterBias)
-			) {
-				throw new Error('All bias must be greater than zero');
-			}
-
-			if (
-				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.blockType.bias.etherBias) ||
-				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.blockType.bias.plasmaBias) ||
-				!numberChecker.isNumberWithOnly3DecimalDigits(blockInitProperties.blockType.bias.matterBias)
-			) {
-				throw new Error('Invalid Bias. Only precision of 3 decimal places is supported.');
-			}
-
-			//Multiply and then divide by 1000 to maintain precision
-			if (
-				(blockInitProperties.blockType.bias.etherBias * 1000 +
-					blockInitProperties.blockType.bias.plasmaBias * 1000 +
-					blockInitProperties.blockType.bias.matterBias * 1000) /
-					1000 !=
-				1
-			) {
-				throw new Error('Bias not configured correctly');
-			}
+			biasValidator.validateBias(blockInitProperties.blockType.bias);
 		}
 	}
 
