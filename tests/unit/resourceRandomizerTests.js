@@ -2,6 +2,7 @@ var chai = require('chai');
 var assert = chai.assert;
 var resourceRandomizer = require('../../worldGenerator/utils/resourceRandomizer');
 var sinon = require('sinon');
+var proxyquire = require('proxyquire');
 
 describe('resource randomizer', function() {
 	describe('create correct number of resources when Math.random is mocked', function() {
