@@ -27,28 +27,18 @@ var getNconfMock = function(getResponse) {
 };
 
 describe('getBlockTypes', function() {
-	it('should throw an error if sum of correlations are greater than 1 for any type', function() {
+	it('should populate the Ids correctly for the blockTypes', function() {
 		var mock = {
 			'1': {
 				name: 'Void',
-				bias: {
-					etherBias: 1,
-					plasmaBias: 0,
-					matterBias: 0
-				},
 				altitudeBase: 0,
 				correlations: {
 					'6': 0.5,
 					'3': 0.5
 				}
 			},
-			'2': {
+			'5': {
 				name: 'Ocean',
-				bias: {
-					etherBias: 0.2,
-					plasmaBias: 0.8,
-					matterBias: 0
-				},
 				altitudeBase: 0,
 				correlations: {
 					'3': -0.3,
@@ -60,5 +50,78 @@ describe('getBlockTypes', function() {
 		var sut = proxyquire(modulePath, { nconf: nconfMock });
 		var result = sut.getBlockTypes();
 		assert.equal(result['1'].id, 1);
+		assert.equal(result['5'].id, 5);
+	});
+
+	it('should throw an error if a specific correlation is greater than 1', function() {
+		var mock = {
+			'1': {
+				name: 'Void',
+				altitudeBase: 0,
+				correlations: {
+					'6': 1.2,
+					'3': 0.5
+				}
+			}
+		};
+		var nconfMock = getNconfMock(mock);
+		var sut = proxyquire(modulePath, { nconf: nconfMock });
+		assert.throw(function() {
+			sut.getBlockTypes();
+		});
+	});
+
+	it('should throw an error if a specific correlation is less than -1', function() {
+		var mock = {
+			'1': {
+				name: 'Void',
+				altitudeBase: 0,
+				correlations: {
+					'6': -1.2,
+					'3': 0.5
+				}
+			}
+		};
+		var nconfMock = getNconfMock(mock);
+		var sut = proxyquire(modulePath, { nconf: nconfMock });
+		assert.throw(function() {
+			sut.getBlockTypes();
+		});
+	});
+
+	it('should throw an error if the sum of correlations is greater than 1', function() {
+		var mock = {
+			'1': {
+				name: 'Void',
+				altitudeBase: 0,
+				correlations: {
+					'6': 0.8,
+					'3': 0.5
+				}
+			}
+		};
+		var nconfMock = getNconfMock(mock);
+		var sut = proxyquire(modulePath, { nconf: nconfMock });
+		assert.throw(function() {
+			sut.getBlockTypes();
+		});
+	});
+
+	it('should throw an error if the sum of correlations is less than -1', function() {
+		var mock = {
+			'1': {
+				name: 'Void',
+				altitudeBase: 0,
+				correlations: {
+					'6': -0.8,
+					'3': -0.5
+				}
+			}
+		};
+		var nconfMock = getNconfMock(mock);
+		var sut = proxyquire(modulePath, { nconf: nconfMock });
+		assert.throw(function() {
+			sut.getBlockTypes();
+		});
 	});
 });

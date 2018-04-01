@@ -17,7 +17,7 @@ exports.getBlockTypes = function() {
 			}
 			for (var correlation in currentBlock.correlations) {
 				var currentCorrelation = currentBlock.correlations[correlation];
-				if (currentCorrelation > 1 || currentBlock.correlations < -1) {
+				if (currentCorrelation > 1 || currentCorrelation < -1) {
 					throw new Error('Correlation must be between -1 and 1');
 				}
 				correlationsSum += currentCorrelation;
