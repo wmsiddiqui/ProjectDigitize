@@ -4,12 +4,28 @@ nconf.overrides({ always: 'be this value' });
 nconf.argv().env().file({ file: path });
 var results;
 
-//Need to validate config file for the blocktypes here.
-//Sum of Correlations for the single block type should not exceed 1 or -1
-
 exports.getBlockTypes = function() {
 	if (!results) {
-		results = nconf.get('blockTypes');
+		var allBlockTypes = nconf.get('blockTypes');
+		for (var blockType in allBlockTypes) {
+			var currentBlock = allBlockTypes[blockType];
+			var correlationsSum = 0;
+			currentBlock.id = blockType;
+
+			if (!currentBlock.correlations) {
+				continue;
+			}
+			for (var correlation in currentBlock.correlations) {
+				var currentCorrelation = currentBlock.correlations[correlation];
+				if (currentCorrelation > 1 || currentBlock.correlations < -1) {
+					throw new Error('Correlation must be between -1 and 1');
+				}
+				correlationsSum += currentCorrelation;
+			}
+			if (correlationsSum > 1 || correlationsSum < -1) {
+				throw new Error('Total Correlations must be between -1 and 1');
+			}
+		}
 	}
 	return results;
 };

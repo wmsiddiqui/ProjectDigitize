@@ -1,7 +1,6 @@
 {
 	"blockTypes": {
 		"1": {
-			"id": 1,
 			"name": "Void",
 			"bias": {
 				"etherBias": 1,
@@ -15,7 +14,6 @@
 			}
 		},
 		"2": {
-			"id": 2,
 			"name": "Ocean",
 			"bias": {
 				"etherBias": 0.2,
@@ -29,7 +27,6 @@
 			}
 		},
 		"3": {
-			"id": 3,
 			"name": "Wasteland",
 			"bias": {
 				"etherBias": 0.2,
@@ -42,7 +39,6 @@
 			}
 		},
 		"4": {
-			"id": 4,
 			"name": "Plains",
 			"bias": {
 				"etherBias": 0.2,
@@ -52,12 +48,10 @@
 			"altitudeBase": 30
 		},
 		"5": {
-			"id": 5,
 			"name": "Basic",
 			"altitudeBase": 50
 		},
 		"6": {
-			"id": 6,
 			"name": "Mountains",
 			"bias": {
 				"etherBias": 0.1,
@@ -70,7 +64,6 @@
 			}
 		},
 		"7": {
-			"id": 7,
 			"name": "Swamp",
 			"bias": {
 				"etherBias": 0.2,

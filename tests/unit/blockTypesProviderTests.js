@@ -29,6 +29,7 @@ var getNconfMock = function(getResponse) {
 
 describe('getBlockTypes', function() {
 	it('should throw an error if sum of correlations are greater than 1 for any type', function() {
-		var sut = proxyquire(modulePath, { nconf: nconfMock });
+		//var sut = proxyquire(modulePath, { nconf: nconfMock });
+		var test = blockTypesProvider.getBlockTypes();
 	});
 });
