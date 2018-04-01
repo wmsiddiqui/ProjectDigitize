@@ -1,6 +1,8 @@
+var biasValidator = require('./biasValidator');
+
 exports.getResources = function(numberOfResources, bias) {
-	if (bias && (bias.etherBias * 1000 + bias.plasmaBias * 1000 + bias.matterBias * 1000) / 1000 != 1) {
-		throw new Error('Bias not configured correctly in resource randomizer');
+	if (bias) {
+		biasValidator.validateBias(bias);
 	}
 
 	var generated = {
