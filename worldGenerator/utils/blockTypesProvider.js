@@ -26,6 +26,7 @@ exports.getBlockTypes = function() {
 				throw new Error('Total Correlations must be between -1 and 1');
 			}
 		}
+		results = allBlockTypes;
 	}
 	return results;
 };
