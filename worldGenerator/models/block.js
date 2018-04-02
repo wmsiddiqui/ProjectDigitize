@@ -73,10 +73,6 @@ module.exports = class Block {
 			throw new Error('Altitude must be a positive number.');
 		}
 
-		if (!numberChecker.isPositiveWholeNumber(blockInitProperties.cap)) {
-			throw new Error('Cap must be a positive whole number');
-		}
-
 		if (
 			blockInitProperties.resourceInitCount &&
 			!numberChecker.isPositiveWholeNumber(blockInitProperties.resourceInitCount)
@@ -86,6 +82,14 @@ module.exports = class Block {
 
 		if (blockInitProperties.blockType && blockInitProperties.blockType.bias) {
 			biasValidator.validateBias(blockInitProperties.blockType.bias);
+		}
+
+		if (
+			blockInitProperties.blockType &&
+			blockInitProperties.blockType.cap &&
+			!numberChecker.isPositiveWholeNumber(blockInitProperties.blockType.cap)
+		) {
+			throw new Error('Cap is not configured correctly on blockInitProperties');
 		}
 	}
 

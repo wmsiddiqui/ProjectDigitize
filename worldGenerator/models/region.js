@@ -34,7 +34,6 @@ module.exports = class Region {
 			var generatedBlockType = getRandomBlockType();
 			var coordinateNumber = Math.floor(this._regionSize / 2);
 			var blockInitProperties = {
-				cap: 1,
 				altitude: 10,
 				blockType: generatedBlockType
 			};
@@ -49,7 +48,6 @@ module.exports = class Region {
 			var neighboringBlocks = this.getNeighborBlocks(this._availableAreas[areaToGenerateBlock], this._regionMap);
 			var generatedBlockType = getRandomBlockType(neighboringBlocks);
 			var blockInitProperties = {
-				cap: 1,
 				altitude: 10,
 				blockType: generatedBlockType
 			};
