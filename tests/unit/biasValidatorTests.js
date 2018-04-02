@@ -77,5 +77,21 @@ describe('biasValidator', function() {
 				sut.validateBias(bias);
 			});
 		});
+
+		it('should throw an error if any numberChecker indicates a bias is a long decimal', function() {
+			var numberCheckerMock = {
+				isPositiveNumber: function() {
+					return true;
+				},
+				isNumberWithOnly3DecimalDigits: function() {
+					return false;
+				}
+			};
+
+			var sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
+			assert.throw(function() {
+				sut.validateBias(bias);
+			});
+		});
 	});
 });

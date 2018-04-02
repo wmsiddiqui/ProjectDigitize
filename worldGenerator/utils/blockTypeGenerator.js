@@ -121,12 +121,6 @@ module.exports = {
 			return 0;
 		}
 		for (var correlationKey in uniqueNeighborCorrelations) {
-			if (
-				!numberChecker.isNumber(uniqueNeighborCorrelations[correlationKey]) ||
-				!numberChecker.isNumberWithOnly3DecimalDigits(uniqueNeighborCorrelations[correlationKey])
-			) {
-				throw new Error('Correlations must be numbers with up to 3 decimal places');
-			}
 			sumCorrelations += uniqueNeighborCorrelations[correlationKey] * 1000;
 		}
 		return sumCorrelations / 1000;

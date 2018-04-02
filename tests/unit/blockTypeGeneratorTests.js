@@ -5,7 +5,7 @@ var modulePath = '../../worldGenerator/utils/blockTypeGenerator';
 var neighborHelper = require(modulePath);
 var proxyquire = require('proxyquire');
 
-describe('neighborHelper', function() {
+describe('blockTypeGenerator', function() {
 	describe('getSumOfCorrelations', function() {
 		it('should return 0 if all correlations are negative', function() {
 			var correlations = {
@@ -27,30 +27,6 @@ describe('neighborHelper', function() {
 
 			var result = neighborHelper.getSumOfCorrelations(correlations);
 			assert.equal(result, 0.732);
-		});
-
-		it('should throw an error if the correlation is not a number', function() {
-			var correlations = {
-				'1': 'Number',
-				'2': 0.733,
-				'3': 0.2
-			};
-
-			assert.throw(function() {
-				neighborHelper.getSumOfCorrelations(correlations);
-			});
-		});
-
-		it('should throw an error if the correlation has more than 3 decimal places', function() {
-			var correlations = {
-				'1': 0.05,
-				'2': 0.7334,
-				'3': 0.2
-			};
-
-			assert.throw(function() {
-				neighborHelper.getSumOfCorrelations(correlations);
-			});
 		});
 
 		it('should return 0 if there are no correlations passed in', function() {
@@ -97,6 +73,7 @@ describe('neighborHelper', function() {
 			assert.equal(result['6'], 0.7);
 		});
 	});
+
 	describe('getPositiveCorrelations', function() {
 		it('should return only positive correlations', function() {
 			var uniqueCorrelations = {
@@ -113,6 +90,7 @@ describe('neighborHelper', function() {
 			assert.isUndefined(result['6']);
 		});
 	});
+
 	describe('getRandomBlockTypeIdFromCorrelation', function() {
 		it('should return the correct block type id', function() {
 			var uniqueCorrelations = {
@@ -128,6 +106,7 @@ describe('neighborHelper', function() {
 			assert.equal(result, 5);
 		});
 	});
+
 	describe('getOtherTypeIds', function() {
 		it('should return the correct ids of other blocks', function() {
 			var blockTypesProviderMock = {
@@ -151,6 +130,7 @@ describe('neighborHelper', function() {
 			assert.equal(result.length, 2);
 		});
 	});
+
 	describe('getCalculatedBlockType', function() {
 		it('should return the correct blockType when type other', function() {
 			var neighborBlocks = [
