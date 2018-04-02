@@ -8,6 +8,7 @@
 				"matterBias": 0
 			},
 			"altitudeBase": 0,
+			"cap": 70,
 			"correlations": {
 				"6": 0.5,
 				"3": 0.5
@@ -21,6 +22,7 @@
 				"matterBias": 0
 			},
 			"altitudeBase": 0,
+			"cap": 100,
 			"correlations": {
 				"3": -0.3,
 				"5": -0.2
@@ -34,6 +36,7 @@
 				"matterBias": 0.8
 			},
 			"altitudeBase": 30,
+			"cap": 80,
 			"correlations": {
 				"2": -0.5
 			}
@@ -45,11 +48,13 @@
 				"plasmaBias": 0.1,
 				"matterBias": 0.7
 			},
-			"altitudeBase": 30
+			"altitudeBase": 30,
+			"cap": 100
 		},
 		"5": {
 			"name": "Neutral",
-			"altitudeBase": 50
+			"altitudeBase": 50,
+			"cap": 100
 		},
 		"6": {
 			"name": "Mountains",
@@ -59,6 +64,7 @@
 				"matterBias": 0.8
 			},
 			"altitudeBase": 80,
+			"cap": 80,
 			"correlations": {
 				"2": -0.5
 			}
@@ -70,7 +76,18 @@
 				"plasmaBias": 0.4,
 				"matterBias": 0.4
 			},
-			"altitudeBase": 20
+			"altitudeBase": 20,
+			"cap": 80
+		},
+		"8": {
+			"name": "Village",
+			"bias": {
+				"etherBias": 0.2,
+				"plasmaBias": 0.1,
+				"matterBias": 0.7
+			},
+			"altitudeBase": 20,
+			"cap": 150
 		}
 	}
 }
