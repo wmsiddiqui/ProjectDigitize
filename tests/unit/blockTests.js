@@ -32,7 +32,8 @@ describe('block tests', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				altitude: 10
+				altitude: 10,
+				blockType: { cap: 30 }
 			};
 
 			var testBlock = new Block(id, blockInitProperties, blockSaver);
@@ -48,7 +49,8 @@ describe('block tests', function() {
 
 			var blockInitProperties = {
 				altitude: 10,
-				resourceInitCount: 30
+				resourceInitCount: 30,
+				blockType: { cap: 30 }
 			};
 
 			var testBlock = new Block(id, blockInitProperties, blockSaver);
@@ -70,7 +72,8 @@ describe('block tests', function() {
 						etherBias: 0.7,
 						plasmaBias: 0.2,
 						matterBias: 0.1
-					}
+					},
+					cap: 30
 				}
 			};
 
@@ -95,7 +98,8 @@ describe('block tests', function() {
 						etherBias: 0.7,
 						plasmaBias: 0.2,
 						matterBias: 0.1
-					}
+					},
+					cap: 30
 				}
 			};
 
@@ -125,7 +129,8 @@ describe('block tests', function() {
 	describe('generate resources tests', function() {
 		it('should generate new resources correctly', function() {
 			var blockInitProperties = {
-				altitude: 10
+				altitude: 10,
+				blockType: { cap: 30 }
 			};
 			var testBlock = new Block(1, blockInitProperties, blockSaver);
 			var numberOfResourcesToGenerate = 30;
@@ -209,8 +214,8 @@ describe('block tests', function() {
 		it('should consume resources and return true if there are enough resources', function() {
 			var blockInitProperties = {
 				altitude: 10,
-				cap: 50,
-				resourceInitCount: 30
+				resourceInitCount: 30,
+				blockType: { cap: 30 }
 			};
 
 			var etherDecrement = 10;
@@ -227,8 +232,8 @@ describe('block tests', function() {
 		it('should not consume resources and return false if there are enough resources', function() {
 			var blockInitProperties = {
 				altitude: 10,
-				cap: 30,
-				resourceInitCount: 30
+				resourceInitCount: 30,
+				blockType: { cap: 30 }
 			};
 
 			var etherDecrement = 11;

@@ -4,6 +4,10 @@ var biasValidator = require('../utils/biasValidator');
 
 module.exports = class Block {
 	constructor(id, blockInitProperties, blockSaver) {
+		if (!blockInitProperties.blockType) {
+			throw new Error('No blockType found in blockInitProperties');
+		}
+
 		this._validateBlockInitProperties(blockInitProperties);
 
 		this._altitude = blockInitProperties.altitude;
@@ -13,11 +17,10 @@ module.exports = class Block {
 			return id;
 		};
 
-		if (blockInitProperties.blockType) {
-			this._bias = blockInitProperties.blockType.bias;
-			this.blockTypeId = blockInitProperties.blockType.id;
-			this._cap = blockInitProperties.blockType.cap;
-		}
+		this.blockTypeId = blockInitProperties.blockType.id;
+		this._cap = blockInitProperties.blockType.cap;
+		this._bias = blockInitProperties.blockType.bias;
+
 		this._ether = 0;
 		this._plasma = 0;
 		this._matter = 0;
@@ -80,15 +83,11 @@ module.exports = class Block {
 			throw new Error('resourceInitCount must be a positive whole number.');
 		}
 
-		if (blockInitProperties.blockType && blockInitProperties.blockType.bias) {
+		if (blockInitProperties.blockType.bias) {
 			biasValidator.validateBias(blockInitProperties.blockType.bias);
 		}
 
-		if (
-			blockInitProperties.blockType &&
-			blockInitProperties.blockType.cap &&
-			!numberChecker.isPositiveWholeNumber(blockInitProperties.blockType.cap)
-		) {
+		if (!numberChecker.isPositiveWholeNumber(blockInitProperties.blockType.cap)) {
 			throw new Error('Cap is not configured correctly on blockInitProperties');
 		}
 	}
