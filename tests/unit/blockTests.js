@@ -32,7 +32,6 @@ describe('block tests', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				cap: 50,
 				altitude: 10
 			};
 
@@ -42,14 +41,12 @@ describe('block tests', function() {
 			assert.equal(testBlock._plasma, 0);
 			assert.equal(testBlock._matter, 0);
 			assert.equal(testBlock._altitude, blockInitProperties.altitude);
-			assert.equal(testBlock._cap, blockInitProperties.cap);
 			assert.equal(testBlock.getId(), id);
 		});
 		it('should create the block correctly with equal resources without bias', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				cap: 50,
 				altitude: 10,
 				resourceInitCount: 30
 			};
@@ -60,14 +57,12 @@ describe('block tests', function() {
 			assert.equal(testBlock._plasma, 10);
 			assert.equal(testBlock._matter, 10);
 			assert.equal(testBlock._altitude, blockInitProperties.altitude);
-			assert.equal(testBlock._cap, blockInitProperties.cap);
 			assert.equal(testBlock.getId(), id);
 		});
 		it('should create the block correctly with bias', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				cap: 50,
 				altitude: 10,
 				resourceInitCount: 30,
 				blockType: {
@@ -85,14 +80,12 @@ describe('block tests', function() {
 			assert.equal(testBlock._plasma, 0);
 			assert.equal(testBlock._matter, 10);
 			assert.equal(testBlock._altitude, blockInitProperties.altitude);
-			assert.equal(testBlock._cap, blockInitProperties.cap);
 			assert.equal(testBlock.getId(), id);
 		});
 		it('should create the block correctly with blockType', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				cap: 50,
 				altitude: 10,
 				resourceInitCount: 30,
 				blockType: {
@@ -114,7 +107,6 @@ describe('block tests', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				cap: 50,
 				altitude: 10,
 				blockType: {
 					bias: {
@@ -133,7 +125,6 @@ describe('block tests', function() {
 	describe('generate resources tests', function() {
 		it('should generate new resources correctly', function() {
 			var blockInitProperties = {
-				cap: 50,
 				altitude: 10
 			};
 			var testBlock = new Block(1, blockInitProperties, blockSaver);
@@ -147,9 +138,11 @@ describe('block tests', function() {
 
 		it('should not generate new resources if cap is met', function() {
 			var blockInitProperties = {
-				cap: 50,
 				altitude: 10,
-				resourceInitCount: 50
+				resourceInitCount: 50,
+				blockType: {
+					cap: 30
+				}
 			};
 			var testBlock = new Block(1, blockInitProperties, blockSaver);
 			var numberOfResourcesToGenerate = 30;
@@ -162,8 +155,10 @@ describe('block tests', function() {
 
 		it('should generate new resources in proportion if total added exceeds cap with no bias', function() {
 			var blockInitProperties = {
-				cap: 30,
-				altitude: 10
+				altitude: 10,
+				blockType: {
+					cap: 30
+				}
 			};
 
 			var testBlock = new Block(1, blockInitProperties, blockSaver);
@@ -178,16 +173,16 @@ describe('block tests', function() {
 			assert.equal(generatedResources.matterGenerated, generatedSingleSource);
 		});
 
-		it('should generate new resources in proportion if total added exceeds cap withBias', function() {
+		it('should generate new resources in proportion if total added exceeds cap with bias', function() {
 			var blockInitProperties = {
 				altitude: 10,
-				cap: 30,
 				blockType: {
 					bias: {
 						etherBias: 0.7,
 						plasmaBias: 0.1,
 						matterBias: 0.2
-					}
+					},
+					cap: 30
 				}
 			};
 
@@ -204,7 +199,7 @@ describe('block tests', function() {
 				generatedResources.plasmaGenerated +
 				generatedResources.matterGenerated;
 
-			assert.equal(totalGenerated, blockInitProperties.cap);
+			assert.equal(totalGenerated, blockInitProperties.blockType.cap);
 			assert.equal(generatedResources.etherGenerated, expectedEther);
 			assert.equal(generatedResources.plasmaGenerated, expectedPlasma);
 			assert.equal(generatedResources.matterGenerated, expectedMatter);

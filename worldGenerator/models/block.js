@@ -8,7 +8,6 @@ module.exports = class Block {
 
 		this._altitude = blockInitProperties.altitude;
 		this._blockSaver = blockSaver;
-		this._cap = blockInitProperties.cap;
 
 		this.getId = function() {
 			return id;
@@ -17,6 +16,7 @@ module.exports = class Block {
 		if (blockInitProperties.blockType) {
 			this._bias = blockInitProperties.blockType.bias;
 			this.blockTypeId = blockInitProperties.blockType.id;
+			this._cap = blockInitProperties.blockType.cap;
 		}
 		this._ether = 0;
 		this._plasma = 0;
