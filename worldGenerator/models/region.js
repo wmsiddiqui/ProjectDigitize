@@ -1,6 +1,7 @@
 var Block = require('./block');
 var blockTypesProvider = require('../utils/blockTypesProvider');
 var numberChecker = require('../utils/numberChecker');
+var neighborHelper = require('../utils/neighborHelper');
 
 module.exports = class Region {
 	constructor(id, regionSize, saveClient) {
@@ -45,7 +46,10 @@ module.exports = class Region {
 			var randomArea = Math.floor(Math.random() * numberOfAvailableAreas);
 			var areaToGenerateBlock = Object.keys(this._availableAreas)[randomArea];
 
-			var neighboringBlocks = this.getNeighborBlocks(this._availableAreas[areaToGenerateBlock], this._regionMap);
+			var neighboringBlocks = neighborHelper.getNeighborBlocks(
+				this._availableAreas[areaToGenerateBlock],
+				this._regionMap
+			);
 			var generatedBlockType = getRandomBlockType(neighboringBlocks);
 			var blockInitProperties = {
 				altitude: 10,
@@ -55,77 +59,12 @@ module.exports = class Region {
 			coordinates = areaToGenerateBlock;
 		}
 
-		this.updateAvailableAreas(coordinates);
+		neighborHelper.updateAvailableAreas(coordinates, this._availableAreas, this._regionMap);
 
 		this._regionMap[coordinates[0]][coordinates[1]] = block;
 
 		this._remainingCapacity--;
 		return block;
-	}
-	getBlock(x, y) {
-		return this._regionMap[x][y];
-	}
-
-	getNeighborBlocks(coordinates, regionMap) {
-		var regionSize = regionMap.length;
-		var neighborBlocks = [];
-		//left
-		if (coordinates[0] > 0 && regionMap[coordinates[0] - 1][coordinates[1]]) {
-			neighborBlocks.push(regionMap[coordinates[0] - 1][coordinates[1]]);
-		}
-		//right
-		if (coordinates[0] < regionSize - 1 && regionMap[coordinates[0] + 1][coordinates[1]]) {
-			neighborBlocks.push(regionMap[coordinates[0] + 1][coordinates[1]]);
-		}
-		//down
-		if (coordinates[1] > 0 && regionMap[coordinates[0]][coordinates[1] - 1]) {
-			neighborBlocks.push(regionMap[coordinates[0]][coordinates[1] - 1]);
-		}
-		//up
-		if (coordinates[1] < regionSize - 1 && regionMap[coordinates[0]][coordinates[1] + 1]) {
-			neighborBlocks.push(regionMap[coordinates[0]][coordinates[1] + 1]);
-		}
-		return neighborBlocks;
-	}
-
-	updateAvailableAreas(coordinates) {
-		//if left block is empty
-		if (
-			coordinates[0] > 0 &&
-			!this.getBlock(coordinates[0] - 1, coordinates[1]) &&
-			!this._availableAreas[coordinates[0] - 1 + ',' + coordinates[1]]
-		) {
-			this._availableAreas[coordinates[0] - 1 + ',' + coordinates[1]] = [ coordinates[0] - 1, coordinates[0] ];
-		}
-		//right
-		if (
-			coordinates[0] < this._regionSize - 1 &&
-			!this.getBlock(coordinates[0] + 1, coordinates[1]) &&
-			!this._availableAreas[coordinates[0] + 1 + ',' + coordinates[1]]
-		) {
-			this._availableAreas[coordinates[0] + 1 + ',' + coordinates[1]] = [ coordinates[0] + 1, coordinates[0] ];
-		}
-		//down
-		if (
-			coordinates[1] > 0 &&
-			!this.getBlock(coordinates[0], coordinates[1] - 1) &&
-			!this._availableAreas[coordinates[0] + ',' + (coordinates[1] - 1)]
-		) {
-			this._availableAreas[coordinates[0] + ',' + (coordinates[1] - 1)] = [ coordinates[0], coordinates[0] - 1 ];
-		}
-		//up
-		if (
-			coordinates[1] < this._regionSize - 1 &&
-			!this.getBlock(coordinates[0], coordinates[1] - 1) &&
-			!this._availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)]
-		) {
-			this._availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)] = [ coordinates[0], coordinates[0] + 1 ];
-		}
-
-		//remove the block from available areas
-		if (this._availableAreas[coordinates[0] + ',' + coordinates[1]]) {
-			delete this._availableAreas[coordinates[0] + ',' + coordinates[1]];
-		}
 	}
 };
 
