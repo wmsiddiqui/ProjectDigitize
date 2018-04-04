@@ -90,18 +90,4 @@ describe('region', function() {
 			assert.isTrue(block2._bias != undefined, 'Bias should not be undefined');
 		});
 	});
-
-	xdescribe('get neighbor', function() {
-		it('should return empty list if there are no neighbors', function() {
-			var region = new Region(1, 3, saveClient);
-			var block = region.createBlock();
-			region._regionMap[0][1] = block;
-			region._regionMap[2][1] = block;
-			region._regionMap[1][0] = block;
-			region._regionMap[1][2] = block;
-
-			var neighbors = region.getNeighborBlocks([ 1, 1 ], region._regionMap);
-			assert.equal(neighbors.length, 4);
-		});
-	});
 });

@@ -31,7 +31,7 @@ module.exports = {
 		}
 		//right
 		if (
-			coordinates[0] < this._regionSize - 1 &&
+			coordinates[0] < regionMap.length - 1 &&
 			!this.getBlock(regionMap, coordinates[0] + 1, coordinates[1]) &&
 			!availableAreas[coordinates[0] + 1 + ',' + coordinates[1]]
 		) {
@@ -47,7 +47,7 @@ module.exports = {
 		}
 		//up
 		if (
-			coordinates[1] < this._regionSize - 1 &&
+			coordinates[1] < regionMap.length - 1 &&
 			!this.getBlock(regionMap, coordinates[0], coordinates[1] - 1) &&
 			!availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)]
 		) {
