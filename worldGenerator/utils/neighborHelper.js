@@ -24,7 +24,7 @@ module.exports = {
 		//if left block is empty
 		if (
 			coordinates[0] > 0 &&
-			!this.getBlock(regionMap, coordinates[0] - 1, coordinates[1]) &&
+			!getBlock(regionMap, coordinates[0] - 1, coordinates[1]) &&
 			!availableAreas[coordinates[0] - 1 + ',' + coordinates[1]]
 		) {
 			availableAreas[coordinates[0] - 1 + ',' + coordinates[1]] = [ coordinates[0] - 1, coordinates[0] ];
@@ -32,7 +32,7 @@ module.exports = {
 		//right
 		if (
 			coordinates[0] < regionMap.length - 1 &&
-			!this.getBlock(regionMap, coordinates[0] + 1, coordinates[1]) &&
+			!getBlock(regionMap, coordinates[0] + 1, coordinates[1]) &&
 			!availableAreas[coordinates[0] + 1 + ',' + coordinates[1]]
 		) {
 			availableAreas[coordinates[0] + 1 + ',' + coordinates[1]] = [ coordinates[0] + 1, coordinates[0] ];
@@ -40,7 +40,7 @@ module.exports = {
 		//down
 		if (
 			coordinates[1] > 0 &&
-			!this.getBlock(regionMap, coordinates[0], coordinates[1] - 1) &&
+			!getBlock(regionMap, coordinates[0], coordinates[1] - 1) &&
 			!availableAreas[coordinates[0] + ',' + (coordinates[1] - 1)]
 		) {
 			availableAreas[coordinates[0] + ',' + (coordinates[1] - 1)] = [ coordinates[0], coordinates[0] - 1 ];
@@ -48,7 +48,7 @@ module.exports = {
 		//up
 		if (
 			coordinates[1] < regionMap.length - 1 &&
-			!this.getBlock(regionMap, coordinates[0], coordinates[1] - 1) &&
+			!getBlock(regionMap, coordinates[0], coordinates[1] - 1) &&
 			!availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)]
 		) {
 			availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)] = [ coordinates[0], coordinates[0] + 1 ];
@@ -58,9 +58,9 @@ module.exports = {
 		if (availableAreas[coordinates[0] + ',' + coordinates[1]]) {
 			delete availableAreas[coordinates[0] + ',' + coordinates[1]];
 		}
-	},
-
-	getBlock(regionMap, x, y) {
-		return regionMap[x][y];
 	}
+};
+
+var getBlock = function(regionMap, x, y) {
+	return regionMap[x][y];
 };
