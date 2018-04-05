@@ -58,6 +58,7 @@ describe('neighborHelper', function() {
 			assert.exists(availableAreas['1,0']);
 			assert.exists(availableAreas['1,2']);
 			assert.exists(availableAreas['2,1']);
+			assert.equal(4, Object.keys(availableAreas).length);
 		});
 
 		it('should not update available areas correctly if all other blocks are full', function() {
@@ -75,6 +76,8 @@ describe('neighborHelper', function() {
 			assert.isUndefined(availableAreas['1,0']);
 			assert.isUndefined(availableAreas['1,2']);
 			assert.isUndefined(availableAreas['2,1']);
+
+			assert.equal(0, Object.keys(availableAreas).length);
 		});
 	});
 });
