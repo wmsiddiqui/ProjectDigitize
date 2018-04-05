@@ -61,6 +61,6 @@ module.exports = {
 	}
 };
 
-var getBlock = function(regionMap, x, y) {
-	return regionMap[x][y];
+var getBlock = function(map, x, y) {
+	return map[x][y];
 };
