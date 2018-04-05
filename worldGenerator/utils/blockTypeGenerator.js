@@ -80,9 +80,11 @@ module.exports = {
 	},
 
 	getRandomBlockTypeId(blockTypeIds) {
-		var numberOfTypes = blockTypeIds.length;
-		var indexOfType = Math.floor(Math.random() * numberOfTypes);
-		return blockTypeIds[indexOfType];
+		if (blockTypeIds) {
+			var numberOfTypes = blockTypeIds.length;
+			var indexOfType = Math.floor(Math.random() * numberOfTypes);
+			return blockTypeIds[indexOfType];
+		}
 	},
 
 	getPositiveCorrelations(uniqueNeighborCorrelations) {

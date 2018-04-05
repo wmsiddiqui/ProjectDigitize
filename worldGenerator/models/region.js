@@ -2,6 +2,7 @@ var Block = require('./block');
 var blockTypesProvider = require('../utils/blockTypesProvider');
 var numberChecker = require('../utils/numberChecker');
 var neighborHelper = require('../utils/neighborHelper');
+var blockTypeGenerator = require('../utils/blockTypeGenerator');
 
 module.exports = class Region {
 	constructor(id, regionSize, saveClient) {
