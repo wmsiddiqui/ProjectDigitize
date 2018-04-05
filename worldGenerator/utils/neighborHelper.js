@@ -1,5 +1,8 @@
 module.exports = {
 	getNeighborBlocks(coordinates, regionMap) {
+		if (!regionMap || !coordinates) {
+			throw new Error('Invalid parameters when trying to get neighbor blocks');
+		}
 		var regionSize = regionMap.length;
 		var neighborBlocks = [];
 		//left

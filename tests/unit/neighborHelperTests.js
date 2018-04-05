@@ -79,6 +79,26 @@ describe('neighborHelper', function() {
 
 			assert.equal(0, Object.keys(availableAreas).length);
 		});
+
+		it('should update available areas correctly corner case', function() {
+			var regionMap = createEmpty2dArray(3);
+			var availableAreas = {};
+
+			neighborHelper.updateAvailableAreas([ 0, 0 ], availableAreas, regionMap);
+
+			assert.exists(availableAreas['0,1']);
+			assert.exists(availableAreas['1,0']);
+			assert.equal(2, Object.keys(availableAreas).length);
+		});
+
+		it('should remove the current block from the available areas', function() {
+			var regionMap = createEmpty2dArray(3);
+			var availableAreas = { '1,1': {} };
+
+			neighborHelper.updateAvailableAreas([ 1, 1 ], availableAreas, regionMap);
+
+			assert.isUndefined(availableAreas['1,1']);
+		});
 	});
 });
 
