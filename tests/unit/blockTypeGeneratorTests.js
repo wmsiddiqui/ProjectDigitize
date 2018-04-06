@@ -107,6 +107,29 @@ describe('blockTypeGenerator', function() {
 		});
 	});
 
+	describe('getRandomBlockType', function() {
+		it('should return a valid blockType at random', function() {
+			var blockTypesProviderMock = {
+				getBlockTypes: function() {
+					return {
+						'1': { id: 1 },
+						'2': { id: 2 },
+						'3': { id: 3 },
+						'4': { id: 4 }
+					};
+				}
+			};
+
+			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			sinon.stub(Math, 'random').callsFake(function() {
+				return 0.7;
+			});
+			var result = sut.getRandomBlockType();
+			Math.random.restore();
+			assert.equal(result.id, 3);
+		});
+	});
+
 	describe('getOtherTypeIds', function() {
 		it('should return the correct ids of other blocks', function() {
 			var blockTypesProviderMock = {

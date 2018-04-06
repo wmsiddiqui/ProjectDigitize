@@ -33,7 +33,7 @@ module.exports = class Region {
 			Object.keys(this._availableAreas).length == 0
 		) {
 			//First Block
-			var generatedBlockType = getRandomBlockType();
+			var generatedBlockType = blockTypeGenerator.getRandomBlockType();
 			var coordinateNumber = Math.floor(this._regionSize / 2);
 			var blockInitProperties = {
 				altitude: 10,
@@ -51,7 +51,7 @@ module.exports = class Region {
 				this._availableAreas[areaToGenerateBlock],
 				this._regionMap
 			);
-			var generatedBlockType = getRandomBlockType(neighboringBlocks);
+			var generatedBlockType = blockTypeGenerator.getRandomBlockType(neighboringBlocks);
 			var blockInitProperties = {
 				altitude: 10,
 				blockType: generatedBlockType
@@ -67,12 +67,4 @@ module.exports = class Region {
 		this._remainingCapacity--;
 		return block;
 	}
-};
-
-var getRandomBlockType = function() {
-	var blockTypes = blockTypesProvider.getBlockTypes();
-	var numberOfBlockTypes = Object.keys(blockTypes).length;
-	var randomBlockTypeId = Math.floor(Math.random() * numberOfBlockTypes) + 1;
-	var randomBlockType = blockTypes[randomBlockTypeId];
-	return randomBlockType;
 };

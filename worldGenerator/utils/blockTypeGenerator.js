@@ -1,6 +1,8 @@
 var blockTypesProvider = require('../utils/blockTypesProvider');
 var numberChecker = require('./numberChecker');
 
+var blockTypes = blockTypesProvider.getBlockTypes();
+
 module.exports = {
 	getCalculatedBlockType(neighboringBlocks) {
 		var numberOfNeighbors = neighboringBlocks.length;
@@ -39,8 +41,6 @@ module.exports = {
 			);
 		}
 
-		var blockTypes = blockTypesProvider.getBlockTypes();
-
 		var blockTypeToGenerate = blockTypes[blockTypeIdToGenerate];
 
 		return blockTypeToGenerate;
@@ -51,7 +51,6 @@ module.exports = {
 			throw new Error('Invalid Correlations');
 		}
 		var otherTypes = [];
-		var blockTypes = blockTypesProvider.getBlockTypes();
 		for (var blockType in blockTypes) {
 			if (!uniqueCorrelations[blockType]) {
 				otherTypes.push(blockType);
@@ -80,11 +79,16 @@ module.exports = {
 	},
 
 	getRandomBlockTypeId(blockTypeIds) {
-		if (blockTypeIds) {
-			var numberOfTypes = blockTypeIds.length;
-			var indexOfType = Math.floor(Math.random() * numberOfTypes);
-			return blockTypeIds[indexOfType];
-		}
+		var numberOfTypes = blockTypeIds.length;
+		var indexOfType = Math.floor(Math.random() * numberOfTypes);
+		return blockTypeIds[indexOfType];
+	},
+
+	getRandomBlockType() {
+		var allIds = Object.keys(blockTypes);
+		var indexOfType = Math.floor(Math.random() * allIds.length);
+		var idOfType = allIds[indexOfType];
+		return blockTypes[idOfType];
 	},
 
 	getPositiveCorrelations(uniqueNeighborCorrelations) {
@@ -99,7 +103,6 @@ module.exports = {
 
 	getUniqueNeighborCorrelations(neighboringBlocks) {
 		var uniqueNeighborCorrelations = {};
-		var blockTypes = blockTypesProvider.getBlockTypes();
 		neighboringBlocks.forEach(function(neighborBlock) {
 			if (neighborBlock.blockTypeId) {
 				var blockType = blockTypes[neighborBlock.blockTypeId];
