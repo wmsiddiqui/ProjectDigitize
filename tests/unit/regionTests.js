@@ -1,14 +1,43 @@
 var chai = require('chai');
 var assert = chai.assert;
-var Region = require('../../worldGenerator/models/region');
 var sinon = require('sinon');
+var proxyquire = require('proxyquire');
+var Region = require('../../worldGenerator/models/region');
+var modulePath = '../../worldGenerator/models/region';
+
+var saveClient = {
+	saveBlock: function() {
+		return true;
+	}
+};
+var blockTypeGeneratorMock = {
+	getCalculatedBlockType: function() {
+		return {
+			id: 1,
+			cap: 100,
+			altitudeBase: 10,
+			bias: {
+				etherBias: 0.2,
+				plasmaBias: 0.4,
+				matterBias: 0.4
+			}
+		};
+	},
+	getRandomBlockType: function() {
+		return {
+			id: 1,
+			cap: 100,
+			altitudeBase: 10,
+			bias: {
+				etherBias: 0.2,
+				plasmaBias: 0.4,
+				matterBias: 0.4
+			}
+		};
+	}
+};
 
 describe('region', function() {
-	var saveClient = {
-		saveBlock: function() {
-			return true;
-		}
-	};
 	describe('create region', function() {
 		it('should create region', function() {
 			var region = new Region(1, 11);
@@ -82,9 +111,11 @@ describe('region', function() {
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.1;
 			});
-			var region = new Region(1, 101, saveClient);
-			var block1 = region.createBlock();
-			var block2 = region.createBlock();
+			//var region = new Region(1, 101, saveClient);
+			var region = proxyquire(modulePath, { '../utils/blockTypeGenerator': blockTypeGeneratorMock });
+			var sut = new region(1, 101, saveClient);
+			var block1 = sut.createBlock();
+			var block2 = sut.createBlock();
 			Math.random.restore();
 			assert.isTrue(block2.blockTypeId != undefined, 'Block should not be undefined');
 			assert.isTrue(block2._bias != undefined, 'Bias should not be undefined');

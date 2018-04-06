@@ -51,7 +51,7 @@ module.exports = class Region {
 				this._availableAreas[areaToGenerateBlock],
 				this._regionMap
 			);
-			var generatedBlockType = blockTypeGenerator.getRandomBlockType(neighboringBlocks);
+			var generatedBlockType = blockTypeGenerator.getCalculatedBlockType(neighboringBlocks);
 			var blockInitProperties = {
 				altitude: 10,
 				blockType: generatedBlockType
