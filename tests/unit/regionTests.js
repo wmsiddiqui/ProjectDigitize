@@ -65,44 +65,14 @@ describe('region', function() {
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.1;
 			});
-			var region = new Region(1, 101, saveClient);
-			var block = region.createBlock();
+			var region = proxyquire(modulePath, { '../utils/blockTypeGenerator': blockTypeGeneratorMock });
+			var sut = new region(1, 101, saveClient);
+			var block = sut.createBlock();
 			Math.random.restore();
-			var blockFromMap = region._regionMap[50][50];
+			var blockFromMap = sut._regionMap[50][50];
 			assert.isTrue(block.blockTypeId != undefined, 'Block should not be undefined');
 			assert.isTrue(block._bias != undefined, 'Bias should not be undefined');
 			assert.equal(block, blockFromMap);
-		});
-		it('should correctly add neighbors to available areas', function() {
-			var regionSize = 101;
-			var region = new Region(1, regionSize, saveClient);
-			region.createBlock();
-
-			var blockLocation = Math.floor(regionSize / 2);
-
-			var leftNeighbor = region._availableAreas[blockLocation - 1 + ',' + blockLocation];
-			var rightNeighbor = region._availableAreas[blockLocation + 1 + ',' + blockLocation];
-			var downNeighbor = region._availableAreas[blockLocation + ',' + (blockLocation - 1)];
-			var upNeighbor = region._availableAreas[blockLocation + ',' + (blockLocation + 1)];
-
-			var blockAvailibility = region._availableAreas[blockLocation + ',' + blockLocation];
-			assert.isTrue(blockAvailibility == undefined, 'Block should no longer be available');
-
-			assert.isTrue(leftNeighbor != undefined, 'Block to left should be available');
-			assert.equal(blockLocation - 1, leftNeighbor[0]);
-			assert.equal(blockLocation, leftNeighbor[1]);
-
-			assert.isTrue(rightNeighbor != undefined, 'Block to right should be available');
-			assert.equal(blockLocation + 1, rightNeighbor[0]);
-			assert.equal(blockLocation, rightNeighbor[1]);
-
-			assert.isTrue(downNeighbor != undefined, 'Block below should be available');
-			assert.equal(blockLocation, downNeighbor[0]);
-			assert.equal(blockLocation - 1, downNeighbor[1]);
-
-			assert.isTrue(upNeighbor != undefined, 'Block above should be available');
-			assert.equal(blockLocation, upNeighbor[0]);
-			assert.equal(blockLocation + 1, upNeighbor[1]);
 		});
 	});
 
@@ -111,7 +81,6 @@ describe('region', function() {
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.1;
 			});
-			//var region = new Region(1, 101, saveClient);
 			var region = proxyquire(modulePath, { '../utils/blockTypeGenerator': blockTypeGeneratorMock });
 			var sut = new region(1, 101, saveClient);
 			var block1 = sut.createBlock();
