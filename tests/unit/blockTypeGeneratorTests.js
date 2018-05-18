@@ -247,4 +247,43 @@ describe('blockTypeGenerator', function() {
 			assert.equal(result.id, '5');
 		});
 	});
+
+	describe('getBlockTypeFromSeed', function() {
+		it('should validate that the seed is valid', function() {
+			var blockTypesProviderMock = {
+				getBlockTypes: function() {
+					return {
+						'1': {
+							id: 1,
+							correlations: {
+								3: 0.5,
+								5: 0.5
+							}
+						},
+						'2': {
+							id: 2,
+							correlations: {
+								3: -0.3,
+								4: 0.5,
+								5: 0.8
+							}
+						},
+						'5': {
+							id: 5,
+							correlations: {
+								3: -0.3,
+								4: 0.5,
+								5: 0.8
+							}
+						}
+					};
+				}
+			};
+
+			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			assert.throws(function() {
+				sut.getBlockTypeFromSeed(10);
+			});
+		});
+	});
 });

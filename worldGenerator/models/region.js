@@ -1,11 +1,10 @@
 var Block = require('./block');
-var blockTypesProvider = require('../utils/blockTypesProvider');
 var numberChecker = require('../utils/numberChecker');
 var neighborHelper = require('../utils/neighborHelper');
 var blockTypeGenerator = require('../utils/blockTypeGenerator');
 
 module.exports = class Region {
-	constructor(id, regionSize, saveClient) {
+	constructor(id, regionSize, saveClient, typeSeed) {
 		this._id = id;
 		this._saveClient = saveClient;
 
@@ -17,6 +16,10 @@ module.exports = class Region {
 		this._availableAreas = {};
 		this._occupiedAreas = {};
 		this._remainingCapacity = regionSize * regionSize;
+
+		if (typeSeed) {
+			this._typeSeed = typeSeed;
+		}
 
 		//Initialize 2d Array
 		this._regionMap = [];
@@ -33,7 +36,12 @@ module.exports = class Region {
 			Object.keys(this._availableAreas).length == 0
 		) {
 			//First Block
-			var generatedBlockType = blockTypeGenerator.getRandomBlockType();
+			var generatedBlockType;
+			if (this._typeSeed) {
+				generatedBlockType = blockTypeGenerator.getRandomBlockType();
+			} else {
+				generatedBlockType = blockTypeGenerator.getRandomBlockType(this._typeSeed);
+			}
 			var coordinateNumber = Math.floor(this._regionSize / 2);
 			var blockInitProperties = {
 				altitude: 10,

@@ -46,6 +46,13 @@ module.exports = {
 		return blockTypeToGenerate;
 	},
 
+	getBlockTypeFromSeed(seed) {
+		var blockTypeToGenerate = blockTypes[seed];
+		if (!blockTypeToGenerate) {
+			throw new Error('Invalid Seed');
+		}
+	},
+
 	getOtherTypeIds(uniqueCorrelations) {
 		if (!uniqueCorrelations) {
 			throw new Error('Invalid Correlations');
