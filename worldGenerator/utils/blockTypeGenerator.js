@@ -51,6 +51,7 @@ module.exports = {
 		if (!blockTypeToGenerate) {
 			throw new Error('Invalid Seed');
 		}
+		return blockTypeToGenerate;
 	},
 
 	getOtherTypeIds(uniqueCorrelations) {

@@ -249,7 +249,7 @@ describe('blockTypeGenerator', function() {
 	});
 
 	describe('getBlockTypeFromSeed', function() {
-		it('should validate that the seed is valid', function() {
+		it('should throw an error if the seed is not valid', function() {
 			var blockTypesProviderMock = {
 				getBlockTypes: function() {
 					return {
@@ -258,22 +258,6 @@ describe('blockTypeGenerator', function() {
 							correlations: {
 								3: 0.5,
 								5: 0.5
-							}
-						},
-						'2': {
-							id: 2,
-							correlations: {
-								3: -0.3,
-								4: 0.5,
-								5: 0.8
-							}
-						},
-						'5': {
-							id: 5,
-							correlations: {
-								3: -0.3,
-								4: 0.5,
-								5: 0.8
 							}
 						}
 					};
@@ -284,6 +268,26 @@ describe('blockTypeGenerator', function() {
 			assert.throws(function() {
 				sut.getBlockTypeFromSeed(10);
 			});
+		});
+
+		it('should return the same block type as the seed', function() {
+			var blockTypesProviderMock = {
+				getBlockTypes: function() {
+					return {
+						'1': {
+							id: 1,
+							correlations: {
+								3: 0.5,
+								5: 0.5
+							}
+						}
+					};
+				}
+			};
+
+			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			var blockTypeToGenerate = sut.getBlockTypeFromSeed(1);
+			assert.equal(blockTypeToGenerate.id, 1);
 		});
 	});
 });
