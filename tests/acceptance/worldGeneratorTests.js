@@ -13,7 +13,6 @@ describe('worldGenerator tests', function() {
 		var region = new Region(1, 3, mockSaver, seed);
 		var availableAreas = region._availableAreas;
 		var block = region.createBlock();
-		console.log(block);
 		assert.equal(block.blockTypeId, seed);
 	});
 });

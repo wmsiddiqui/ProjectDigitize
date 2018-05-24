@@ -40,7 +40,7 @@ module.exports = class Region {
 			if (!this._typeSeed) {
 				generatedBlockType = blockTypeGenerator.getRandomBlockType();
 			} else {
-				generatedBlockType = blockTypeGenerator.getRandomBlockType(this._typeSeed);
+				generatedBlockType = blockTypeGenerator.getBlockTypeFromSeed(this._typeSeed);
 			}
 			var coordinateNumber = Math.floor(this._regionSize / 2);
 			var blockInitProperties = {

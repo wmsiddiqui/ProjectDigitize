@@ -23,13 +23,21 @@ var blockTypeGeneratorMock = {
 			}
 		};
 	},
-	getRandomBlockType: function(seed) {
-		var id = 1;
-		if (seed) {
-			id = seed;
-		}
+	getRandomBlockType: function() {
 		return {
-			id: id,
+			id: 1,
+			cap: 100,
+			altitudeBase: 10,
+			bias: {
+				etherBias: 0.2,
+				plasmaBias: 0.4,
+				matterBias: 0.4
+			}
+		};
+	},
+	getBlockTypeFromSeed: function(seed) {
+		return {
+			id: seed,
 			cap: 100,
 			altitudeBase: 10,
 			bias: {
