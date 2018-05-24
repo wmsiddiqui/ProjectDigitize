@@ -37,7 +37,7 @@ module.exports = class Region {
 		) {
 			//First Block
 			var generatedBlockType;
-			if (this._typeSeed) {
+			if (!this._typeSeed) {
 				generatedBlockType = blockTypeGenerator.getRandomBlockType();
 			} else {
 				generatedBlockType = blockTypeGenerator.getRandomBlockType(this._typeSeed);

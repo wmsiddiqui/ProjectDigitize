@@ -23,9 +23,13 @@ var blockTypeGeneratorMock = {
 			}
 		};
 	},
-	getRandomBlockType: function() {
+	getRandomBlockType: function(seed) {
+		var id = 1;
+		if (seed) {
+			id = seed;
+		}
 		return {
-			id: 1,
+			id: id,
 			cap: 100,
 			altitudeBase: 10,
 			bias: {
@@ -73,6 +77,18 @@ describe('region', function() {
 			assert.isTrue(block.blockTypeId != undefined, 'Block should not be undefined');
 			assert.isTrue(block._bias != undefined, 'Bias should not be undefined');
 			assert.equal(block, blockFromMap);
+		});
+
+		it('should correctly create the first block with a seeded value', function() {
+			var seed = 3;
+			var region = proxyquire(modulePath, { '../utils/blockTypeGenerator': blockTypeGeneratorMock });
+			var sut = new region(1, 101, saveClient, seed);
+			var block = sut.createBlock();
+			var blockFromMap = sut._regionMap[50][50];
+			assert.isTrue(block.blockTypeId != undefined, 'Block should not be undefined');
+			assert.isTrue(block._bias != undefined, 'Bias should not be undefined');
+			assert.equal(block, blockFromMap);
+			assert.equal(block.blockTypeId, seed);
 		});
 	});
 
