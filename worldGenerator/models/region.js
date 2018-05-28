@@ -14,7 +14,7 @@ module.exports = class Region {
 
 		this._regionSize = regionSize;
 		this._availableAreas = {};
-		this._occupiedAreas = {};
+		this._occupiedAreas = new Set();
 		this._remainingCapacity = regionSize * regionSize;
 
 		if (typeSeed) {
@@ -51,6 +51,7 @@ module.exports = class Region {
 			coordinates = [ coordinateNumber, coordinateNumber ];
 		} else {
 			//Add a block
+			//TODO: What if the region is full?
 			var numberOfAvailableAreas = Object.keys(this._availableAreas).length;
 			var randomArea = Math.floor(Math.random() * numberOfAvailableAreas);
 			var areaToGenerateBlock = Object.keys(this._availableAreas)[randomArea];
@@ -70,6 +71,7 @@ module.exports = class Region {
 
 		neighborHelper.updateAvailableAreas(coordinates, this._availableAreas, this._regionMap);
 
+		this._occupiedAreas.add(coordinates);
 		this._regionMap[coordinates[0]][coordinates[1]] = block;
 
 		this._remainingCapacity--;
