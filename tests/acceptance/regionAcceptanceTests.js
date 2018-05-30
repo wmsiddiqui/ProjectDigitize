@@ -23,5 +23,9 @@ describe('regionAcceptanceTests', function() {
 		//Verify that blocks around newly created block are now availible
 		assert.equal(region._occupiedAreas.size, 1, 'Single block should occupy region');
 		assert.equal(Object.keys(region._availableAreas).length, 4, 'All neighbors of first block should be available');
+
+		//Add a new block and confirm occupied areas and available areas
+		var secondBlock = region.createBlock();
+		// console.log(secondBlock);
 	});
 });

@@ -66,7 +66,7 @@ module.exports = class Region {
 				blockType: generatedBlockType
 			};
 			block = new Block(this._id + '-' + 1, blockInitProperties, this._saveClient);
-			coordinates = areaToGenerateBlock;
+			coordinates = this._availableAreas[areaToGenerateBlock];
 		}
 
 		neighborHelper.updateAvailableAreas(coordinates, this._availableAreas, this._regionMap);
