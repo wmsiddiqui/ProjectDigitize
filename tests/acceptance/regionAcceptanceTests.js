@@ -19,13 +19,16 @@ describe('regionAcceptanceTests', function() {
 		var availableAreas = region._availableAreas;
 		var block = region.createBlock();
 		assert.equal(block.blockTypeId, seed, "First block type's id does not match seed");
-		console.log(Object.keys(region._availableAreas).length);
+
 		//Verify that blocks around newly created block are now availible
 		assert.equal(region._occupiedAreas.size, 1, 'Single block should occupy region');
 		assert.equal(Object.keys(region._availableAreas).length, 4, 'All neighbors of first block should be available');
 
 		//Add a new block and confirm occupied areas and available areas
 		var secondBlock = region.createBlock();
-		// console.log(secondBlock);
+		assert.isTrue(secondBlock.blockTypeId == '6' || secondBlock.blockTypeId == '3');
+		assert.equal(region._occupiedAreas.size, 2, 'Two blocks should occupy region');
+
+		assert.equal(Object.keys(region._availableAreas).length, 5);
 	});
 });

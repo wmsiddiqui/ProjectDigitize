@@ -105,6 +105,7 @@ describe('region', function() {
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.1;
 			});
+			//Why isn't neighbor helper mocked out?
 			var region = proxyquire(modulePath, { '../utils/blockTypeGenerator': blockTypeGeneratorMock });
 			var sut = new region(1, 101, saveClient);
 			var block1 = sut.createBlock();

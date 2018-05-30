@@ -24,13 +24,15 @@ module.exports = {
 		return neighborBlocks;
 	},
 	updateAvailableAreas(coordinates, availableAreas, regionMap) {
+		//TODO: NEEDS MORE TEST COVERAGE!!!
+
 		//if left block is empty
 		if (
 			coordinates[0] > 0 &&
 			!getBlock(regionMap, coordinates[0] - 1, coordinates[1]) &&
 			!availableAreas[coordinates[0] - 1 + ',' + coordinates[1]]
 		) {
-			availableAreas[coordinates[0] - 1 + ',' + coordinates[1]] = [ coordinates[0] - 1, coordinates[0] ];
+			availableAreas[coordinates[0] - 1 + ',' + coordinates[1]] = [ coordinates[0] - 1, coordinates[1] ];
 		}
 		//right
 		if (
@@ -38,7 +40,7 @@ module.exports = {
 			!getBlock(regionMap, coordinates[0] + 1, coordinates[1]) &&
 			!availableAreas[coordinates[0] + 1 + ',' + coordinates[1]]
 		) {
-			availableAreas[coordinates[0] + 1 + ',' + coordinates[1]] = [ coordinates[0] + 1, coordinates[0] ];
+			availableAreas[coordinates[0] + 1 + ',' + coordinates[1]] = [ coordinates[0] + 1, coordinates[1] ];
 		}
 		//down
 		if (
@@ -46,7 +48,7 @@ module.exports = {
 			!getBlock(regionMap, coordinates[0], coordinates[1] - 1) &&
 			!availableAreas[coordinates[0] + ',' + (coordinates[1] - 1)]
 		) {
-			availableAreas[coordinates[0] + ',' + (coordinates[1] - 1)] = [ coordinates[0], coordinates[0] - 1 ];
+			availableAreas[coordinates[0] + ',' + (coordinates[1] - 1)] = [ coordinates[0], coordinates[1] - 1 ];
 		}
 		//up
 		if (
@@ -54,7 +56,7 @@ module.exports = {
 			!getBlock(regionMap, coordinates[0], coordinates[1] - 1) &&
 			!availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)]
 		) {
-			availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)] = [ coordinates[0], coordinates[0] + 1 ];
+			availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)] = [ coordinates[0], coordinates[1] + 1 ];
 		}
 
 		//remove the block from available areas
