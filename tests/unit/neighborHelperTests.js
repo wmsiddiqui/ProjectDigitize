@@ -74,6 +74,25 @@ describe('neighborHelper', function() {
 			assert.equal(Object.keys(availableAreas).length, 5);
 		});
 
+		it('should update available areas correctly when the map is full', function() {
+			var regionMap = createEmpty2dArray(2);
+			regionMap[0][0] = {};
+			regionMap[0][1] = {};
+			regionMap[1][0] = {};
+
+			var availableAreas = {};
+
+			neighborHelper.updateAvailableAreas([ 0, 0 ], availableAreas, regionMap);
+			neighborHelper.updateAvailableAreas([ 0, 1 ], availableAreas, regionMap);
+			neighborHelper.updateAvailableAreas([ 1, 0 ], availableAreas, regionMap);
+
+			assert.equal(Object.keys(availableAreas).length, 1);
+
+			neighborHelper.updateAvailableAreas([ 1, 1 ], availableAreas, regionMap);
+
+			assert.equal(Object.keys(availableAreas).length, 0);
+		});
+
 		it('should not update available areas correctly if all other blocks are full', function() {
 			var regionMap = createEmpty2dArray(3);
 			regionMap[0] = [ {}, {}, {} ];
