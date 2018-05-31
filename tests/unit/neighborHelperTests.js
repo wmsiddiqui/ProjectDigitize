@@ -58,7 +58,20 @@ describe('neighborHelper', function() {
 			assert.exists(availableAreas['1,0']);
 			assert.exists(availableAreas['1,2']);
 			assert.exists(availableAreas['2,1']);
-			assert.equal(4, Object.keys(availableAreas).length);
+			assert.equal(Object.keys(availableAreas).length, 4);
+		});
+
+		it('should update available areas correctly when multiple blocks are added', function() {
+			var regionMap = createEmpty2dArray(3);
+			regionMap[1][1] = {};
+			var availableAreas = {};
+
+			neighborHelper.updateAvailableAreas([ 1, 1 ], availableAreas, regionMap);
+			assert.equal(Object.keys(availableAreas).length, 4);
+
+			neighborHelper.updateAvailableAreas([ 2, 1 ], availableAreas, regionMap);
+
+			assert.equal(Object.keys(availableAreas).length, 5);
 		});
 
 		it('should not update available areas correctly if all other blocks are full', function() {
@@ -77,7 +90,7 @@ describe('neighborHelper', function() {
 			assert.isUndefined(availableAreas['1,2']);
 			assert.isUndefined(availableAreas['2,1']);
 
-			assert.equal(0, Object.keys(availableAreas).length);
+			assert.equal(Object.keys(availableAreas).length, 0);
 		});
 
 		it('should update available areas correctly corner case', function() {
@@ -88,7 +101,7 @@ describe('neighborHelper', function() {
 
 			assert.exists(availableAreas['0,1']);
 			assert.exists(availableAreas['1,0']);
-			assert.equal(2, Object.keys(availableAreas).length);
+			assert.equal(Object.keys(availableAreas).length, 2);
 		});
 
 		it('should remove the current block from the available areas', function() {
