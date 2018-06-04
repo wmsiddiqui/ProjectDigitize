@@ -1,6 +1,7 @@
 var chai = require('chai');
 var assert = chai.assert;
 var sinon = require('sinon');
+var proxyquire = require('proxyquire');
 var Region = require('../../worldGenerator/models/region');
 
 var mockSaver = {
@@ -25,10 +26,27 @@ describe('regionAcceptanceTests', function() {
 		assert.equal(Object.keys(region._availableAreas).length, 4, 'All neighbors of first block should be available');
 
 		//Add a new block and confirm occupied areas and available areas
+		sinon.stub(Math, 'random').callsFake(function() {
+			return 0.1;
+		});
 		var secondBlock = region.createBlock();
-		assert.isTrue(secondBlock.blockTypeId == '6' || secondBlock.blockTypeId == '3');
+		assert.equal(secondBlock.blockTypeId, '3');
+		Math.random.restore();
 		assert.equal(region._occupiedAreas.size, 2, 'Two blocks should occupy region');
 
-		assert.equal(Object.keys(region._availableAreas).length, 5);
+		region.createBlock();
+		region.createBlock();
+		region.createBlock();
+		region.createBlock();
+		region.createBlock();
+		region.createBlock();
+		region.createBlock();
+
+		assert.equal(Object.keys(region._availableAreas).length, 0);
+
+		//Add another block when map is full. It should throw an exception.
+		assert.throws(function() {
+			region.createBlock();
+		});
 	});
 });

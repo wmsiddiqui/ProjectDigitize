@@ -51,8 +51,10 @@ module.exports = class Region {
 			coordinates = [ coordinateNumber, coordinateNumber ];
 		} else {
 			//Add a block
-			//TODO: What if the region is full?
 			var numberOfAvailableAreas = Object.keys(this._availableAreas).length;
+			if (numberOfAvailableAreas == 0) {
+				throw new Error('Map is full');
+			}
 			var randomArea = Math.floor(Math.random() * numberOfAvailableAreas);
 			var areaToGenerateBlock = Object.keys(this._availableAreas)[randomArea];
 

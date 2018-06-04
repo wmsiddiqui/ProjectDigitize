@@ -24,8 +24,6 @@ module.exports = {
 		return neighborBlocks;
 	},
 	updateAvailableAreas(coordinates, availableAreas, regionMap) {
-		//TODO: NEEDS MORE TEST COVERAGE!!!
-
 		//if left block is empty
 		if (
 			coordinates[0] > 0 &&
@@ -53,7 +51,7 @@ module.exports = {
 		//up
 		if (
 			coordinates[1] < regionMap.length - 1 &&
-			!getBlock(regionMap, coordinates[0], coordinates[1] - 1) &&
+			!getBlock(regionMap, coordinates[0], coordinates[1] + 1) &&
 			!availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)]
 		) {
 			availableAreas[coordinates[0] + ',' + (coordinates[1] + 1)] = [ coordinates[0], coordinates[1] + 1 ];
