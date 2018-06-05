@@ -2,8 +2,9 @@ var chai = require('chai');
 var assert = chai.assert;
 var sinon = require('sinon');
 var modulePath = '../../worldGenerator/utils/blockTypeGenerator';
-var neighborHelper = require(modulePath);
+var blockTypeGenerator = require(modulePath);
 var proxyquire = require('proxyquire');
+var blankBlockTypesProvider = { getBlockTypes() {} };
 
 describe('blockTypeGenerator', function() {
 	describe('getSumOfCorrelations', function() {
@@ -14,7 +15,8 @@ describe('blockTypeGenerator', function() {
 				'3': -0.2
 			};
 
-			var result = neighborHelper.getSumOfCorrelations(correlations);
+			var sut = new blockTypeGenerator(blankBlockTypesProvider);
+			var result = sut.getSumOfCorrelations(correlations);
 			assert.equal(result, -1);
 		});
 
@@ -25,12 +27,14 @@ describe('blockTypeGenerator', function() {
 				'3': 0.2
 			};
 
-			var result = neighborHelper.getSumOfCorrelations(correlations);
+			var sut = new blockTypeGenerator(blankBlockTypesProvider);
+			var result = sut.getSumOfCorrelations(correlations);
 			assert.equal(result, 0.732);
 		});
 
 		it('should return 0 if there are no correlations passed in', function() {
-			var result = neighborHelper.getSumOfCorrelations();
+			var sut = new blockTypeGenerator(blankBlockTypesProvider);
+			var result = sut.getSumOfCorrelations();
 			assert.equal(result, 0);
 		});
 	});
@@ -66,7 +70,7 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			var sut = new blockTypeGenerator(blockTypesProviderMock);
 
 			var result = sut.getUniqueNeighborCorrelations(neighborBlocks);
 			assert.equal(result['3'], 0.2);
@@ -83,7 +87,8 @@ describe('blockTypeGenerator', function() {
 				'6': 0
 			};
 
-			var result = neighborHelper.getPositiveCorrelations(uniqueCorrelations);
+			var sut = new blockTypeGenerator(blankBlockTypesProvider);
+			var result = sut.getPositiveCorrelations(uniqueCorrelations);
 			assert.equal(result['3'], 0.7);
 			assert.equal(result['5'], 0.2);
 			assert.isUndefined(result['7']);
@@ -101,7 +106,8 @@ describe('blockTypeGenerator', function() {
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.85;
 			});
-			var result = neighborHelper.getRandomBlockTypeIdFromCorrelation(uniqueCorrelations, 1);
+			var sut = new blockTypeGenerator(blankBlockTypesProvider);
+			var result = sut.getRandomBlockTypeIdFromCorrelation(uniqueCorrelations, 1);
 			Math.random.restore();
 			assert.equal(result, 5);
 		});
@@ -120,7 +126,7 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			var sut = new blockTypeGenerator(blockTypesProviderMock);
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.7;
 			});
@@ -148,7 +154,7 @@ describe('blockTypeGenerator', function() {
 				'4': {}
 			};
 
-			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			var sut = new blockTypeGenerator(blockTypesProviderMock);
 			var result = sut.getOtherTypeIds(uniqueCorrelations);
 			assert.equal(result.length, 2);
 		});
@@ -187,7 +193,7 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			var sut = new blockTypeGenerator(blockTypesProviderMock);
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.99;
 			});
@@ -237,7 +243,7 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			var sut = new blockTypeGenerator(blockTypesProviderMock);
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.99;
 			});
@@ -264,7 +270,7 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			var sut = new blockTypeGenerator(blockTypesProviderMock);
 			assert.throws(function() {
 				sut.getBlockTypeFromSeed(10);
 			});
@@ -285,7 +291,7 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = proxyquire(modulePath, { '../utils/blockTypesProvider': blockTypesProviderMock });
+			var sut = new blockTypeGenerator(blockTypesProviderMock);
 			var blockTypeToGenerate = sut.getBlockTypeFromSeed(1);
 			assert.equal(blockTypeToGenerate.id, 1);
 		});

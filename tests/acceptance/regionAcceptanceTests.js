@@ -8,11 +8,39 @@ var mockSaver = {
 	saveBlock: function() {}
 };
 
+var mockBlockTypesProvider = {
+	getBlockTypes() {
+		return {
+			'1': {
+				id: 1,
+				correlations: {
+					3: 0.5
+				},
+				cap: 20
+			},
+			'2': {
+				id: 2,
+				correlations: {
+					3: -0.3
+				},
+				cap: 30
+			},
+			'3': {
+				id: 3,
+				correlations: {
+					2: 0.9
+				},
+				cap: 30
+			}
+		};
+	}
+};
+
 describe('regionAcceptanceTests', function() {
 	it('creates region correctly', function() {
 		//Create a region with a seeded value
 		var seed = 1;
-		var region = new Region(1, 3, mockSaver, seed);
+		var region = new Region(1, 3, mockSaver, mockBlockTypesProvider, seed);
 
 		assert.equal(Object.keys(region._availableAreas).length, 0, 'New region should not have availibity');
 		assert.equal(region._occupiedAreas.size, 0, 'New region should not have occupied areas');

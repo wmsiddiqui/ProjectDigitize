@@ -10,8 +10,14 @@ var saveClient = {
 		return true;
 	}
 };
-var blockTypeGeneratorMock = {
-	getCalculatedBlockType: function() {
+
+var blockTypesProvider = {
+	getBlockTypes() {}
+};
+
+//Since blockTypeGenerator is a class, mock out a class here
+var blockTypeGeneratorMock = class {
+	getCalculatedBlockType() {
 		return {
 			id: 1,
 			cap: 100,
@@ -22,8 +28,8 @@ var blockTypeGeneratorMock = {
 				matterBias: 0.4
 			}
 		};
-	},
-	getRandomBlockType: function() {
+	}
+	getRandomBlockType() {
 		return {
 			id: 1,
 			cap: 100,
@@ -34,8 +40,8 @@ var blockTypeGeneratorMock = {
 				matterBias: 0.4
 			}
 		};
-	},
-	getBlockTypeFromSeed: function(seed) {
+	}
+	getBlockTypeFromSeed(seed) {
 		return {
 			id: seed,
 			cap: 100,
@@ -52,23 +58,23 @@ var blockTypeGeneratorMock = {
 describe('region', function() {
 	describe('create region', function() {
 		it('should create region', function() {
-			var region = new Region(1, 11);
+			var region = new Region(1, 11, null, blockTypesProvider);
 			assert.equal(1, region._id);
 			assert.equal(11, region._regionSize);
 		});
 		it('should throw error if region is negative', function() {
 			assert.throws(function() {
-				new Region(1, -1);
+				new Region(1, -1, null, blockTypesProvider);
 			});
 		});
 		it('should throw error if region is 0', function() {
 			assert.throws(function() {
-				new Region(1, 0);
+				new Region(1, 0, null, blockTypesProvider);
 			});
 		});
 		it('should throw error if region is over 200', function() {
 			assert.throws(function() {
-				new Region(1, 201);
+				new Region(1, 201, null, blockTypesProvider);
 			});
 		});
 	});
@@ -78,7 +84,7 @@ describe('region', function() {
 				return 0.1;
 			});
 			var region = proxyquire(modulePath, { '../utils/blockTypeGenerator': blockTypeGeneratorMock });
-			var sut = new region(1, 101, saveClient);
+			var sut = new region(1, 101, saveClient, blockTypesProvider);
 			var block = sut.createBlock();
 			Math.random.restore();
 			var blockFromMap = sut._regionMap[50][50];
@@ -90,7 +96,7 @@ describe('region', function() {
 		it('should correctly create the first block with a seeded value', function() {
 			var seed = 3;
 			var region = proxyquire(modulePath, { '../utils/blockTypeGenerator': blockTypeGeneratorMock });
-			var sut = new region(1, 101, saveClient, seed);
+			var sut = new region(1, 101, saveClient, blockTypesProvider, seed);
 			var block = sut.createBlock();
 			var blockFromMap = sut._regionMap[50][50];
 			assert.isTrue(block.blockTypeId != undefined, 'Block should not be undefined');
@@ -107,7 +113,7 @@ describe('region', function() {
 			});
 			//Why isn't neighbor helper mocked out?
 			var region = proxyquire(modulePath, { '../utils/blockTypeGenerator': blockTypeGeneratorMock });
-			var sut = new region(1, 101, saveClient);
+			var sut = new region(1, 101, saveClient, blockTypesProvider);
 			var block1 = sut.createBlock();
 			var block2 = sut.createBlock();
 			Math.random.restore();

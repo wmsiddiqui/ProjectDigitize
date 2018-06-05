@@ -1,9 +1,12 @@
-var blockTypesProvider = require('../utils/blockTypesProvider');
 var numberChecker = require('./numberChecker');
 
-var blockTypes = blockTypesProvider.getBlockTypes();
+var blockTypes;
 
-module.exports = {
+module.exports = class BlockTypeGenerator {
+	constructor(blockTypesProvider) {
+		blockTypes = blockTypesProvider.getBlockTypes();
+	}
+
 	getCalculatedBlockType(neighboringBlocks) {
 		var numberOfNeighbors = neighboringBlocks.length;
 
@@ -42,9 +45,12 @@ module.exports = {
 		}
 
 		var blockTypeToGenerate = blockTypes[blockTypeIdToGenerate];
+		if (!blockTypeToGenerate) {
+			throw new Error('Invalid blockTypes configuration');
+		}
 
 		return blockTypeToGenerate;
-	},
+	}
 
 	getBlockTypeFromSeed(seed) {
 		var blockTypeToGenerate = blockTypes[seed];
@@ -52,7 +58,7 @@ module.exports = {
 			throw new Error('Invalid Seed');
 		}
 		return blockTypeToGenerate;
-	},
+	}
 
 	getOtherTypeIds(uniqueCorrelations) {
 		if (!uniqueCorrelations) {
@@ -69,7 +75,7 @@ module.exports = {
 			throw new Error('No other block types remain');
 		}
 		return otherTypes;
-	},
+	}
 
 	getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations, numberOfNeighbors, includeOther = false) {
 		var total = 0;
@@ -84,20 +90,20 @@ module.exports = {
 			return 0;
 		}
 		throw new Error('Error calculating Block Type');
-	},
+	}
 
 	getRandomBlockTypeId(blockTypeIds) {
 		var numberOfTypes = blockTypeIds.length;
 		var indexOfType = Math.floor(Math.random() * numberOfTypes);
 		return blockTypeIds[indexOfType];
-	},
+	}
 
 	getRandomBlockType() {
 		var allIds = Object.keys(blockTypes);
 		var indexOfType = Math.floor(Math.random() * allIds.length);
 		var idOfType = allIds[indexOfType];
 		return blockTypes[idOfType];
-	},
+	}
 
 	getPositiveCorrelations(uniqueNeighborCorrelations) {
 		var positiveCorrelations = {};
@@ -107,7 +113,7 @@ module.exports = {
 			}
 		}
 		return positiveCorrelations;
-	},
+	}
 
 	getUniqueNeighborCorrelations(neighboringBlocks) {
 		var uniqueNeighborCorrelations = {};
@@ -126,7 +132,7 @@ module.exports = {
 			}
 		});
 		return uniqueNeighborCorrelations;
-	},
+	}
 
 	getSumOfCorrelations(uniqueNeighborCorrelations) {
 		var sumCorrelations = 0;

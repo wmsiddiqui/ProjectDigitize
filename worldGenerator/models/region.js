@@ -1,12 +1,16 @@
 var Block = require('./block');
 var numberChecker = require('../utils/numberChecker');
 var neighborHelper = require('../utils/neighborHelper');
-var blockTypeGenerator = require('../utils/blockTypeGenerator');
+var BlockTypeGenerator = require('../utils/blockTypeGenerator');
+var blockTypeGenerator;
 
 module.exports = class Region {
-	constructor(id, regionSize, saveClient, typeSeed) {
+	constructor(id, regionSize, saveClient, blockTypesProvider, typeSeed) {
 		this._id = id;
 		this._saveClient = saveClient;
+		this._blockTypesProvider = blockTypesProvider;
+
+		blockTypeGenerator = new BlockTypeGenerator(blockTypesProvider);
 
 		if (!numberChecker.isPositiveWholeNumber(regionSize) || regionSize <= 0 || regionSize > 200) {
 			throw new Error('Region Size is invalid');
@@ -42,6 +46,7 @@ module.exports = class Region {
 			} else {
 				generatedBlockType = blockTypeGenerator.getBlockTypeFromSeed(this._typeSeed);
 			}
+
 			var coordinateNumber = Math.floor(this._regionSize / 2);
 			var blockInitProperties = {
 				altitude: 10,
