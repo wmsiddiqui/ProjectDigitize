@@ -21,6 +21,7 @@ module.exports = class Region {
 		this._occupiedAreas = new Set();
 		this._remainingCapacity = regionSize * regionSize;
 
+		//Specifies the first type of block in a region.
 		if (typeSeed) {
 			this._typeSeed = typeSeed;
 		}

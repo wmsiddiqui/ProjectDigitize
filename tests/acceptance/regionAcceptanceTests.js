@@ -14,7 +14,8 @@ var mockBlockTypesProvider = {
 			'1': {
 				id: 1,
 				correlations: {
-					3: 0.5
+					3: 0.9,
+					2: 0.1
 				},
 				cap: 20
 			},
@@ -27,6 +28,13 @@ var mockBlockTypesProvider = {
 			},
 			'3': {
 				id: 3,
+				correlations: {
+					2: 0.9
+				},
+				cap: 30
+			},
+			'4': {
+				id: 4,
 				correlations: {
 					2: 0.9
 				},
@@ -54,13 +62,11 @@ describe('regionAcceptanceTests', function() {
 		assert.equal(Object.keys(region._availableAreas).length, 4, 'All neighbors of first block should be available');
 
 		//Add a new block and confirm occupied areas and available areas
-		sinon.stub(Math, 'random').callsFake(function() {
-			return 0.1;
-		});
 		var secondBlock = region.createBlock();
-		assert.equal(secondBlock.blockTypeId, '3');
-		Math.random.restore();
+		assert.isTrue(secondBlock.blockTypeId == '3' || secondBlock.blockTypeId == '2');
 		assert.equal(region._occupiedAreas.size, 2, 'Two blocks should occupy region');
+
+		//Test this now. Change random and then make sure that the right block type is created.
 
 		region.createBlock();
 		region.createBlock();
