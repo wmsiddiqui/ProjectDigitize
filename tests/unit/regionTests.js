@@ -21,7 +21,6 @@ var blockTypeGeneratorMock = class {
 		return {
 			id: 1,
 			cap: 100,
-			altitudeBase: 10,
 			bias: {
 				etherBias: 0.2,
 				plasmaBias: 0.4,
@@ -33,7 +32,6 @@ var blockTypeGeneratorMock = class {
 		return {
 			id: 1,
 			cap: 100,
-			altitudeBase: 10,
 			bias: {
 				etherBias: 0.2,
 				plasmaBias: 0.4,
@@ -45,7 +43,6 @@ var blockTypeGeneratorMock = class {
 		return {
 			id: seed,
 			cap: 100,
-			altitudeBase: 10,
 			bias: {
 				etherBias: 0.2,
 				plasmaBias: 0.4,

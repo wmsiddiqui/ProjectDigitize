@@ -50,7 +50,6 @@ module.exports = class Region {
 
 			var coordinateNumber = Math.floor(this._regionSize / 2);
 			var blockInitProperties = {
-				altitude: 10,
 				blockType: generatedBlockType
 			};
 			block = new Block(this._id + '-' + 1, blockInitProperties, this._saveClient);
@@ -70,7 +69,6 @@ module.exports = class Region {
 			);
 			var generatedBlockType = blockTypeGenerator.getCalculatedBlockType(neighboringBlocks);
 			var blockInitProperties = {
-				altitude: 10,
 				blockType: generatedBlockType
 			};
 			block = new Block(this._id + '-' + 1, blockInitProperties, this._saveClient);

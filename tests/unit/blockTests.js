@@ -32,7 +32,6 @@ describe('block tests', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				altitude: 10,
 				blockType: { cap: 30 }
 			};
 
@@ -41,14 +40,12 @@ describe('block tests', function() {
 			assert.equal(testBlock._ether, 0);
 			assert.equal(testBlock._plasma, 0);
 			assert.equal(testBlock._matter, 0);
-			assert.equal(testBlock._altitude, blockInitProperties.altitude);
 			assert.equal(testBlock.getId(), id);
 		});
 		it('should create the block correctly with equal resources without bias', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				altitude: 10,
 				resourceInitCount: 30,
 				blockType: { cap: 30 }
 			};
@@ -58,14 +55,12 @@ describe('block tests', function() {
 			assert.equal(testBlock._ether, 10);
 			assert.equal(testBlock._plasma, 10);
 			assert.equal(testBlock._matter, 10);
-			assert.equal(testBlock._altitude, blockInitProperties.altitude);
 			assert.equal(testBlock.getId(), id);
 		});
 		it('should create the block correctly with bias', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				altitude: 10,
 				resourceInitCount: 30,
 				blockType: {
 					bias: {
@@ -82,14 +77,12 @@ describe('block tests', function() {
 			assert.equal(testBlock._ether, 20);
 			assert.equal(testBlock._plasma, 0);
 			assert.equal(testBlock._matter, 10);
-			assert.equal(testBlock._altitude, blockInitProperties.altitude);
 			assert.equal(testBlock.getId(), id);
 		});
 		it('should create the block correctly with blockType', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				altitude: 10,
 				resourceInitCount: 30,
 				blockType: {
 					id: 1,
@@ -111,7 +104,6 @@ describe('block tests', function() {
 			var id = 1;
 
 			var blockInitProperties = {
-				altitude: 10,
 				blockType: {
 					bias: {
 						etherBias: 0.33333,
@@ -129,7 +121,6 @@ describe('block tests', function() {
 	describe('generate resources tests', function() {
 		it('should generate new resources correctly', function() {
 			var blockInitProperties = {
-				altitude: 10,
 				blockType: { cap: 30 }
 			};
 			var testBlock = new Block(1, blockInitProperties, blockSaver);
@@ -143,7 +134,6 @@ describe('block tests', function() {
 
 		it('should not generate new resources if cap is met', function() {
 			var blockInitProperties = {
-				altitude: 10,
 				resourceInitCount: 50,
 				blockType: {
 					cap: 30
@@ -160,7 +150,6 @@ describe('block tests', function() {
 
 		it('should generate new resources in proportion if total added exceeds cap with no bias', function() {
 			var blockInitProperties = {
-				altitude: 10,
 				blockType: {
 					cap: 30
 				}
@@ -180,7 +169,6 @@ describe('block tests', function() {
 
 		it('should generate new resources in proportion if total added exceeds cap with bias', function() {
 			var blockInitProperties = {
-				altitude: 10,
 				blockType: {
 					bias: {
 						etherBias: 0.7,
@@ -213,7 +201,6 @@ describe('block tests', function() {
 	describe('consume tests', function() {
 		it('should consume resources and return true if there are enough resources', function() {
 			var blockInitProperties = {
-				altitude: 10,
 				resourceInitCount: 30,
 				blockType: { cap: 30 }
 			};
@@ -231,7 +218,6 @@ describe('block tests', function() {
 
 		it('should not consume resources and return false if there are enough resources', function() {
 			var blockInitProperties = {
-				altitude: 10,
 				resourceInitCount: 30,
 				blockType: { cap: 30 }
 			};

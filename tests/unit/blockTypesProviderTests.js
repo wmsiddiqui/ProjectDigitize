@@ -38,7 +38,6 @@ describe('getBlockTypes', function() {
 			var mock = {
 				'1': {
 					name: 'Void',
-					altitudeBase: 0,
 					correlations: {
 						'6': 0.5,
 						'3': 0.5
@@ -46,7 +45,6 @@ describe('getBlockTypes', function() {
 				},
 				'5': {
 					name: 'Ocean',
-					altitudeBase: 0,
 					correlations: {
 						'3': -0.3,
 						'5': -0.2
@@ -64,7 +62,6 @@ describe('getBlockTypes', function() {
 			var mock = {
 				'1': {
 					name: 'Void',
-					altitudeBase: 0,
 					correlations: {
 						'6': 1.2,
 						'3': 0.5
@@ -82,7 +79,6 @@ describe('getBlockTypes', function() {
 			var mock = {
 				'1': {
 					name: 'Void',
-					altitudeBase: 0,
 					correlations: {
 						'6': -1.2,
 						'3': 0.5
@@ -100,7 +96,6 @@ describe('getBlockTypes', function() {
 			var mock = {
 				'1': {
 					name: 'Void',
-					altitudeBase: 0,
 					correlations: {
 						'6': 0.8,
 						'3': 0.5
@@ -118,7 +113,6 @@ describe('getBlockTypes', function() {
 			var mock = {
 				'1': {
 					name: 'Void',
-					altitudeBase: 0,
 					correlations: {
 						'6': -0.8,
 						'3': -0.5
@@ -136,7 +130,6 @@ describe('getBlockTypes', function() {
 			var mock = {
 				'1': {
 					name: 'Void',
-					altitudeBase: 0,
 					correlations: {
 						'1': 'Number',
 						'2': 0.733,
@@ -156,7 +149,6 @@ describe('getBlockTypes', function() {
 			var mock = {
 				'1': {
 					name: 'Void',
-					altitudeBase: 0,
 					correlations: {
 						'1': 0.05,
 						'2': 0.7334,

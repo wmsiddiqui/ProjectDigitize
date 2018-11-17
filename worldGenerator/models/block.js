@@ -10,7 +10,6 @@ module.exports = class Block {
 
 		this._validateBlockInitProperties(blockInitProperties);
 
-		this._altitude = blockInitProperties.altitude;
 		this._blockSaver = blockSaver;
 
 		this.getId = function() {
@@ -72,10 +71,6 @@ module.exports = class Block {
 	}
 
 	_validateBlockInitProperties(blockInitProperties) {
-		if (!numberChecker.isPositiveNumber(blockInitProperties.altitude)) {
-			throw new Error('Altitude must be a positive number.');
-		}
-
 		if (
 			blockInitProperties.resourceInitCount &&
 			!numberChecker.isPositiveWholeNumber(blockInitProperties.resourceInitCount)
