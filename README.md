@@ -11,3 +11,7 @@ As a result, I will be using DI when there are resources that need to be abstrac
 Redis gives speed, mongo gives a loosly defined schema and JSON documents. However, ReJson allows redis to store JSON data, is incredibly easy to set up with Docker, and is fast compared to MongoDB.
 
 There might be a tradeoff if/when we need to scale out, but for now iorejson will serve our needs.
+
+ReJson also allows for updates to part of the object, which means we won't need to update the entire object, just the fields that change. For our purposes, immutable data such as type, ID, etc. will remain the same. The resources will change, so any change will just update those properties directly instead of having to explicitly update the entire object.
+
+Concurrency might be an issue with Redis, so we'll have to use some kind of versioning system. 
