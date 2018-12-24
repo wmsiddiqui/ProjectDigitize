@@ -3,14 +3,14 @@ var numberChecker = require('../utils/numberChecker');
 var biasValidator = require('../utils/biasValidator');
 
 module.exports = class Block {
-	constructor(id, blockInitProperties, blockSaver) {
+	constructor(id, blockInitProperties, saveClient) {
 		if (!blockInitProperties.blockType) {
 			throw new Error('No blockType found in blockInitProperties');
 		}
 
 		this._validateBlockInitProperties(blockInitProperties);
 
-		this._blockSaver = blockSaver;
+		this._saveClient = saveClient;
 
 		this.getId = function() {
 			return id;
@@ -88,9 +88,22 @@ module.exports = class Block {
 	}
 
 	_save() {
-		var saveResult = this._blockSaver.saveBlock(this);
+		var saveResult = this._saveClient.saveBlock(this);
 		if (!saveResult) {
 			console.log('Warning: Data not persisted to database!');
 		}
+	}
+
+	toJson() {
+		return {
+			id: this.getId(),
+			cap: this._cap,
+			blockTypeId: this.blockTypeId,
+			resources: {
+				ether: this._ether,
+				plasma: this._plasma,
+				matter: this._matter
+			}
+		};
 	}
 };

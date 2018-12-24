@@ -36,46 +36,50 @@ module.exports = class Region {
 	createBlock() {
 		var block;
 		var coordinates;
-		if (
-			this._remainingCapacity == this._regionSize * this._regionSize &&
-			Object.keys(this._availableAreas).length == 0
-		) {
+
+		var remainingCapacity = this._remainingCapacity;
+		var regionSize = this._regionSize;
+		var availableAreas = this._availableAreas;
+		var typeSeed = this._typeSeed;
+		var id = this._id;
+
+		if (remainingCapacity == regionSize * regionSize && Object.keys(availableAreas).length == 0) {
 			//First Block
 			var generatedBlockType;
-			if (!this._typeSeed) {
+			if (!typeSeed) {
 				generatedBlockType = blockTypeGenerator.getRandomBlockType();
 			} else {
-				generatedBlockType = blockTypeGenerator.getBlockTypeFromSeed(this._typeSeed);
+				generatedBlockType = blockTypeGenerator.getBlockTypeFromSeed(typeSeed);
 			}
 
-			var coordinateNumber = Math.floor(this._regionSize / 2);
+			var coordinateNumber = Math.floor(regionSize / 2);
 			var blockInitProperties = {
 				blockType: generatedBlockType
 			};
-			block = new Block(this._id + '-' + 1, blockInitProperties, this._saveClient);
+			block = new Block(`${id}.${this._occupiedAreas.size}`, blockInitProperties, this._saveClient);
 			coordinates = [ coordinateNumber, coordinateNumber ];
 		} else {
 			//Add a block
-			var numberOfAvailableAreas = Object.keys(this._availableAreas).length;
+			var numberOfAvailableAreas = Object.keys(availableAreas).length;
 			if (numberOfAvailableAreas == 0) {
 				throw new Error('Map is full');
 			}
 			var randomArea = Math.floor(Math.random() * numberOfAvailableAreas);
-			var areaToGenerateBlock = Object.keys(this._availableAreas)[randomArea];
+			var areaToGenerateBlock = Object.keys(availableAreas)[randomArea];
 
 			var neighboringBlocks = neighborHelper.getNeighborBlocks(
-				this._availableAreas[areaToGenerateBlock],
+				availableAreas[areaToGenerateBlock],
 				this._regionMap
 			);
 			var generatedBlockType = blockTypeGenerator.getCalculatedBlockType(neighboringBlocks);
 			var blockInitProperties = {
 				blockType: generatedBlockType
 			};
-			block = new Block(this._id + '-' + 1, blockInitProperties, this._saveClient);
-			coordinates = this._availableAreas[areaToGenerateBlock];
+			block = new Block(`${id}.${this._occupiedAreas.size}`, blockInitProperties, this._saveClient);
+			coordinates = availableAreas[areaToGenerateBlock];
 		}
 
-		neighborHelper.updateAvailableAreas(coordinates, this._availableAreas, this._regionMap);
+		neighborHelper.updateAvailableAreas(coordinates, availableAreas, this._regionMap);
 
 		this._occupiedAreas.add(coordinates);
 		this._regionMap[coordinates[0]][coordinates[1]] = block;
