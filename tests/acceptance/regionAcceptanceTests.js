@@ -80,5 +80,7 @@ describe('regionAcceptanceTests', function() {
 		assert.throws(function() {
 			region.createBlock();
 		});
+
+		blockSaver.closeConnection();
 	});
 });
