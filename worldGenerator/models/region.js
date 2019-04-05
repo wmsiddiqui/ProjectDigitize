@@ -31,6 +31,8 @@ module.exports = class Region {
 		for (var i = 0; i < regionSize; i++) {
 			this._regionMap[i] = [];
 		}
+
+		this._saveClient.saveRegion(this);
 	}
 
 	createBlock() {
@@ -85,6 +87,16 @@ module.exports = class Region {
 		this._regionMap[coordinates[0]][coordinates[1]] = block;
 
 		this._remainingCapacity--;
+		this._saveClient.saveRegion(this);
 		return block;
+	}
+
+	toJson() {
+		return {
+			id: this._id,
+			regionSize: this._regionSize,
+			remainingCapacity: this._remainingCapacity,
+			regionMap: this._regionMap
+		};
 	}
 };
