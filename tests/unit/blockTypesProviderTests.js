@@ -1,10 +1,10 @@
-var chai = require('chai');
-var assert = chai.assert;
-var sinon = require('sinon');
-var modulePath = '../../worldGenerator/utils/blockTypesProvider';
-var proxyquire = require('proxyquire');
+const chai = require('chai');
+const assert = chai.assert;
+const sinon = require('sinon');
+const modulePath = '../../worldGenerator/utils/blockTypesProvider';
+const proxyquire = require('proxyquire');
 
-var getNconfMock = function(getResponse) {
+const getNconfMock = function(getResponse) {
 	return {
 		overrides: function() {
 			return;
@@ -28,14 +28,14 @@ var getNconfMock = function(getResponse) {
 
 describe('getBlockTypes', function() {
 	describe('correlation checks', function() {
-		var biasValidatorMock = {
+		const biasValidatorMock = {
 			validateBias: function() {
 				return;
 			}
 		};
 
 		it('should populate the Ids correctly for the blockTypes', function() {
-			var mock = {
+			const mock = {
 				'1': {
 					name: 'Void',
 					correlations: {
@@ -51,15 +51,15 @@ describe('getBlockTypes', function() {
 					}
 				}
 			};
-			var nconfMock = getNconfMock(mock);
-			var sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
-			var result = sut.getBlockTypes();
+			const nconfMock = getNconfMock(mock);
+			const sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
+			const result = sut.getBlockTypes();
 			assert.equal(result['1'].id, 1);
 			assert.equal(result['5'].id, 5);
 		});
 
 		it('should throw an error if a specific correlation is greater than 1', function() {
-			var mock = {
+			const mock = {
 				'1': {
 					name: 'Void',
 					correlations: {
@@ -68,15 +68,15 @@ describe('getBlockTypes', function() {
 					}
 				}
 			};
-			var nconfMock = getNconfMock(mock);
-			var sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
+			const nconfMock = getNconfMock(mock);
+			const sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
 			assert.throw(function() {
 				sut.getBlockTypes();
 			});
 		});
 
 		it('should throw an error if a specific correlation is less than -1', function() {
-			var mock = {
+			const mock = {
 				'1': {
 					name: 'Void',
 					correlations: {
@@ -85,15 +85,15 @@ describe('getBlockTypes', function() {
 					}
 				}
 			};
-			var nconfMock = getNconfMock(mock);
-			var sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
+			const nconfMock = getNconfMock(mock);
+			const sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
 			assert.throw(function() {
 				sut.getBlockTypes();
 			});
 		});
 
 		it('should throw an error if the sum of correlations is greater than 1', function() {
-			var mock = {
+			const mock = {
 				'1': {
 					name: 'Void',
 					correlations: {
@@ -102,15 +102,15 @@ describe('getBlockTypes', function() {
 					}
 				}
 			};
-			var nconfMock = getNconfMock(mock);
-			var sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
+			const nconfMock = getNconfMock(mock);
+			const sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
 			assert.throw(function() {
 				sut.getBlockTypes();
 			});
 		});
 
 		it('should throw an error if the sum of correlations is less than -1', function() {
-			var mock = {
+			const mock = {
 				'1': {
 					name: 'Void',
 					correlations: {
@@ -119,15 +119,15 @@ describe('getBlockTypes', function() {
 					}
 				}
 			};
-			var nconfMock = getNconfMock(mock);
-			var sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
+			const nconfMock = getNconfMock(mock);
+			const sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
 			assert.throw(function() {
 				sut.getBlockTypes();
 			});
 		});
 
 		it('should throw an error if the correlation is not a number', function() {
-			var mock = {
+			const mock = {
 				'1': {
 					name: 'Void',
 					correlations: {
@@ -137,8 +137,8 @@ describe('getBlockTypes', function() {
 					}
 				}
 			};
-			var nconfMock = getNconfMock(mock);
-			var sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
+			const nconfMock = getNconfMock(mock);
+			const sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
 
 			assert.throw(function() {
 				sut.getBlockTypes();
@@ -146,7 +146,7 @@ describe('getBlockTypes', function() {
 		});
 
 		it('should throw an error if the correlation has more than 3 decimal places', function() {
-			var mock = {
+			const mock = {
 				'1': {
 					name: 'Void',
 					correlations: {
@@ -156,8 +156,8 @@ describe('getBlockTypes', function() {
 					}
 				}
 			};
-			var nconfMock = getNconfMock(mock);
-			var sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
+			const nconfMock = getNconfMock(mock);
+			const sut = proxyquire(modulePath, { nconf: nconfMock, './biasValidator': biasValidatorMock });
 
 			assert.throw(function() {
 				sut.getBlockTypes();

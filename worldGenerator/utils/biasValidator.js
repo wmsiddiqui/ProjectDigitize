@@ -1,4 +1,4 @@
-var numberChecker = require('./numberChecker');
+const numberChecker = require('./numberChecker');
 
 exports.validateBias = function(bias) {
 	if (

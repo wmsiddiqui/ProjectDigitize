@@ -1,11 +1,11 @@
-var biasValidator = require('./biasValidator');
+const biasValidator = require('./biasValidator');
 
 exports.getResources = function(numberOfResources, bias) {
 	if (bias) {
 		biasValidator.validateBias(bias);
 	}
 
-	var generated = {
+	let generated = {
 		etherGenerated: 0,
 		plasmaGenerated: 0,
 		matterGenerated: 0
@@ -13,7 +13,7 @@ exports.getResources = function(numberOfResources, bias) {
 
 	for (i = 0; i < numberOfResources; i++) {
 		if (bias) {
-			var randomNumber = Math.random();
+			let randomNumber = Math.random();
 			if (randomNumber < bias.etherBias) {
 				generated.etherGenerated++;
 			} else if (randomNumber < bias.etherBias + bias.plasmaBias) {
@@ -24,7 +24,7 @@ exports.getResources = function(numberOfResources, bias) {
 				throw new Error('ResourceRandomizer failed to produce correct spread');
 			}
 		} else {
-			var randomNumber = Math.floor(Math.random() * 3);
+			let randomNumber = Math.floor(Math.random() * 3);
 			if (randomNumber == 0) {
 				generated.etherGenerated++;
 			} else if (randomNumber == 1) {

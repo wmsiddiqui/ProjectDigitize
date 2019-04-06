@@ -1,6 +1,6 @@
-var numberChecker = require('./numberChecker');
+const numberChecker = require('./numberChecker');
 
-var blockTypes;
+let blockTypes;
 
 module.exports = class BlockTypeGenerator {
 	constructor(blockTypesProvider) {
@@ -8,12 +8,12 @@ module.exports = class BlockTypeGenerator {
 	}
 
 	getCalculatedBlockType(neighboringBlocks) {
-		var numberOfNeighbors = neighboringBlocks.length;
+		const numberOfNeighbors = neighboringBlocks.length;
 
-		var uniqueNeighborCorrelations = this.getUniqueNeighborCorrelations(neighboringBlocks);
-		var uniquePositiveCorrelations = this.getPositiveCorrelations(uniqueNeighborCorrelations);
-		var sumPositiveCorrelations = this.getSumOfCorrelations(uniquePositiveCorrelations);
-		var blockTypeIdToGenerate;
+		const uniqueNeighborCorrelations = this.getUniqueNeighborCorrelations(neighboringBlocks);
+		const uniquePositiveCorrelations = this.getPositiveCorrelations(uniqueNeighborCorrelations);
+		const sumPositiveCorrelations = this.getSumOfCorrelations(uniquePositiveCorrelations);
+		let blockTypeIdToGenerate;
 
 		if (sumPositiveCorrelations < numberOfNeighbors) {
 			//If the sum of positive correlations is less than 1, there is a chance that the block
@@ -23,14 +23,14 @@ module.exports = class BlockTypeGenerator {
 			//is less likely to be generated. This allows for negative correlations, and if negative
 			//enough, can make it impossible for two specific blocks to be generated next to each other
 
-			var randomBlockTypeId = this.getRandomBlockTypeIdFromCorrelation(
+			const randomBlockTypeId = this.getRandomBlockTypeIdFromCorrelation(
 				uniquePositiveCorrelations,
 				numberOfNeighbors,
 				true
 			);
 			if (randomBlockTypeId == 0) {
-				var others = this.getOtherTypeIds(uniqueNeighborCorrelations);
-				var otherTypePicked = this.getRandomBlockTypeId(others);
+				const others = this.getOtherTypeIds(uniqueNeighborCorrelations);
+				const otherTypePicked = this.getRandomBlockTypeId(others);
 				blockTypeIdToGenerate = otherTypePicked;
 			} else {
 				blockTypeIdToGenerate = randomBlockTypeId;
@@ -44,7 +44,7 @@ module.exports = class BlockTypeGenerator {
 			);
 		}
 
-		var blockTypeToGenerate = blockTypes[blockTypeIdToGenerate];
+		const blockTypeToGenerate = blockTypes[blockTypeIdToGenerate];
 		if (!blockTypeToGenerate) {
 			throw new Error('Invalid blockTypes configuration');
 		}
@@ -53,7 +53,7 @@ module.exports = class BlockTypeGenerator {
 	}
 
 	getBlockTypeFromSeed(seed) {
-		var blockTypeToGenerate = blockTypes[seed];
+		const blockTypeToGenerate = blockTypes[seed];
 		if (!blockTypeToGenerate) {
 			throw new Error('Invalid Seed');
 		}
@@ -64,8 +64,8 @@ module.exports = class BlockTypeGenerator {
 		if (!uniqueCorrelations) {
 			throw new Error('Invalid Correlations');
 		}
-		var otherTypes = [];
-		for (var blockType in blockTypes) {
+		let otherTypes = [];
+		for (let blockType in blockTypes) {
 			if (!uniqueCorrelations[blockType]) {
 				otherTypes.push(blockType);
 			}
@@ -78,9 +78,9 @@ module.exports = class BlockTypeGenerator {
 	}
 
 	getRandomBlockTypeIdFromCorrelation(uniquePositiveCorrelations, numberOfNeighbors, includeOther = false) {
-		var total = 0;
-		var randomNumber = Math.random() * numberOfNeighbors;
-		for (var correlation in uniquePositiveCorrelations) {
+		let total = 0;
+		const randomNumber = Math.random() * numberOfNeighbors;
+		for (let correlation in uniquePositiveCorrelations) {
 			total = (total * 1000 + uniquePositiveCorrelations[correlation] * 1000) / 1000;
 			if (randomNumber < total) {
 				return correlation;
@@ -93,15 +93,15 @@ module.exports = class BlockTypeGenerator {
 	}
 
 	getRandomBlockTypeId(blockTypeIds) {
-		var numberOfTypes = blockTypeIds.length;
-		var indexOfType = Math.floor(Math.random() * numberOfTypes);
+		let numberOfTypes = blockTypeIds.length;
+		let indexOfType = Math.floor(Math.random() * numberOfTypes);
 		return blockTypeIds[indexOfType];
 	}
 
 	getRandomBlockType() {
-		var allIds = Object.keys(blockTypes);
-		var indexOfType = Math.floor(Math.random() * allIds.length);
-		var idOfType = allIds[indexOfType];
+		let allIds = Object.keys(blockTypes);
+		let indexOfType = Math.floor(Math.random() * allIds.length);
+		let idOfType = allIds[indexOfType];
 		return blockTypes[idOfType];
 	}
 

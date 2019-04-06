@@ -24,7 +24,7 @@ module.exports = {
 		return false;
 	},
 	isNumberWithOnly3DecimalDigits(number) {
-		var truncatedNumber = Math.trunc(number * 1000);
+		const truncatedNumber = Math.trunc(number * 1000);
 		if (number * 1000 > truncatedNumber) {
 			return false;
 		}

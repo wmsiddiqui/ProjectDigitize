@@ -1,11 +1,11 @@
-var chai = require('chai');
-var assert = chai.assert;
-var modulePath = '../../worldGenerator/utils/biasValidator';
-var proxyquire = require('proxyquire');
+const chai = require('chai');
+const assert = chai.assert;
+const modulePath = '../../worldGenerator/utils/biasValidator';
+const proxyquire = require('proxyquire');
 
 describe('biasValidator', function() {
 	describe('sums of biases should be validated', function() {
-		var numberCheckerMock = {
+		const numberCheckerMock = {
 			isPositiveNumber: function() {
 				return true;
 			},
@@ -15,13 +15,13 @@ describe('biasValidator', function() {
 		};
 
 		it('should throw an error if sums of biases are less than 1', function() {
-			var bias = {
+			const bias = {
 				etherBias: 0.1,
 				plasmaBias: 0.3,
 				matterBias: 0.2
 			};
 
-			var sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
+			const sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
 
 			assert.throw(function() {
 				sut.validateBias(bias);
@@ -29,26 +29,26 @@ describe('biasValidator', function() {
 		});
 
 		it('should throw an error if sums of biases are greater than 1', function() {
-			var bias = {
+			const bias = {
 				etherBias: 0.7,
 				plasmaBias: 0.3,
 				matterBias: 0.2
 			};
 
-			var sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
+			const sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
 
 			assert.throw(function() {
 				sut.validateBias(bias);
 			});
 		});
 		it('should not throw an error if biases are correct', function() {
-			var bias = {
+			const bias = {
 				etherBias: 0.5,
 				plasmaBias: 0.3,
 				matterBias: 0.2
 			};
 
-			var sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
+			const sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
 			assert.doesNotThrow(function() {
 				sut.validateBias(bias);
 			});
@@ -56,14 +56,14 @@ describe('biasValidator', function() {
 	});
 
 	describe('individual biases should validated', function() {
-		var bias = {
+		const bias = {
 			etherBias: 0.5,
 			plasmaBias: 0.3,
 			matterBias: 0.2
 		};
 
 		it('should throw an error if any numberChecker indicates a bias is not a positive number', function() {
-			var numberCheckerMock = {
+			const numberCheckerMock = {
 				isPositiveNumber: function() {
 					return false;
 				},
@@ -72,14 +72,14 @@ describe('biasValidator', function() {
 				}
 			};
 
-			var sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
+			const sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
 			assert.throw(function() {
 				sut.validateBias(bias);
 			});
 		});
 
 		it('should throw an error if any numberChecker indicates a bias is a long decimal', function() {
-			var numberCheckerMock = {
+			const numberCheckerMock = {
 				isPositiveNumber: function() {
 					return true;
 				},
@@ -88,7 +88,7 @@ describe('biasValidator', function() {
 				}
 			};
 
-			var sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
+			const sut = proxyquire(modulePath, { './numberChecker': numberCheckerMock });
 			assert.throw(function() {
 				sut.validateBias(bias);
 			});

@@ -1,6 +1,6 @@
-var resourceRandomizer = require('../utils/resourceRandomizer');
-var numberChecker = require('../utils/numberChecker');
-var biasValidator = require('../utils/biasValidator');
+const resourceRandomizer = require('../utils/resourceRandomizer');
+const numberChecker = require('../utils/numberChecker');
+const biasValidator = require('../utils/biasValidator');
 
 module.exports = class Block {
 	constructor(id, blockInitProperties, saveClient) {
@@ -32,7 +32,6 @@ module.exports = class Block {
 	}
 
 	setBias(etherBias, plasmaBias, matterBias) {
-		var total = etherBias + plasmaBias + matterBias;
 		if (etherBias + plasmaBias + matterBias == 1) {
 			this._bias = {
 				etherBias: etherBias,
@@ -43,14 +42,14 @@ module.exports = class Block {
 	}
 
 	generateResources(numberOfResources) {
-		var totalNumberOfResources = this._ether + this._plasma + this._matter;
-		var totalNumberOfResourcesToGenerate = numberOfResources;
+		let totalNumberOfResources = this._ether + this._plasma + this._matter;
+		let totalNumberOfResourcesToGenerate = numberOfResources;
 
 		if (totalNumberOfResources + totalNumberOfResourcesToGenerate >= this._cap) {
 			totalNumberOfResourcesToGenerate = this._cap - totalNumberOfResources;
 		}
 
-		var resourcesToGenerate = resourceRandomizer.getResources(totalNumberOfResourcesToGenerate, this._bias);
+		const resourcesToGenerate = resourceRandomizer.getResources(totalNumberOfResourcesToGenerate, this._bias);
 		this._ether += resourcesToGenerate.etherGenerated;
 		this._plasma += resourcesToGenerate.plasmaGenerated;
 		this._matter += resourcesToGenerate.matterGenerated;
@@ -88,7 +87,7 @@ module.exports = class Block {
 	}
 
 	_save() {
-		var saveResult = this._saveClient.saveBlock(this);
+		const saveResult = this._saveClient.saveBlock(this);
 		if (!saveResult) {
 			console.log('Warning: Data not persisted to database!');
 		}

@@ -1,46 +1,46 @@
-var chai = require('chai');
-var assert = chai.assert;
-var sinon = require('sinon');
-var modulePath = '../../worldGenerator/utils/blockTypeGenerator';
-var blockTypeGenerator = require(modulePath);
-var proxyquire = require('proxyquire');
-var blankBlockTypesProvider = { getBlockTypes() {} };
+const chai = require('chai');
+const assert = chai.assert;
+const sinon = require('sinon');
+const modulePath = '../../worldGenerator/utils/blockTypeGenerator';
+const blockTypeGenerator = require(modulePath);
+const proxyquire = require('proxyquire');
+const blankBlockTypesProvider = { getBlockTypes() {} };
 
 describe('blockTypeGenerator', function() {
 	describe('getSumOfCorrelations', function() {
 		it('should return 0 if all correlations are negative', function() {
-			var correlations = {
+			const correlations = {
 				'1': -0.2,
 				'2': -0.6,
 				'3': -0.2
 			};
 
-			var sut = new blockTypeGenerator(blankBlockTypesProvider);
-			var result = sut.getSumOfCorrelations(correlations);
+			const sut = new blockTypeGenerator(blankBlockTypesProvider);
+			const result = sut.getSumOfCorrelations(correlations);
 			assert.equal(result, -1);
 		});
 
 		it('should return the correct sum of positive numbers and be precise to 3 decimal places', function() {
-			var correlations = {
+			const correlations = {
 				'1': -0.201,
 				'2': 0.733,
 				'3': 0.2
 			};
 
-			var sut = new blockTypeGenerator(blankBlockTypesProvider);
-			var result = sut.getSumOfCorrelations(correlations);
+			const sut = new blockTypeGenerator(blankBlockTypesProvider);
+			const result = sut.getSumOfCorrelations(correlations);
 			assert.equal(result, 0.732);
 		});
 
 		it('should return 0 if there are no correlations passed in', function() {
-			var sut = new blockTypeGenerator(blankBlockTypesProvider);
-			var result = sut.getSumOfCorrelations();
+			const sut = new blockTypeGenerator(blankBlockTypesProvider);
+			const result = sut.getSumOfCorrelations();
 			assert.equal(result, 0);
 		});
 	});
 	describe('getUniqueNeighborCorrelations', function() {
 		it('should return correct correlations', function() {
-			var neighborBlocks = [
+			const neighborBlocks = [
 				{
 					blockTypeId: '1'
 				},
@@ -49,7 +49,7 @@ describe('blockTypeGenerator', function() {
 				}
 			];
 
-			var blockTypesProviderMock = {
+			const blockTypesProviderMock = {
 				getBlockTypes: function() {
 					return {
 						'1': {
@@ -70,9 +70,9 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = new blockTypeGenerator(blockTypesProviderMock);
+			const sut = new blockTypeGenerator(blockTypesProviderMock);
 
-			var result = sut.getUniqueNeighborCorrelations(neighborBlocks);
+			const result = sut.getUniqueNeighborCorrelations(neighborBlocks);
 			assert.equal(result['3'], 0.2);
 			assert.equal(result['6'], 0.7);
 		});
@@ -80,15 +80,15 @@ describe('blockTypeGenerator', function() {
 
 	describe('getPositiveCorrelations', function() {
 		it('should return only positive correlations', function() {
-			var uniqueCorrelations = {
+			const uniqueCorrelations = {
 				'3': 0.7,
 				'5': 0.2,
 				'7': -0.3,
 				'6': 0
 			};
 
-			var sut = new blockTypeGenerator(blankBlockTypesProvider);
-			var result = sut.getPositiveCorrelations(uniqueCorrelations);
+			const sut = new blockTypeGenerator(blankBlockTypesProvider);
+			const result = sut.getPositiveCorrelations(uniqueCorrelations);
 			assert.equal(result['3'], 0.7);
 			assert.equal(result['5'], 0.2);
 			assert.isUndefined(result['7']);
@@ -98,7 +98,7 @@ describe('blockTypeGenerator', function() {
 
 	describe('getRandomBlockTypeIdFromCorrelation', function() {
 		it('should return the correct block type id', function() {
-			var uniqueCorrelations = {
+			const uniqueCorrelations = {
 				'3': 0.7,
 				'5': 0.2,
 				'7': 0.1
@@ -106,8 +106,8 @@ describe('blockTypeGenerator', function() {
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.85;
 			});
-			var sut = new blockTypeGenerator(blankBlockTypesProvider);
-			var result = sut.getRandomBlockTypeIdFromCorrelation(uniqueCorrelations, 1);
+			const sut = new blockTypeGenerator(blankBlockTypesProvider);
+			const result = sut.getRandomBlockTypeIdFromCorrelation(uniqueCorrelations, 1);
 			Math.random.restore();
 			assert.equal(result, 5);
 		});
@@ -115,7 +115,7 @@ describe('blockTypeGenerator', function() {
 
 	describe('getRandomBlockType', function() {
 		it('should return a valid blockType at random', function() {
-			var blockTypesProviderMock = {
+			const blockTypesProviderMock = {
 				getBlockTypes: function() {
 					return {
 						'1': { id: 1 },
@@ -126,11 +126,11 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = new blockTypeGenerator(blockTypesProviderMock);
+			const sut = new blockTypeGenerator(blockTypesProviderMock);
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.7;
 			});
-			var result = sut.getRandomBlockType();
+			const result = sut.getRandomBlockType();
 			Math.random.restore();
 			assert.equal(result.id, 3);
 		});
@@ -138,7 +138,7 @@ describe('blockTypeGenerator', function() {
 
 	describe('getOtherTypeIds', function() {
 		it('should return the correct ids of other blocks', function() {
-			var blockTypesProviderMock = {
+			const blockTypesProviderMock = {
 				getBlockTypes: function() {
 					return {
 						'1': {},
@@ -149,20 +149,20 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var uniqueCorrelations = {
+			const uniqueCorrelations = {
 				'1': {},
 				'4': {}
 			};
 
-			var sut = new blockTypeGenerator(blockTypesProviderMock);
-			var result = sut.getOtherTypeIds(uniqueCorrelations);
+			const sut = new blockTypeGenerator(blockTypesProviderMock);
+			const result = sut.getOtherTypeIds(uniqueCorrelations);
 			assert.equal(result.length, 2);
 		});
 	});
 
 	describe('getCalculatedBlockType', function() {
 		it('should return the correct blockType when type other', function() {
-			var neighborBlocks = [
+			const neighborBlocks = [
 				{
 					blockTypeId: '1'
 				},
@@ -171,7 +171,7 @@ describe('blockTypeGenerator', function() {
 				}
 			];
 
-			var blockTypesProviderMock = {
+			const blockTypesProviderMock = {
 				getBlockTypes: function() {
 					return {
 						'1': {
@@ -193,18 +193,18 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = new blockTypeGenerator(blockTypesProviderMock);
+			const sut = new blockTypeGenerator(blockTypesProviderMock);
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.99;
 			});
-			var result = sut.getCalculatedBlockType(neighborBlocks);
+			const result = sut.getCalculatedBlockType(neighborBlocks);
 			Math.random.restore();
 
 			assert.equal(result.id, '2');
 		});
 
 		it('should return the correct blockType with fixed correlation', function() {
-			var neighborBlocks = [
+			const neighborBlocks = [
 				{
 					blockTypeId: '1'
 				},
@@ -213,7 +213,7 @@ describe('blockTypeGenerator', function() {
 				}
 			];
 
-			var blockTypesProviderMock = {
+			const blockTypesProviderMock = {
 				getBlockTypes: function() {
 					return {
 						'1': {
@@ -243,11 +243,11 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = new blockTypeGenerator(blockTypesProviderMock);
+			const sut = new blockTypeGenerator(blockTypesProviderMock);
 			sinon.stub(Math, 'random').callsFake(function() {
 				return 0.99;
 			});
-			var result = sut.getCalculatedBlockType(neighborBlocks);
+			const result = sut.getCalculatedBlockType(neighborBlocks);
 			Math.random.restore();
 
 			assert.equal(result.id, '5');
@@ -256,7 +256,7 @@ describe('blockTypeGenerator', function() {
 
 	describe('getBlockTypeFromSeed', function() {
 		it('should throw an error if the seed is not valid', function() {
-			var blockTypesProviderMock = {
+			const blockTypesProviderMock = {
 				getBlockTypes: function() {
 					return {
 						'1': {
@@ -270,14 +270,14 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = new blockTypeGenerator(blockTypesProviderMock);
+			const sut = new blockTypeGenerator(blockTypesProviderMock);
 			assert.throws(function() {
 				sut.getBlockTypeFromSeed(10);
 			});
 		});
 
 		it('should return the same block type as the seed', function() {
-			var blockTypesProviderMock = {
+			const blockTypesProviderMock = {
 				getBlockTypes: function() {
 					return {
 						'1': {
@@ -291,8 +291,8 @@ describe('blockTypeGenerator', function() {
 				}
 			};
 
-			var sut = new blockTypeGenerator(blockTypesProviderMock);
-			var blockTypeToGenerate = sut.getBlockTypeFromSeed(1);
+			const sut = new blockTypeGenerator(blockTypesProviderMock);
+			const blockTypeToGenerate = sut.getBlockTypeFromSeed(1);
 			assert.equal(blockTypeToGenerate.id, 1);
 		});
 	});

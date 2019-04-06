@@ -1,20 +1,16 @@
-// var worldGenerator = require('./worldGenerator');
-
-// worldGenerator.generateWorld();
-
 const Region = require('./worldGenerator/models/region');
 const blockTypesProvider = require('./worldGenerator/utils/blockTypesProvider');
 const redisSaveClient = require('./worldGenerator/utils/redisSaveClient');
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-var regions = {};
+let regions = {};
 
 app.post('/region/:id', (req, res) => {
 	console.log(`Posting new Region with id ${req.params.id}`);
 
-	var region = new Region(req.params.id, 3, redisSaveClient, blockTypesProvider);
+	const region = new Region(req.params.id, 3, redisSaveClient, blockTypesProvider);
 
 	res.send(`Created Region with id: ${region._id}`);
 });

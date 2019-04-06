@@ -1,14 +1,14 @@
-var chai = require('chai');
-var assert = chai.assert;
-var sinon = require('sinon');
-var proxyquire = require('proxyquire');
-var Region = require('../../worldGenerator/models/region');
-var blockSaver = require('../../worldGenerator/utils/redisSaveClient');
-var mockSaver = {
+const chai = require('chai');
+const assert = chai.assert;
+const sinon = require('sinon');
+const proxyquire = require('proxyquire');
+const Region = require('../../worldGenerator/models/region');
+const blockSaver = require('../../worldGenerator/utils/redisSaveClient');
+const mockSaver = {
 	saveBlock: function() {}
 };
 
-var mockBlockTypesProvider = {
+const mockBlockTypesProvider = {
 	getBlockTypes() {
 		return {
 			'1': {
@@ -47,14 +47,14 @@ var mockBlockTypesProvider = {
 describe('regionAcceptanceTests', function() {
 	it('creates region correctly', function() {
 		//Create a region with a seeded value
-		var seed = 1;
-		var region = new Region('testRegion', 3, blockSaver, mockBlockTypesProvider, seed);
+		const seed = 1;
+		const region = new Region('testRegion', 3, blockSaver, mockBlockTypesProvider, seed);
 
 		assert.equal(Object.keys(region._availableAreas).length, 0, 'New region should not have availibity');
 		assert.equal(region._occupiedAreas.size, 0, 'New region should not have occupied areas');
 
-		var availableAreas = region._availableAreas;
-		var block = region.createBlock();
+		const availableAreas = region._availableAreas;
+		const block = region.createBlock();
 		assert.equal(block.blockTypeId, seed, "First block type's id does not match seed");
 
 		//Verify that blocks around newly created block are now availible
@@ -62,7 +62,7 @@ describe('regionAcceptanceTests', function() {
 		assert.equal(Object.keys(region._availableAreas).length, 4, 'All neighbors of first block should be available');
 
 		//Add a new block and confirm occupied areas and available areas
-		var secondBlock = region.createBlock();
+		const secondBlock = region.createBlock();
 		assert.isTrue(secondBlock.blockTypeId == '3' || secondBlock.blockTypeId == '2');
 		assert.equal(region._occupiedAreas.size, 2, 'Two blocks should occupy region');
 
