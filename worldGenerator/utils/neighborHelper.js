@@ -3,8 +3,8 @@ module.exports = {
 		if (!regionMap || !coordinates) {
 			throw new Error('Invalid parameters when trying to get neighbor blocks');
 		}
-		var regionSize = regionMap.length;
-		var neighborBlocks = [];
+		let regionSize = regionMap.length;
+		let neighborBlocks = [];
 		//left
 		if (coordinates[0] > 0 && regionMap[coordinates[0] - 1][coordinates[1]]) {
 			neighborBlocks.push(regionMap[coordinates[0] - 1][coordinates[1]]);
@@ -64,6 +64,6 @@ module.exports = {
 	}
 };
 
-var getBlock = function(map, x, y) {
+let getBlock = function(map, x, y) {
 	return map[x][y];
 };

@@ -106,8 +106,8 @@ module.exports = class BlockTypeGenerator {
 	}
 
 	getPositiveCorrelations(uniqueNeighborCorrelations) {
-		var positiveCorrelations = {};
-		for (var correlation in uniqueNeighborCorrelations) {
+		let positiveCorrelations = {};
+		for (let correlation in uniqueNeighborCorrelations) {
 			if (uniqueNeighborCorrelations[correlation] > 0) {
 				positiveCorrelations[correlation] = uniqueNeighborCorrelations[correlation];
 			}
@@ -116,12 +116,12 @@ module.exports = class BlockTypeGenerator {
 	}
 
 	getUniqueNeighborCorrelations(neighboringBlocks) {
-		var uniqueNeighborCorrelations = {};
+		let uniqueNeighborCorrelations = {};
 		neighboringBlocks.forEach(function(neighborBlock) {
 			if (neighborBlock.blockTypeId) {
-				var blockType = blockTypes[neighborBlock.blockTypeId];
+				let blockType = blockTypes[neighborBlock.blockTypeId];
 				if (blockType.correlations) {
-					for (var correlation in blockType.correlations) {
+					for (let correlation in blockType.correlations) {
 						if (!uniqueNeighborCorrelations[correlation]) {
 							uniqueNeighborCorrelations[correlation] = blockType.correlations[correlation];
 						} else {
@@ -135,11 +135,11 @@ module.exports = class BlockTypeGenerator {
 	}
 
 	getSumOfCorrelations(uniqueNeighborCorrelations) {
-		var sumCorrelations = 0;
+		let sumCorrelations = 0;
 		if (!uniqueNeighborCorrelations) {
 			return 0;
 		}
-		for (var correlationKey in uniqueNeighborCorrelations) {
+		for (let correlationKey in uniqueNeighborCorrelations) {
 			sumCorrelations += uniqueNeighborCorrelations[correlationKey] * 1000;
 		}
 		return sumCorrelations / 1000;

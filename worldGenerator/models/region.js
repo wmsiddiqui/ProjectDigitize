@@ -18,7 +18,7 @@ module.exports = class Region {
 
 		this._regionSize = regionSize;
 		this._availableAreas = {};
-		this._occupiedAreas = new Set();
+		this._occupiedAreasCount = 0;
 		this._remainingCapacity = regionSize * regionSize;
 
 		//Specifies the first type of block in a region.
@@ -58,7 +58,7 @@ module.exports = class Region {
 			const blockInitProperties = {
 				blockType: generatedBlockType
 			};
-			block = new Block(`${id}.${this._occupiedAreas.size}`, blockInitProperties, this._saveClient);
+			block = new Block(`${id}.${this._occupiedAreasCount}`, blockInitProperties, this._saveClient);
 			coordinates = [ coordinateNumber, coordinateNumber ];
 		} else {
 			//Add a block
@@ -77,13 +77,13 @@ module.exports = class Region {
 			const blockInitProperties = {
 				blockType: generatedBlockType
 			};
-			block = new Block(`${id}.${this._occupiedAreas.size}`, blockInitProperties, this._saveClient);
+			block = new Block(`${id}.${this._occupiedAreasCount}`, blockInitProperties, this._saveClient);
 			coordinates = availableAreas[areaToGenerateBlock];
 		}
 
 		neighborHelper.updateAvailableAreas(coordinates, availableAreas, this._regionMap);
 
-		this._occupiedAreas.add(coordinates);
+		this._occupiedAreasCount++;
 		this._regionMap[coordinates[0]][coordinates[1]] = block;
 
 		this._remainingCapacity--;
