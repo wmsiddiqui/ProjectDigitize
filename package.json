@@ -27,7 +27,7 @@
 	"dependencies": {
 		"express": "^4.16.4",
 		"iorejson": "^0.1.1",
-		"nconf": "^0.10.0",
+		"nconf": "^0.11.4",
 		"redis": "^2.8.0"
 	}
 }
