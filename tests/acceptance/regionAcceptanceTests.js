@@ -3,9 +3,9 @@ const assert = chai.assert;
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 const Region = require('../../worldGenerator/models/region');
-const blockSaver = require('../../worldGenerator/utils/redisSaveClient');
+const blockSaver = require('../../worldGenerator/utils/localSaveClient');
 const mockSaver = {
-	saveBlock: function() {}
+	saveBlock: function () { }
 };
 
 const mockBlockTypesProvider = {
@@ -44,8 +44,8 @@ const mockBlockTypesProvider = {
 	}
 };
 
-describe('regionAcceptanceTests', function() {
-	it('creates region correctly', function() {
+describe('regionAcceptanceTests', function () {
+	it('creates region correctly', function () {
 		//Create a region with a seeded value
 		const seed = 1;
 		const region = new Region('testRegion', 3, blockSaver, mockBlockTypesProvider, seed);
@@ -77,7 +77,7 @@ describe('regionAcceptanceTests', function() {
 		assert.equal(Object.keys(region._availableAreas).length, 0);
 
 		//Add another block when map is full. It should throw an exception.
-		assert.throws(function() {
+		assert.throws(function () {
 			region.createBlock();
 		});
 

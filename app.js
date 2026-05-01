@@ -1,6 +1,6 @@
 const Region = require('./worldGenerator/models/region');
 const blockTypesProvider = require('./worldGenerator/utils/blockTypesProvider');
-const redisSaveClient = require('./worldGenerator/utils/redisSaveClient');
+const saveClient = require('./worldGenerator/utils/localSaveClient');
 
 const express = require('express');
 const app = express();
@@ -10,7 +10,7 @@ let regions = {};
 app.post('/region/:id', (req, res) => {
 	console.log(`Posting new Region with id ${req.params.id}`);
 
-	const region = new Region(req.params.id, 3, redisSaveClient, blockTypesProvider);
+	const region = new Region(req.params.id, 3, saveClient, blockTypesProvider);
 
 	res.send(`Created Region with id: ${region._id}`);
 });
@@ -27,7 +27,7 @@ app.get('/region/:regionId/:blockId', (req, res) => {
 
 app.get('/region/:id', async (req, res, next) => {
 	console.log('getting region');
-	const response = await redisSaveClient.getRegion(req.params.id);
+	const response = await saveClient.getRegion(req.params.id);
 	console.log(response);
 	res.json(response);
 });
