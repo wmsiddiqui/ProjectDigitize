@@ -4,7 +4,7 @@ const neighborHelper = require('../utils/neighborHelper');
 const BlockTypeGenerator = require('../utils/blockTypeGenerator');
 let blockTypeGenerator;
 
-module.exports = class Region {
+class Region {
 	constructor(id, regionSize, saveClient, blockTypesProvider, typeSeed) {
 		this._id = id;
 		this._saveClient = saveClient;
@@ -59,7 +59,7 @@ module.exports = class Region {
 				blockType: generatedBlockType
 			};
 			block = new Block(`${id}.${this._occupiedAreasCount}`, blockInitProperties, this._saveClient);
-			coordinates = [ coordinateNumber, coordinateNumber ];
+			coordinates = [coordinateNumber, coordinateNumber];
 		} else {
 			//Add a block
 			const numberOfAvailableAreas = Object.keys(availableAreas).length;
@@ -96,7 +96,38 @@ module.exports = class Region {
 			id: this._id,
 			regionSize: this._regionSize,
 			remainingCapacity: this._remainingCapacity,
-			regionMap: this._regionMap
+			regionMap: this._regionMap.map(row => row.map(block => block ? block.toJson() : null))
 		};
 	}
-};
+
+	static fromJson(json, saveClient, blockTypesProvider) {
+		const region = Object.create(Region.prototype);
+		region._id = json.id;
+		region._saveClient = saveClient;
+		region._blockTypesProvider = blockTypesProvider;
+		region._regionSize = json.regionSize;
+		region._remainingCapacity = json.remainingCapacity;
+		region._occupiedAreasCount = json.regionSize * json.regionSize - json.remainingCapacity;
+
+		blockTypeGenerator = new BlockTypeGenerator(blockTypesProvider);
+
+		// Reconstruct regionMap with stub objects (only blockTypeId is needed for neighbour correlation)
+		region._regionMap = (json.regionMap || []).map(row =>
+			(row || []).map(cell => cell ? { blockTypeId: cell.blockTypeId, toJson: () => cell } : null)
+		);
+
+		// Reconstruct availableAreas by replaying each occupied cell
+		region._availableAreas = {};
+		for (let r = 0; r < json.regionSize; r++) {
+			for (let c = 0; c < json.regionSize; c++) {
+				if (region._regionMap[r] && region._regionMap[r][c]) {
+					neighborHelper.updateAvailableAreas([r, c], region._availableAreas, region._regionMap);
+				}
+			}
+		}
+
+		return region;
+	}
+}
+
+module.exports = Region;

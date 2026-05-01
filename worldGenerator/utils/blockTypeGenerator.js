@@ -117,7 +117,7 @@ module.exports = class BlockTypeGenerator {
 
 	getUniqueNeighborCorrelations(neighboringBlocks) {
 		let uniqueNeighborCorrelations = {};
-		neighboringBlocks.forEach(function(neighborBlock) {
+		neighboringBlocks.forEach(function (neighborBlock) {
 			if (neighborBlock.blockTypeId) {
 				let blockType = blockTypes[neighborBlock.blockTypeId];
 				if (blockType.correlations) {
@@ -127,6 +127,14 @@ module.exports = class BlockTypeGenerator {
 						} else {
 							uniqueNeighborCorrelations[correlation] += blockType.correlations[correlation];
 						}
+					}
+				}
+				if (blockType.selfAffinity) {
+					const typeId = neighborBlock.blockTypeId;
+					if (!uniqueNeighborCorrelations[typeId]) {
+						uniqueNeighborCorrelations[typeId] = blockType.selfAffinity;
+					} else {
+						uniqueNeighborCorrelations[typeId] += blockType.selfAffinity;
 					}
 				}
 			}

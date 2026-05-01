@@ -7,7 +7,7 @@ nconf.overrides({ always: 'be this value' });
 nconf.argv().env().file({ file: configPath });
 let results;
 
-exports.getBlockTypes = function() {
+exports.getBlockTypes = function () {
 	if (!results) {
 		let allBlockTypes = nconf.get('blockTypes');
 		for (let blockType in allBlockTypes) {
@@ -16,13 +16,14 @@ exports.getBlockTypes = function() {
 
 			validateCorrelations(currentBlock.correlations);
 			validateBiases(currentBlock.biases);
+			validateSelfAffinity(currentBlock.selfAffinity, currentBlock.correlations);
 		}
 		results = allBlockTypes;
 	}
 	return results;
 };
 
-let validateCorrelations = function(correlations) {
+let validateCorrelations = function (correlations) {
 	if (!correlations) {
 		return;
 	}
@@ -46,9 +47,27 @@ let validateCorrelations = function(correlations) {
 	}
 };
 
-let validateBiases = function(biases) {
+let validateBiases = function (biases) {
 	if (!biases) {
 		return;
 	}
 	biasValidator.validateBias(biases);
+};
+
+let validateSelfAffinity = function (selfAffinity, correlations) {
+	if (selfAffinity === undefined || selfAffinity === null) {
+		return;
+	}
+	if (!numberChecker.isPositiveNumber(selfAffinity) || selfAffinity > 1) {
+		throw new Error('selfAffinity must be a number between 0 and 1');
+	}
+	if (!numberChecker.isNumberWithOnly3DecimalDigits(selfAffinity)) {
+		throw new Error('selfAffinity must have no more than 3 decimal places');
+	}
+	const positiveCorrelationsSum = correlations
+		? Object.values(correlations).filter(c => c > 0).reduce((a, b) => a + b, 0)
+		: 0;
+	if (Math.round((selfAffinity + positiveCorrelationsSum) * 1000) / 1000 > 1) {
+		throw new Error('selfAffinity + sum of positive correlations must not exceed 1');
+	}
 };

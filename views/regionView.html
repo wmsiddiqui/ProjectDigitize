@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Region {{regionId}}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #111827;
+            color: #f9fafb;
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: #e5e7eb;
+        }
+
+        #status {
+            color: #9ca3af;
+            margin-bottom: 12px;
+            font-size: 0.875rem;
+        }
+
+        #grid-container {
+            display: inline-block;
+            border: 2px solid #374151;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .grid-row {
+            display: flex;
+        }
+
+        .cell {
+            width: 72px;
+            height: 72px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            text-align: center;
+            cursor: default;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            transition: filter 0.1s;
+        }
+
+        .cell:hover {
+            filter: brightness(1.3);
+            z-index: 1;
+        }
+
+        .cell.empty {
+            background: #1f2937;
+            color: #4b5563;
+        }
+
+        .cell-name {
+            font-weight: bold;
+            font-size: 0.7rem;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .cell-resources {
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+        }
+
+        .legend-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .stats {
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Region: {{regionId}}</h1>
+    <div id="status">Loading&hellip;</div>
+    <div id="grid-container"></div>
+    <div class="legend" id="legend"></div>
+    <div class="stats" id="stats"></div>
+
+    <script>
+        const BLOCK_TYPES = {{ blockTypesJson }};
+
+        async function load() {
+            const status = document.getElementById('status');
+            try {
+                const res = await fetch('/region/{{regionId}}');
+                if (!res.ok) { status.textContent = 'Region not found.'; return; }
+                const region = await res.json();
+                if (!region) { status.textContent = 'Region not found.'; return; }
+                render(region);
+                status.textContent = '';
+            } catch (e) {
+                status.textContent = 'Error loading region: ' + e.message;
+            }
+        }
+
+        function render(region) {
+            const container = document.getElementById('grid-container');
+            const map = region.regionMap || [];
+            const size = region.regionSize || map.length;
+
+            let blockCount = 0;
+            const typeCounts = {};
+
+            for (let row = 0; row < size; row++) {
+                const rowEl = document.createElement('div');
+                rowEl.className = 'grid-row';
+                for (let col = 0; col < size; col++) {
+                    const block = map[row] && map[row][col];
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    if (block && block.blockTypeId != null) {
+                        const typeId = String(block.blockTypeId);
+                        const bt = BLOCK_TYPES[typeId] || { name: 'Unknown', color: '#374151' };
+                        cell.style.background = bt.color;
+                        typeCounts[typeId] = (typeCounts[typeId] || 0) + 1;
+                        blockCount++;
+                        const res = (block.resources || {});
+                        cell.innerHTML = `<span class="cell-name">${bt.name}</span>
+              <span class="cell-resources">E:${res.ether ?? 0} P:${res.plasma ?? 0} M:${res.matter ?? 0}</span>`;
+                        cell.title = `${bt.name} [${row},${col}] — Ether:${res.ether ?? 0} Plasma:${res.plasma ?? 0} Matter:${res.matter ?? 0}`;
+                    } else {
+                        cell.textContent = '—';
+                    }
+                    rowEl.appendChild(cell);
+                }
+                container.appendChild(rowEl);
+            }
+
+            const legend = document.getElementById('legend');
+            Object.entries(typeCounts).forEach(([id, count]) => {
+                const bt = BLOCK_TYPES[id] || { name: 'Unknown', color: '#374151' };
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                item.innerHTML = `<div class="legend-swatch" style="background:${bt.color}"></div>${bt.name} (${count})`;
+                legend.appendChild(item);
+            });
+
+            document.getElementById('stats').textContent =
+                `${blockCount} / ${size * size} blocks placed — ${region.remainingCapacity} remaining`;
+        }
+
+        load();
+    </script>
+</body>
+
+</html>

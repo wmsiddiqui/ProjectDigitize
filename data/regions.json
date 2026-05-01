@@ -1,0 +1,4049 @@
+{
+  "myworld": {
+    "id": "myworld",
+    "regionSize": 20,
+    "remainingCapacity": 0,
+    "regionMap": [
+      [
+        {
+          "id": "myworld.394",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.370",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.359",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.382",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.393",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.363",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.384",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.340",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.327",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.322",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.302",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.280",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.257",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.180",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.177",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.144",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.231",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.246",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.211",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.229",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.374",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.369",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.337",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.330",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.344",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.362",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.347",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.331",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.352",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.310",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.314",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.298",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.350",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.131",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.98",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.119",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.125",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.156",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.186",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.292",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.386",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.375",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.390",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.315",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.317",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.354",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.289",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.282",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.274",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.303",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.323",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.329",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.336",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.124",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.96",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.68",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.210",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.142",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.258",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.236",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.396",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.387",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.311",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.279",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.305",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.265",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.252",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.235",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.179",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.300",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.223",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.290",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.181",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.74",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.91",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.63",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.79",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.129",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.184",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.214",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.399",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.383",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.335",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.272",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.284",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.389",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.158",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.138",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.83",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.212",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.93",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.297",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.55",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.36",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.39",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.44",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.128",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.198",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.294",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.226",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.391",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.388",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.268",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.267",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.328",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.271",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.261",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.53",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.72",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.62",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.67",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.95",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.51",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.33",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.47",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.134",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.239",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.193",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.269",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.220",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.376",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.351",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.346",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.248",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.242",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.316",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.64",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.46",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.60",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.52",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.69",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.28",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.21",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.27",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.97",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.82",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.137",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.174",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.175",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.176",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.341",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.333",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.278",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.215",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.199",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.113",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.76",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.38",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.35",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.24",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.32",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.133",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.18",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.42",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.54",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.58",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.101",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.150",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.155",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.365",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.312",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.319",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.291",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.183",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.171",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.70",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.65",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.43",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.49",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.5",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.26",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.15",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.17",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.81",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.71",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.80",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.94",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.118",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.147",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.173",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.209",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.301",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.205",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.166",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.115",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.153",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.25",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.19",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.6",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.4",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.30",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.9",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.86",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.20",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.77",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.89",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.244",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.85",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.103",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.111",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.204",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.188",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.163",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.114",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.110",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.88",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.34",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.11",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.10",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.2",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.0",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.1",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.8",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.13",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.31",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.45",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.75",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.84",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.141",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.164",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.227",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.309",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.385",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.225",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.132",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.149",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.288",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.12",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.7",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.3",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.14",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.16",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.102",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.108",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.151",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.48",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.104",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.332",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.233",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.293",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.349",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.260",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.259",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.167",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.106",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.40",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.29",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.22",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.23",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.61",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.59",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.41",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.159",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.191",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.321",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.107",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.122",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.136",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.266",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.250",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.253",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.249",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.228",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.190",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.160",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.100",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.56",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.37",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.87",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.66",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.264",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.50",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.99",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.143",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.241",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.208",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.127",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.139",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.197",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.218",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.255",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.326",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.379",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.256",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.148",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.73",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.57",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.120",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.157",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.90",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.154",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.165",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.230",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.306",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.247",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.207",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.145",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.217",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.287",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.237",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.357",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.307",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.240",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.140",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.117",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.92",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.78",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.135",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.213",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.189",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.334",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.200",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.313",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.372",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.277",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.168",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.162",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.222",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.275",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.243",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.251",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.286",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.254",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.123",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.112",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.105",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.194",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.343",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.202",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.195",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.262",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.206",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.276",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.320",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.296",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.348",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.203",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.216",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.245",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.273",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.238",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.201",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.185",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.121",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.116",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.109",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.187",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.192",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.263",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.224",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.232",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.304",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.318",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.397",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.373",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.358",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.295",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.281",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.395",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.353",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.270",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.219",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.196",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.130",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.308",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.126",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.169",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.178",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.234",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.285",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.377",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.356",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.338",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.342",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.380",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.364",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.361",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.299",
+          "cap": 100,
+          "blockTypeId": "2",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.324",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.345",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ],
+      [
+        {
+          "id": "myworld.368",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.221",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.182",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.172",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.161",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.146",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.152",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.170",
+          "cap": 70,
+          "blockTypeId": "1",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.283",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.355",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.378",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.371",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.366",
+          "cap": 100,
+          "blockTypeId": "4",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.367",
+          "cap": 80,
+          "blockTypeId": "7",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.398",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.381",
+          "cap": 80,
+          "blockTypeId": "3",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.360",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.339",
+          "cap": 80,
+          "blockTypeId": "6",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.325",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        },
+        {
+          "id": "myworld.392",
+          "cap": 100,
+          "blockTypeId": "5",
+          "resources": {
+            "ether": 0,
+            "plasma": 0,
+            "matter": 0
+          }
+        }
+      ]
+    ]
+  }
+}
