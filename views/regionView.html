@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Region {{regionId}}</title>
+    <title>Region {{regionLabel}}</title>
     <style>
         * {
             box-sizing: border-box;
@@ -107,13 +107,67 @@
             font-size: 0.8rem;
             color: #9ca3af;
         }
+
+        .face-nav-layout {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 8px;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .nav-middle-row {
+            display: flex;
+            align-items: stretch;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            color: #f9fafb;
+            text-decoration: none;
+            font-size: 1.1rem;
+            gap: 2px;
+            transition: background 0.1s, border-color 0.1s;
+        }
+
+        .nav-btn:hover {
+            background: #374151;
+            border-color: #6b7280;
+        }
+
+        .nav-btn span {
+            font-size: 0.55rem;
+            color: #9ca3af;
+            text-transform: capitalize;
+        }
+
+        .nav-up,
+        .nav-down {
+            padding: 8px 20px;
+            min-width: 80px;
+        }
+
+        .nav-left,
+        .nav-right {
+            padding: 0 14px;
+            min-width: 52px;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Region: {{regionId}}</h1>
+    {{backLink}}
+    <h1>Region: {{regionLabel}}</h1>
     <div id="status">Loading&hellip;</div>
-    <div id="grid-container"></div>
+    {{faceNav}}
     <div class="legend" id="legend"></div>
     <div class="stats" id="stats"></div>
 
@@ -123,7 +177,7 @@
         async function load() {
             const status = document.getElementById('status');
             try {
-                const res = await fetch('/region/{{regionId}}');
+                const res = await fetch('{{regionDataUrl}}');
                 if (!res.ok) { status.textContent = 'Region not found.'; return; }
                 const region = await res.json();
                 if (!region) { status.textContent = 'Region not found.'; return; }

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World: {{worldId}}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #111827;
+            color: #f9fafb;
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #e5e7eb;
+        }
+
+        #status {
+            color: #9ca3af;
+            margin-bottom: 24px;
+            font-size: 0.875rem;
+        }
+
+        /* Cube net layout:
+                [top]
+           [left][front][right][back]
+                [bottom]
+        */
+        .cube-net {
+            display: grid;
+            grid-template-columns: repeat(4, max-content);
+            grid-template-rows: repeat(3, max-content);
+            gap: 8px;
+        }
+
+        .face-card {
+            background: #1f2937;
+            border: 2px solid #374151;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: border-color 0.15s, background 0.15s;
+        }
+
+        .face-card:hover {
+            border-color: #6b7280;
+            background: #243447;
+        }
+
+        .face-top {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .face-left {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .face-front {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .face-right {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .face-back {
+            grid-column: 4;
+            grid-row: 2;
+        }
+
+        .face-bottom {
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+        .face-label {
+            text-transform: capitalize;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .mini-grid {
+            display: inline-block;
+            border: 1px solid #374151;
+            line-height: 0;
+        }
+
+        .mini-row {
+            display: flex;
+        }
+
+        .mini-cell {
+            width: 10px;
+            height: 10px;
+            background: #374151;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .face-stats {
+            font-size: 0.7rem;
+            color: #6b7280;
+            margin-top: 8px;
+        }
+
+        .face-stats .filled {
+            color: #d1d5db;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>World: {{worldId}}</h1>
+    <div id="status">Loading&hellip;</div>
+    <div class="cube-net" id="cube-net"></div>
+
+    <script>
+        const WORLD_ID = '{{worldId}}';
+        const BLOCK_TYPES = {{ blockTypesJson }};
+        const FACES = ['top', 'bottom', 'front', 'back', 'left', 'right'];
+
+        async function load() {
+            const status = document.getElementById('status');
+            try {
+                const worldRes = await fetch(`/world/${WORLD_ID}`);
+                if (!worldRes.ok) { status.textContent = 'World not found.'; return; }
+                const world = await worldRes.json();
+
+                const regionResults = await Promise.all(
+                    FACES.map(face =>
+                        fetch(`/world/${WORLD_ID}/region/${face}`)
+                            .then(r => r.ok ? r.json() : null)
+                            .then(data => ({ face, data }))
+                    )
+                );
+
+                render(world, regionResults);
+                status.textContent = `Region size: ${world.regionSize}\u00d7${world.regionSize}`;
+            } catch (e) {
+                status.textContent = 'Error loading world: ' + e.message;
+            }
+        }
+
+        function renderMiniGrid(regionData, size) {
+            const map = regionData ? (regionData.regionMap || []) : [];
+            const container = document.createElement('div');
+            container.className = 'mini-grid';
+            for (let r = 0; r < size; r++) {
+                const row = document.createElement('div');
+                row.className = 'mini-row';
+                for (let c = 0; c < size; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'mini-cell';
+                    const block = map[r] && map[r][c];
+                    if (block && block.blockTypeId != null) {
+                        const bt = BLOCK_TYPES[String(block.blockTypeId)];
+                        if (bt) cell.style.background = bt.color;
+                    }
+                    row.appendChild(cell);
+                }
+                container.appendChild(row);
+            }
+            return container;
+        }
+
+        function render(world, regionResults) {
+            const net = document.getElementById('cube-net');
+            const size = world.regionSize || 5;
+            const total = size * size;
+
+            for (const { face, data } of regionResults) {
+                const card = document.createElement('a');
+                card.className = `face-card face-${face}`;
+                card.href = `/world/${WORLD_ID}/region/${face}/view`;
+
+                const label = document.createElement('div');
+                label.className = 'face-label';
+                label.textContent = face;
+                card.appendChild(label);
+
+                card.appendChild(renderMiniGrid(data, size));
+
+                const stats = document.createElement('div');
+                stats.className = 'face-stats';
+                if (data) {
+                    const filled = total - (data.remainingCapacity || 0);
+                    stats.innerHTML = `<span class="filled">${filled}</span> / ${total} blocks`;
+                } else {
+                    stats.textContent = 'No data';
+                }
+                card.appendChild(stats);
+
+                net.appendChild(card);
+            }
+        }
+
+        load();
+    </script>
+</body>
+
+</html>
